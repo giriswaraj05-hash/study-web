@@ -1,0 +1,15 @@
+{
+  "name": "QUICK LEARN DCST",
+  "short_name": "DCST",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#facc15",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2920/2920343.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

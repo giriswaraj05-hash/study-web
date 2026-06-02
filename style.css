@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUICK LEARN DCST</title>
+    <link rel="stylesheet" href="style.css"> </head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="badge">🚀 5TH SEMESTER UPDATE</div>
+
+        <div class="hero-icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/2936/2936769.png" class="icon-books" alt="Books">
+            <img src="https://cdn-icons-png.flaticon.com/512/2920/2920343.png" class="icon-computer" alt="Computer">
+        </div>
+
+        <div class="title-section">
+            <h1>QUICK LEARN DCST</h1>
+            <p>Smart way to master your subjects.</p>
+        </div>
+
+        <div class="stats-card">
+            <div class="stat-item"><h2>5</h2><p>SUBJECTS</p></div>
+            <div class="divider"></div>
+            <div class="stat-item"><h2>31</h2><p>UNITS</p></div>
+            <div class="divider"></div>
+            <div class="stat-item"><h2>25</h2><p>PYQS</p></div>
+        </div>
+
+        <a href="subject.html" class="get-started-btn">Get Started</a>
+
+        <div class="pointer-icon">👇</div>
+        <div class="sub-text">Tap to view your dashboard</div>
+
+        <button class="install-btn" onclick="alert('App Installation Feature Coming Soon!')">Install App</button>
+    </div>
+
+</body>
+</html>

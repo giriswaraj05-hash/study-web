@@ -8,18 +8,41 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
         body { background-color: #0f172a; color: #f1f5f9; padding: 20px; }
         .container { max-width: 600px; margin: auto; }
-        
-        h1 { font-size: 20px; margin-bottom: 25px; color: #ffffff; text-align: center; }
-        
-        .subject-card { 
-            background: #1e293b; padding: 20px; border-radius: 20px; 
-            margin-bottom: 15px; border: 1px solid #334155;
-            display: flex; align-items: center;
+        h1 { font-size: 20px; margin-bottom: 10px; color: #ffffff; text-align: center; }
+
+        /* অপশনাল টেক্সট স্টাইল */
+        .optional-text { text-align: center; color: #facc15; font-size: 14px; margin-bottom: 25px; font-weight: bold; }
+
+        /* বড় চতুর্ভুজ কার্ডের স্টাইল */
+        .subject-box { 
+            background: #1e293b; 
+            padding: 25px; 
+            border-radius: 20px; 
+            margin-bottom: 25px; 
+            border: 1px solid #334155;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
-        .icon { font-size: 30px; margin-right: 15px; }
-        .details .title { font-weight: bold; color: #facc15; font-size: 16px; margin-bottom: 4px; }
-        .details .sub { font-size: 12px; color: #94a3b8; }
-        
+
+        .sub-main { text-decoration: none; color: inherit; display: block; }
+        .title { font-weight: bold; color: #facc15; font-size: 18px; margin-bottom: 5px; }
+        .details { font-size: 13px; color: #94a3b8; }
+
+        .syllabus-btn { 
+            background: #2563eb; 
+            color: white; 
+            padding: 12px; 
+            border-radius: 12px; 
+            text-align: center; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 14px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         .back-btn { 
             display: block; text-align: center; margin-top: 30px; 
             color: #facc15; text-decoration: none; font-weight: bold; font-size: 16px;
@@ -30,28 +53,29 @@
 
 <div class="container">
     <h1>SELECT SUBJECT</h1>
+    <p class="optional-text">📌 OPTIONAL: Choose any one</p>
 
-    <!-- Mobile Computing কার্ড -->
-    <a href="mobile_computing.html" style="text-decoration:none;">
-        <div class="subject-card">
-            <span class="icon">📱</span>
-            <div class="details">
-                <div class="title">Mobile Computing</div>
-                <div class="sub">5 Units • Theory & Practical</div>
-            </div>
-        </div>
-    </a>
+    <!-- মোবাইল কম্পিউটিং বক্স -->
+    <div class="subject-box">
+        <a href="mobile_computing.html" class="sub-main">
+            <div class="title">📱 Mobile Computing</div>
+            <div class="details">5 Units • Theory & Practical</div>
+        </a>
+        <a href="syllabus_mc.html" class="syllabus-btn">
+            Syllabus ⏩⏩⏩
+        </a>
+    </div>
 
-    <!-- Advanced Computer Network কার্ড -->
-    <a href="acn.html" style="text-decoration:none;">
-        <div class="subject-card">
-            <span class="icon">🌐</span>
-            <div class="details">
-                <div class="title">Advanced Computer Network</div>
-                <div class="sub">5 Units • Theory & Practical</div>
-            </div>
-        </div>
-    </a>
+    <!-- নেটওয়ার্ক বক্স -->
+    <div class="subject-box">
+        <a href="acn.html" class="sub-main">
+            <div class="title">🌐 Advanced Computer Network</div>
+            <div class="details">5 Units • Theory & Practical</div>
+        </a>
+        <a href="syllabus_acn.html" class="syllabus-btn">
+            Syllabus ⏩⏩⏩
+        </a>
+    </div>
 
     <a href="subject.html" class="back-btn">← BACK</a>
 </div>

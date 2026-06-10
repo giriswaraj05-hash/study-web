@@ -1,3 +1,21 @@
+
+NOTICE
+  
+  
+ <a href="https://webscte.co.in/" target="_blank" class="scte-btn">
+        <span class="scte-left"> ➡️   WBSCTE WEBSITE</span>
+        <span class="live-badge">🔴 LIVE UPDATE</span>
+    </a>
+</div>
+  
+  
+  
+  
+  
+  
+  
+  
+      
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,27 +26,130 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
         body { background-color: #0f172a; color: #f1f5f9; padding: 20px; }
         .container { max-width: 600px; margin: auto; }
-        
         .section-title { font-size: 16px; font-weight: 800; margin: 30px 0 15px; color: #94a3b8; text-transform: uppercase; border-bottom: 2px solid #334155; padding-bottom: 8px; text-align: center; }
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        
-        /* Subject Boxes */
         .subject-box { background: #1e293b; padding: 20px; border-radius: 20px; margin-bottom: 15px; border: 1px solid #facc15; }
         .sub-link { text-decoration: none; color: #facc15; font-weight: bold; font-size: 17px; display: flex; justify-content: space-between; margin-bottom: 15px; }
         .compulsory-badge { font-size: 10px; background: #facc15; color: #0f172a; padding: 3px 8px; border-radius: 6px; font-weight: 800; }
         .syllabus-btn { background: #2563eb; color: white; padding: 10px; border-radius: 10px; text-align: center; text-decoration: none; display: block; font-size: 13px; }
-        
-        /* Cards */
         .subject-card { background: #1e293b; padding: 18px 10px; border-radius: 20px; text-align: center; border: 1px solid #38bdf8; text-decoration: none; display: block; color: #cbd5e1; transition: 0.3s; }
         .subject-card:hover { border-color: #facc15; transform: scale(1.02); }
         .name { font-weight: 600; font-size: 13px; margin-top: 8px; }
         .optional-badge { font-size: 9px; background: #334155; color: #94a3b8; padding: 2px 6px; border-radius: 5px; display: inline-block; margin-top: 5px; }
-        
+
+        /* Elective expandable card on dashboard */
+        .elective-card { background: #1e293b; border-radius: 20px; border: 1px solid #38bdf8; overflow: hidden; }
+        .elective-card-header { display: flex; flex-direction: column; align-items: center; padding: 18px 10px 12px; cursor: pointer; text-decoration: none; color: #cbd5e1; }
+        .elective-card-header .arrow-down { font-size: 10px; color: #64748b; margin-top: 4px; transition: transform 0.3s; }
+        .elective-card.open .arrow-down { transform: rotate(180deg); color: #a78bfa; }
+        .elective-sub-list { display: none; flex-direction: column; gap: 0; border-top: 1px solid #334155; }
+        .elective-card.open .elective-sub-list { display: flex; }
+        .elective-sub-link { display: flex; align-items: center; gap: 10px; padding: 12px 14px; text-decoration: none; color: #cbd5e1; font-size: 13px; font-weight: 600; border-bottom: 1px solid #1e293b; transition: background 0.2s; }
+        .elective-sub-link:last-child { border-bottom: none; }
+        .elective-sub-link:hover { background: #1a2540; color: #e2e8f0; }
         .lab-card { background: linear-gradient(145deg, #2e1065, #1e1b4b); padding: 20px; border-radius: 20px; text-align: center; border: 2px solid #a855f7; display: block; text-decoration: none; }
         .lab-name { font-weight: 800; font-size: 13px; margin-top: 8px; color: #e9d5ff; }
-
         .unique-quiz-btn { background: linear-gradient(45deg, #a855f7, #6366f1); color: white; padding: 16px; border-radius: 18px; border: none; font-weight: 800; font-size: 15px; cursor: pointer; width: 100%; margin: 20px 0; }
         .chat-btn { display: block; background: #0f172a; border: 1px solid #10b981; color: #10b981; text-align: center; padding: 15px; border-radius: 18px; text-decoration: none; font-weight: bold; }
+
+        /* SCTE Button */
+        .scte-btn { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding: 16px 20px; border-radius: 18px; text-decoration: none; font-weight: 800; font-size: 14px; background: linear-gradient(135deg, #0f172a, #1e1040); border: 1.5px solid #f59e0b; color: #fbbf24; position: relative; overflow: hidden; transition: 0.3s; }
+        .scte-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(245,158,11,0.08), transparent); transform: translateX(-100%); animation: shimmer 2.5s infinite; }
+        @keyframes shimmer { 100% { transform: translateX(100%); } }
+        .scte-btn:hover { border-color: #fbbf24; box-shadow: 0 0 20px rgba(245,158,11,0.4); transform: translateY(-2px); }
+        .scte-left { display: flex; align-items: center; gap: 8px; font-family: 'Segoe UI', sans-serif; letter-spacing: 0.5px; }
+        .live-badge { display: flex; align-items: center; gap: 5px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #f87171; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; white-space: nowrap; }
+        .live-badge::before { content: ''; width: 7px; height: 7px; background: #ef4444; border-radius: 50%; animation: livePulse 1.2s ease-in-out infinite; display: inline-block; }
+        @keyframes livePulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:0.4; transform:scale(0.7); } }
+
+        /* MODAL */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 9999; align-items: center; justify-content: center; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: #1e293b; border: 1px solid #6366f1; border-radius: 24px; padding: 28px 22px; width: 92%; max-width: 420px; animation: popIn 0.3s ease; position: relative; max-height: 90vh; overflow-y: auto; }
+        @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .modal-box h2 { text-align: center; font-size: 18px; font-weight: 800; color: #a78bfa; margin-bottom: 6px; }
+        .modal-box .modal-sub { text-align: center; font-size: 12px; color: #64748b; margin-bottom: 20px; }
+        .close-x { position: absolute; top: 14px; right: 16px; background: none; border: none; color: #64748b; font-size: 20px; cursor: pointer; }
+
+        /* Quiz Items */
+        .quiz-subjects { display: flex; flex-direction: column; gap: 10px; }
+        .quiz-item { display: flex; align-items: center; gap: 14px; background: #0f172a; border: 1px solid #334155; border-radius: 14px; padding: 14px 16px; cursor: pointer; transition: 0.2s; user-select: none; }
+        .quiz-item:hover { border-color: #6366f1; background: #1a2540; }
+        .quiz-item.selected { border-color: #a855f7; background: #1e1040; }
+        .quiz-item .icon { font-size: 20px; }
+        .quiz-item .info { flex: 1; }
+        .quiz-item .s-name { font-size: 13px; font-weight: 700; color: #e2e8f0; }
+        .quiz-item .s-tag { font-size: 10px; color: #94a3b8; background: #1e293b; padding: 2px 7px; border-radius: 5px; display: inline-block; margin-top: 3px; }
+        .quiz-item .check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #334155; display: flex; align-items: center; justify-content: center; transition: 0.2s; flex-shrink: 0; font-size: 12px; font-weight: 900; color: white; }
+        .quiz-item.selected .check { background: #a855f7; border-color: #a855f7; }
+
+        /* Elective expand arrow */
+        .quiz-item .arrow { font-size: 12px; color: #64748b; margin-left: 4px; transition: 0.2s; }
+        .quiz-item.open .arrow { transform: rotate(90deg); color: #a78bfa; }
+
+        /* Sub items */
+        .sub-items { display: none; flex-direction: column; gap: 8px; padding: 4px 0 4px 16px; }
+        .sub-items.show { display: flex; }
+        .sub-item { display: flex; align-items: center; gap: 12px; background: #0a1020; border: 1px solid #1e293b; border-radius: 12px; padding: 12px 14px; cursor: pointer; transition: 0.2s; user-select: none; }
+        .sub-item:hover { border-color: #6366f1; }
+        .sub-item.selected { border-color: #a855f7; background: #1e1040; }
+        .sub-item .s-icon { font-size: 18px; }
+        .sub-item .s-info { flex: 1; }
+        .sub-item .ss-name { font-size: 13px; font-weight: 600; color: #cbd5e1; }
+        .sub-item .tap-hint { font-size: 9px; color: #a855f7; font-weight: 700; letter-spacing: 0.5px; margin-top: 3px; display: none; }
+        .sub-item.flashing .tap-hint { display: block; animation: tapBlink 1s ease-in-out infinite; }
+        @keyframes tapBlink { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
+        .sub-item .check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #334155; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 900; color: white; }
+        .sub-item.selected .check { background: #a855f7; border-color: #a855f7; }
+
+        /* ===== FLASH ANIMATION ===== */
+        @keyframes flashGlow {
+            0%   { background: #0a1020; border-color: #1e293b; box-shadow: none; }
+            30%  { background: #1a0a40; border-color: #a855f7; box-shadow: 0 0 18px 4px rgba(168,85,247,0.55); }
+            60%  { background: #0a1020; border-color: #1e293b; box-shadow: none; }
+            80%  { background: #0d1535; border-color: #6366f1; box-shadow: 0 0 10px 2px rgba(99,102,241,0.35); }
+            100% { background: #0a1020; border-color: #1e293b; box-shadow: none; }
+        }
+
+        @keyframes textFlash {
+            0%, 100% { color: #cbd5e1; }
+            30%       { color: #e9d5ff; text-shadow: 0 0 8px rgba(168,85,247,0.8); }
+            80%       { color: #c7d2fe; text-shadow: 0 0 5px rgba(99,102,241,0.6); }
+        }
+
+        @keyframes iconFlash {
+            0%, 100% { filter: none; }
+            30%       { filter: drop-shadow(0 0 6px rgba(168,85,247,0.9)); transform: scale(1.15); }
+            80%       { filter: drop-shadow(0 0 4px rgba(99,102,241,0.7)); transform: scale(1.05); }
+        }
+
+        .sub-item.flashing {
+            animation: flashGlow 0.9s ease-in-out infinite;
+        }
+        .sub-item.flashing .ss-name {
+            animation: textFlash 0.9s ease-in-out infinite;
+        }
+        .sub-item.flashing .s-icon {
+            display: inline-block;
+            animation: iconFlash 0.9s ease-in-out infinite;
+        }
+
+        /* Stagger second item */
+        .sub-item.flashing:nth-child(2) {
+            animation-delay: 0.18s;
+        }
+        .sub-item.flashing:nth-child(2) .ss-name {
+            animation-delay: 0.18s;
+        }
+        .sub-item.flashing:nth-child(2) .s-icon {
+            animation-delay: 0.18s;
+        }
+        /* ===== END FLASH ===== */
+
+        .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
+        .btn-cancel { flex: 1; padding: 13px; border-radius: 14px; border: 1px solid #334155; background: transparent; color: #94a3b8; font-weight: 700; font-size: 14px; cursor: pointer; }
+        .btn-start { flex: 2; padding: 13px; border-radius: 14px; border: none; background: linear-gradient(45deg, #a855f7, #6366f1); color: white; font-weight: 800; font-size: 14px; cursor: pointer; opacity: 0.4; transition: 0.2s; }
+        .btn-start.ready { opacity: 1; }
     </style>
 </head>
 <body>
@@ -40,7 +161,6 @@
         <a href="micro.html" class="sub-link"><span>⚙️ Microprocessor</span><span class="compulsory-badge">REQUIRED</span></a>
         <a href="syllabus_micro.html" class="syllabus-btn">FULL SYLLABUS ⏩</a>
     </div>
-    
     <div class="subject-box">
         <a href="iot.html" class="sub-link"><span>🌐 IoT</span><span class="compulsory-badge">REQUIRED</span></a>
         <a href="syllabus_iot.html" class="syllabus-btn">FULL SYLLABUS ⏩</a>
@@ -59,9 +179,414 @@
         <a href="pyq_answers.html" class="subject-card"><span>📖</span><div class="name">PYQ ANSWERS</div></a>
     </div>
 
-    <button class="unique-quiz-btn">🚀 START PYQ QUIZ</button>
+    <button class="unique-quiz-btn" id="quizBtn">🚀 START PYQ QUIZ</button>
     <a href="chat.html" class="chat-btn">💬 JOIN DISCUSSION GROUP</a>
+    
+
+
+
+
+
+
+<!-- MODAL -->
+<div class="modal-overlay" id="quizModal">
+    <div class="modal-box">
+        <button class="close-x" id="closeBtn">✕</button>
+        <h2>🚀 Select Subject</h2>
+        <p class="modal-sub">Choose a subject to start your PYQ Quiz</p>
+
+        <div class="quiz-subjects">
+
+            <!-- Microprocessor -->
+            <div class="quiz-item" data-subject="microprocessor" data-type="direct">
+                <span class="icon">⚙️</span>
+                <div class="info"><div class="s-name">Microprocessor</div><span class="s-tag">REQUIRED</span></div>
+                <div class="check"></div>
+            </div>
+
+            <!-- IoT -->
+            <div class="quiz-item" data-subject="iot" data-type="direct">
+                <span class="icon">🌐</span>
+                <div class="info"><div class="s-name">IoT</div><span class="s-tag">REQUIRED</span></div>
+                <div class="check"></div>
+            </div>
+
+            <!-- Elective 1 -->
+            <div class="quiz-item" data-type="elective" data-elective="1">
+                <span class="icon">📱</span>
+                <div class="info"><div class="s-name">Elective-1</div><span class="s-tag">Optional ▸ choose one</span></div>
+                <span class="arrow">▶</span>
+            </div>
+            <div class="sub-items" id="sub-elective1">
+                <div class="sub-item" data-subject="mobile_computing">
+                    <span class="s-icon">📱</span>
+                    <div class="s-info"><div class="ss-name">Mobile Computing</div><div class="tap-hint">👆 TAP TO SELECT</div></div>
+                    <div class="check"></div>
+                </div>
+                <div class="sub-item" data-subject="acn">
+                    <span class="s-icon">🌐</span>
+                    <div class="s-info"><div class="ss-name">Advanced Computer Network</div><div class="tap-hint">👆 TAP TO SELECT</div></div>
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <!-- Elective 2 -->
+            <div class="quiz-item" data-type="elective" data-elective="2">
+                <span class="icon">🤖</span>
+                <div class="info"><div class="s-name">Elective-2</div><span class="s-tag">Optional ▸ choose one</span></div>
+                <span class="arrow">▶</span>
+            </div>
+            <div class="sub-items" id="sub-elective2">
+                <div class="sub-item" data-subject="automata">
+                    <span class="s-icon">🤖</span>
+                    <div class="s-info"><div class="ss-name">Theory of Automata</div><div class="tap-hint">👆 TAP TO SELECT</div></div>
+                    <div class="check"></div>
+                </div>
+                <div class="sub-item" data-subject="ai">
+                    <span class="s-icon">🧠</span>
+                    <div class="s-info"><div class="ss-name">Fundamentals of AI</div><div class="tap-hint">👆 TAP TO SELECT</div></div>
+                    <div class="check"></div>
+                </div>
+            </div>
+
+            <!-- Elective 3 -->
+            <div class="quiz-item" data-type="elective" data-elective="3">
+                <span class="icon">💻</span>
+                <div class="info"><div class="s-name">Elective-3</div><span class="s-tag">Optional ▸ choose one</span></div>
+                <span class="arrow">▶</span>
+            </div>
+            <div class="sub-items" id="sub-elective3">
+                <div class="sub-item" data-subject="graphics">
+                    <span class="s-icon">🎨</span>
+                    <div class="s-info"><div class="ss-name">Computer Graphics</div><div class="tap-hint">👆 TAP TO SELECT</div></div>
+                    <div class="check"></div>
+                </div>
+                <div class="sub-item" data-subject="dip">
+                    <span class="s-icon">🖼️</span>
+                    <div class="s-info"><div class="ss-name">Digital Image Processing</div><div class="tap-hint">👆 TAP TO SELECT</div></div>
+                    <div class="check"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-actions">
+            <button class="btn-cancel" id="cancelBtn">Cancel</button>
+            <button class="btn-start" id="startBtn">Start Quiz →</button>
+        </div>
+    </div>
 </div>
+
+<script>
+    var selectedSubject = null;
+
+    function toggleDashElective(id) {
+        var card = document.getElementById(id);
+        var isOpen = card.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.elective-card').forEach(function(c) { c.classList.remove('open'); });
+        if (!isOpen) card.classList.add('open');
+    }
+
+    // Open modal
+    document.getElementById('quizBtn').addEventListener('click', function() {
+        document.getElementById('quizModal').classList.add('active');
+    });
+
+    // Close modal
+    document.getElementById('closeBtn').addEventListener('click', closeModal);
+    document.getElementById('cancelBtn').addEventListener('click', closeModal);
+    document.getElementById('quizModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    function closeModal() {
+        document.getElementById('quizModal').classList.remove('active');
+        resetAll();
+    }
+
+    function resetAll() {
+        selectedSubject = null;
+        document.getElementById('startBtn').classList.remove('ready');
+        document.querySelectorAll('.quiz-item').forEach(function(el) {
+            el.classList.remove('selected', 'open');
+            var check = el.querySelector('.check');
+            if (check) check.textContent = '';
+        });
+        document.querySelectorAll('.sub-items').forEach(function(el) {
+            el.classList.remove('show');
+            // Remove flashing from all sub-items when closing
+            el.querySelectorAll('.sub-item').forEach(function(si) {
+                si.classList.remove('flashing');
+            });
+        });
+        document.querySelectorAll('.sub-item').forEach(function(el) {
+            el.classList.remove('selected', 'flashing');
+            el.querySelector('.check').textContent = '';
+        });
+    }
+
+    // Direct subjects (Micro, IoT)
+    document.querySelectorAll('.quiz-item[data-type="direct"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+            resetAll();
+            el.classList.add('selected');
+            el.querySelector('.check').textContent = '✓';
+            selectedSubject = el.dataset.subject;
+            document.getElementById('startBtn').classList.add('ready');
+        });
+    });
+
+    // Elective expand/collapse
+    document.querySelectorAll('.quiz-item[data-type="elective"]').forEach(function(el) {
+        el.addEventListener('click', function() {
+            var num = el.dataset.elective;
+            var subList = document.getElementById('sub-elective' + num);
+            var isOpen = el.classList.contains('open');
+
+            // Clear EVERYTHING first
+            selectedSubject = null;
+            document.getElementById('startBtn').classList.remove('ready');
+            document.querySelectorAll('.quiz-item').forEach(function(e) {
+                e.classList.remove('selected');
+                var c = e.querySelector('.check');
+                if (c) c.textContent = '';
+            });
+            document.querySelectorAll('.sub-item').forEach(function(e) {
+                e.classList.remove('selected', 'flashing');
+                e.querySelector('.check').textContent = '';
+            });
+
+            // Close all electives first & remove flashing
+            document.querySelectorAll('.quiz-item[data-type="elective"]').forEach(function(e) {
+                e.classList.remove('open');
+            });
+            document.querySelectorAll('.sub-items').forEach(function(e) {
+                e.classList.remove('show');
+                e.querySelectorAll('.sub-item').forEach(function(si) {
+                    si.classList.remove('flashing');
+                });
+            });
+
+            if (!isOpen) {
+                el.classList.add('open');
+                subList.classList.add('show');
+
+                // Add flashing to all sub-items in this elective
+                subList.querySelectorAll('.sub-item').forEach(function(si) {
+                    si.classList.add('flashing');
+                });
+            }
+        });
+    });
+
+    // Sub-item selection — stop flashing on click
+    document.querySelectorAll('.sub-item').forEach(function(el) {
+        el.addEventListener('click', function() {
+            // Clear all sub selections and flashing
+            document.querySelectorAll('.sub-item').forEach(function(e) {
+                e.classList.remove('selected', 'flashing');
+                e.querySelector('.check').textContent = '';
+            });
+            // Clear direct selections
+            document.querySelectorAll('.quiz-item[data-type="direct"]').forEach(function(e) {
+                e.classList.remove('selected');
+                var c = e.querySelector('.check');
+                if (c) c.textContent = '';
+            });
+
+            el.classList.add('selected');
+            el.querySelector('.check').textContent = '✓';
+            selectedSubject = el.dataset.subject;
+            document.getElementById('startBtn').classList.add('ready');
+        });
+    });
+
+    // Start quiz
+    document.getElementById('startBtn').addEventListener('click', function() {
+        if (selectedSubject) {
+            window.location.href = 'pyq_quiz.html?subject=' + selectedSubject;
+        }
+    });
+</script>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 class="section-title">📚 ACADEMICS</h2>
+    
+    <div class="grid-container">
+        <div class="subject-card" onclick="openModal('teacherModal')" style="cursor:pointer;">
+            <span>👨‍🏫</span>
+            <div class="name">Teacher List</div>
+            <span class="optional-badge">Faculty</span>
+        </div>
+        <div class="subject-card" onclick="openModal('routineModal')" style="cursor:pointer;">
+            <span>📅</span>
+            <div class="name">Class Routine</div>
+            <span class="optional-badge">Schedule</span>
+        </div>
+    </div>
+</div>
+
+<!-- TEACHER MODAL -->
+<div class="modal-overlay" id="teacherModal">
+    <div class="modal-box">
+        <button class="close-x" onclick="closeModal('teacherModal')">✕</button>
+        <h2>👨‍🏫 Faculty List</h2>
+        <p class="modal-sub">5th Sem CSE Department</p>
+
+        <div class="quiz-subjects">
+            <!-- Microprocessor -->
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">⚙️</span>
+                <div class="info">
+                    <div class="s-name">Prof. A. Kumar</div>
+                    <span class="s-tag">Microprocessor | Room 301</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+
+            <!-- IoT -->
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">🌐</span>
+                <div class="info">
+                    <div class="s-name">Dr. S. Das</div>
+                    <span class="s-tag">IoT | Room 205</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+
+            <!-- Elective -->
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">📱</span>
+                <div class="info">
+                    <div class="s-name">Prof. R. Singh</div>
+                    <span class="s-tag">Mobile Computing | Room 304</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+
+            <!-- Lab -->
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">🛠️</span>
+                <div class="info">
+                    <div class="s-name">Mr. P. Ghosh</div>
+                    <span class="s-tag">MP & MC Lab | Room 302</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+        </div>
+
+        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('teacherModal')">Close</button>
+    </div>
+</div>
+  
+
+
+
+<!-- ROUTINE MODAL -->
+<div class="modal-overlay" id="routineModal">
+    <div class="modal-box" style="max-width:500px;">
+        <button class="close-x" onclick="closeModal('routineModal')">✕</button>
+        <h2>📅 Class Routine</h2>
+        <p class="modal-sub">5th Sem - Section A</p>
+
+        <div style="background:#0f172a; border-radius:14px; padding:16px; border:1px solid #334155;">
+            <!-- Monday -->
+            <div style="margin-bottom:16px;">
+                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px; font-family:'Orbitron',monospace;">MONDAY</div>
+                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>2:00-5:00</span><span style="color:#a855f7; font-weight:700;">🛠️ MP Lab</span><span>302</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tuesday -->
+            <div style="margin-bottom:16px;">
+                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px; font-family:'Orbitron',monospace;">TUESDAY</div>
+                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>10:00-11:00</span><span style="color:#38bdf8; font-weight:700;">📱 Elective-1</span><span>304</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wednesday -->
+            <div>
+                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px; font-family:'Orbitron',monospace;">WEDNESDAY</div>
+                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>11:00-12:00</span><span style="color:#38bdf8; font-weight:700;">🤖 Elective-2</span><span>306</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('routineModal')">Close</button>
+    </div>
+</div>
+
+<script>
+// Modal functions
+function openModal(id) {
+    document.getElementById(id).classList.add('active');
+}
+function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+}
+// Close on outside click
+document.querySelectorAll('.modal-overlay').forEach(function(modal) {
+    modal.addEventListener('click', function(e) {
+        if (e.target === this) this.classList.remove('active');
+    });
+});
+</script>
+       
+       
+       
+       
+       
+       
+       
+       <h2 class="section-title">🧮 TOOLS</h2>
+<div class="grid-container">
+    <div class="subject-card" onclick="window.open('cgpa.html')">
+        <span>📈</span>
+        <div class="name">CGPA Calculator</div>
+        <span class="optional-badge">Calculate</span>
+    </div>
+    <div class="subject-card" onclick="window.open('notes.html')">
+        <span>📚</span>
+        <div class="name">Notes Hub</div>
+        <span class="optional-badge">Download</span>
+    </div>
+</div>

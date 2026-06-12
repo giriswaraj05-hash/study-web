@@ -1,4 +1,4 @@
-        <!DOCTYPE html>
+          <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -145,6 +145,12 @@
       cursor: pointer;
       margin-bottom: 14px;
       letter-spacing: 0.3px;
+      animation: glowPulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 8px #1e88e5, 0 0 18px #1565c0; filter: brightness(1); }
+      50% { box-shadow: 0 0 25px #38bdf8, 0 0 45px #1e88e5; filter: brightness(1.25); }
     }
 
     .expand-all-btn {
@@ -198,7 +204,7 @@
       <span class="badge">⭐ Required</span>
     </div>
 
-    <button class="syllabus-btn"> Cleck ➡️ 📄 Full Syllabus PDF ⏩⏩⏩</button>
+    <button class="syllabus-btn">📄 Full Syllabus ⏩⏩⏩</button>
     <button class="expand-all-btn" onclick="toggleAll()">📂 Expand All Units</button>
 
     <!-- UNIT 1 -->
@@ -208,7 +214,7 @@
         <span class="unit-title">Introduction to Microprocessor</span>
         <span class="unit-toggle">▾</span>
       </div>
-      <div class="unit-body open">
+      <div class="unit-body">
         <ul>
           <li>Evolution of Microprocessor – from 4-bit to 64-bit</li>
           <li>Basic architecture of a microprocessor (ALU, CU, Registers)</li>
@@ -349,4 +355,4 @@
 
 </body>
 </html>
-   
+  

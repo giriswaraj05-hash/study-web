@@ -1,70 +1,351 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microprocesor</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #0f172a; color: #f1f5f9; padding: 20px; }
-        .container { max-width: 600px; margin: auto; }
-        h1 { font-size: 20px; margin-bottom: 10px; color: #ffffff; text-align: center; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Microprocessor – Syllabus</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        
-        /* বড় চতুর্ভুজ কার্ডের স্টাইল */
-        .subject-box { 
-            background: #1e293b; 
-            padding: 25px; 
-            border-radius: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid #334155;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    body {
+      background-color: #0d1b2a;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      padding: 24px 16px 40px;
+    }
 
-        .sub-main { text-decoration: none; color: inherit; display: block; }
-        .title { font-weight: bold; color: #facc15; font-size: 18px; margin-bottom: 5px; }
-        .details { font-size: 13px; color: #94a3b8; }
+    .back-btn {
+      display: inline-block;
+      color: #f5a623;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+    }
+    .back-btn:hover { opacity: 0.8; }
 
-        .syllabus-btn { 
-            background: #2563eb; 
-            color: white; 
-            padding: 12px; 
-            border-radius: 12px; 
-            text-align: center; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .subject-card {
+      background: #162032;
+      border: 1.5px solid #2a3a50;
+      border-radius: 16px;
+      padding: 20px 18px 24px;
+      margin-bottom: 20px;
+    }
 
-        .back-btn { 
-            display: block; text-align: center; margin-top: 30px; 
-            color: #facc15; text-decoration: none; font-weight: bold; font-size: 16px;
-        }
-    </style>
+    .subject-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .subject-header .icon { font-size: 22px; }
+
+    .subject-title {
+      color: #f5a623;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .subject-meta {
+      color: #8a9bb0;
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    /* Syllabus units */
+    .unit {
+      background: #0d1b2a;
+      border: 1px solid #2a3a50;
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .unit-header {
+      background: linear-gradient(90deg, #1e3a5f, #162032);
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .unit-number {
+      background: #f5a623;
+      color: #0d1b2a;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    .unit-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e8edf2;
+      flex: 1;
+    }
+
+    .unit-toggle {
+      color: #f5a623;
+      font-size: 18px;
+      transition: transform 0.3s;
+    }
+
+    .unit-body {
+      padding: 14px 16px;
+      display: none;
+    }
+
+    .unit-body.open { display: block; }
+
+    .unit-body ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .unit-body ul li {
+      padding: 6px 0;
+      border-bottom: 1px solid #1e2e3e;
+      font-size: 14px;
+      color: #c8d4e0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .unit-body ul li:last-child { border-bottom: none; }
+
+    .unit-body ul li::before {
+      content: "▸";
+      color: #f5a623;
+      font-size: 12px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .syllabus-btn {
+      display: block;
+      width: 100%;
+      background: linear-gradient(90deg, #1565c0, #1e88e5);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .expand-all-btn {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 1.5px solid #f5a623;
+      color: #f5a623;
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .expand-all-btn:hover { background: rgba(245,166,35,0.08); }
+
+    .badge-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      background: #1e3a5f;
+      border: 1px solid #2a5280;
+      border-radius: 20px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #7ec8f7;
+    }
+  </style>
 </head>
 <body>
 
+  <a class="back-btn" onclick="history.back()">← BACK</a>
 
-    
-    <div class="subject-box">
-        <a href="micropropesor.html" class="sub-main">
-            <div class="title"> Micropropesor</div>
-            
-        
-        <a href="syllabus_mc.html" class="syllabus-btn">
-            Syllabus ⏩⏩⏩
-        </a>
+  <div class="subject-card">
+    <div class="subject-header">
+      <span class="icon">⚙️</span>
+      <span class="subject-title">Microprocessor</span>
+    </div>
+    <div class="subject-meta">5 Units • Theory & Practical</div>
+
+    <div class="badge-row">
+      <span class="badge">📘 Theory</span>
+      <span class="badge">🔬 Practical</span>
+      <span class="badge">⭐ Required</span>
     </div>
 
-    
+    <button class="syllabus-btn">📄 Full Syllabus ⏩⏩⏩</button>
+    <button class="expand-all-btn" onclick="toggleAll()">📂 Expand All Units</button>
 
-    <a href="subject.html" class="back-btn">← BACK</a>
-</div>
+    <!-- UNIT 1 -->
+    <div class="unit">
+      <div class="unit-header" onclick="toggle(this)">
+        <span class="unit-number">UNIT 1</span>
+        <span class="unit-title">Introduction to Microprocessor</span>
+        <span class="unit-toggle">▾</span>
+      </div>
+      <div class="unit-body open">
+        <ul>
+          <li>Evolution of Microprocessor – from 4-bit to 64-bit</li>
+          <li>Basic architecture of a microprocessor (ALU, CU, Registers)</li>
+          <li>Difference between Microprocessor, Microcontroller & Microcomputer</li>
+          <li>Introduction to 8085 Microprocessor – pin diagram & functions</li>
+          <li>Internal architecture of 8085 – data bus, address bus, control bus</li>
+          <li>Concept of memory & I/O mapped I/O</li>
+          <li>Fetch-Decode-Execute cycle</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- UNIT 2 -->
+    <div class="unit">
+      <div class="unit-header" onclick="toggle(this)">
+        <span class="unit-number">UNIT 2</span>
+        <span class="unit-title">Instruction Set & Programming of 8085</span>
+        <span class="unit-toggle">▾</span>
+      </div>
+      <div class="unit-body">
+        <ul>
+          <li>Instruction formats – 1-byte, 2-byte, 3-byte</li>
+          <li>Classification of instructions: Data Transfer, Arithmetic, Logical, Branch, Machine Control</li>
+          <li>Addressing modes: Register, Immediate, Direct, Indirect</li>
+          <li>Assembly language programming basics</li>
+          <li>Writing simple 8085 programs: addition, subtraction, multiplication, division</li>
+          <li>Programs involving loops and counters</li>
+          <li>Sorting and searching programs (Bubble Sort)</li>
+          <li>BCD and Hexadecimal conversions</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- UNIT 3 -->
+    <div class="unit">
+      <div class="unit-header" onclick="toggle(this)">
+        <span class="unit-number">UNIT 3</span>
+        <span class="unit-title">Interrupts & Stack Operations</span>
+        <span class="unit-toggle">▾</span>
+      </div>
+      <div class="unit-body">
+        <ul>
+          <li>Stack and Stack Pointer (SP) – PUSH and POP operations</li>
+          <li>Subroutine CALL and RET instructions</li>
+          <li>Types of interrupts: Maskable and Non-Maskable</li>
+          <li>Hardware interrupts: TRAP, RST 7.5, RST 6.5, RST 5.5, INTR</li>
+          <li>Software interrupts: RST 0 to RST 7</li>
+          <li>Interrupt Service Routine (ISR)</li>
+          <li>Enable and Disable interrupts (EI, DI, SIM, RIM)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- UNIT 4 -->
+    <div class="unit">
+      <div class="unit-header" onclick="toggle(this)">
+        <span class="unit-number">UNIT 4</span>
+        <span class="unit-title">Interfacing & Peripheral Devices</span>
+        <span class="unit-toggle">▾</span>
+      </div>
+      <div class="unit-body">
+        <ul>
+          <li>Memory interfacing with 8085 (RAM & ROM)</li>
+          <li>I/O interfacing techniques</li>
+          <li>8255 Programmable Peripheral Interface (PPI) – modes of operation</li>
+          <li>8253/8254 Programmable Interval Timer</li>
+          <li>8257 DMA Controller – concept and working</li>
+          <li>ADC and DAC interfacing with 8085</li>
+          <li>Keyboard and Display interfacing (7-segment display)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- UNIT 5 -->
+    <div class="unit">
+      <div class="unit-header" onclick="toggle(this)">
+        <span class="unit-number">UNIT 5</span>
+        <span class="unit-title">Advanced Microprocessors (8086 & Beyond)</span>
+        <span class="unit-toggle">▾</span>
+      </div>
+      <div class="unit-body">
+        <ul>
+          <li>Introduction to 8086 Microprocessor – features and architecture</li>
+          <li>Segment registers and memory segmentation (CS, DS, SS, ES)</li>
+          <li>8086 Pin diagram and bus interface unit (BIU) & execution unit (EU)</li>
+          <li>Minimum and Maximum mode configuration</li>
+          <li>8086 addressing modes and instruction set overview</li>
+          <li>Comparison: 8085 vs 8086</li>
+          <li>Brief introduction to 80286, 80386, 80486 and Pentium processors</li>
+          <li>RISC vs CISC architecture</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Practical -->
+    <div class="unit">
+      <div class="unit-header" onclick="toggle(this)">
+        <span class="unit-number">LAB</span>
+        <span class="unit-title">Practical / Lab Work</span>
+        <span class="unit-toggle">▾</span>
+      </div>
+      <div class="unit-body">
+        <ul>
+          <li>8085 simulator practice: data transfer & arithmetic programs</li>
+          <li>Implement sorting (Bubble Sort) on 8085 kit</li>
+          <li>Interfacing LED and switches with 8085</li>
+          <li>8255 PPI interfacing experiment</li>
+          <li>Stepper motor / Traffic light control using 8085</li>
+          <li>ADC / DAC interfacing experiment</li>
+          <li>Writing and testing 8086 programs on emulator</li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- end subject-card -->
+
+  <script>
+    function toggle(header) {
+      const body = header.nextElementSibling;
+      const icon = header.querySelector('.unit-toggle');
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      icon.style.transform = isOpen ? '' : 'rotate(180deg)';
+    }
+
+    let allOpen = false;
+    function toggleAll() {
+      allOpen = !allOpen;
+      document.querySelectorAll('.unit-body').forEach(b => {
+        b.classList.toggle('open', allOpen);
+      });
+      document.querySelectorAll('.unit-toggle').forEach(i => {
+        i.style.transform = allOpen ? 'rotate(180deg)' : '';
+      });
+      document.querySelector('.expand-all-btn').textContent = allOpen ? '📁 Collapse All Units' : '📂 Expand All Units';
+    }
+  </script>
 
 </body>
 </html>

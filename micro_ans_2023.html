@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MP Answers 2023</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:linear-gradient(135deg,#1e293b,#0f172a); color:#fff; font-family:'Segoe UI',sans-serif; min-height:100vh; padding:20px 16px 40px; }
+    .back-btn { display:inline-block; color:#f5a623; font-weight:700; font-size:15px; text-decoration:none; margin-bottom:18px; }
+    .year-header { background:#162032; border:1.5px solid #22c55e; border-radius:16px; padding:18px; margin-bottom:20px; text-align:center; }
+    .year-header .y-sub { font-size:12px; color:#5a7a9a; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+    .year-header .y-title { font-size:26px; font-weight:900; color:#22c55e; }
+    .pdf-btn { display:flex; align-items:center; gap:14px; background:#162032; border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px; margin-bottom:16px; text-decoration:none; animation:glow 2s ease-in-out infinite; }
+    @keyframes glow { 0%,100%{box-shadow:0 0 6px #22c55e;} 50%{box-shadow:0 0 22px #22c55e,0 0 38px #16a34a;} }
+    .pdf-icon { width:48px; height:48px; background:#1a3a2a; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
+    .pdf-info .p-title { font-size:15px; font-weight:700; color:#e0e0e0; margin-bottom:3px; }
+    .pdf-info .p-sub { font-size:12px; color:#5a7a9a; }
+    .qa-card { background:#162032; border-radius:14px; padding:16px; margin-bottom:12px; border:1px solid #2a3a50; }
+    .q-part { border-left:3px solid #f5a623; padding-left:12px; margin-bottom:10px; }
+    .q-label { color:#f5a623; font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+    .q-text { font-size:13px; color:#94a3b8; line-height:1.5; }
+    .a-part { border-left:3px solid #22c55e; padding-left:12px; }
+    .a-label { color:#22c55e; font-weight:800; font-size:11px; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
+    .a-text { font-size:13px; color:#c8d4e0; line-height:1.7; }
+    .sec-title { font-size:14px; color:#8a9bb0; margin-bottom:12px; font-weight:600; }
+  </style>
+</head>
+<body>
+  <a class="back-btn" href="micro_answers.html">← BACK</a>
+  <div class="year-header">
+    <div class="y-sub">Microprocessor • Answer Sheet</div>
+    <div class="y-title">2023</div>
+  </div>
+  <a href="#" class="pdf-btn" onclick="alert('PDF টি শীঘ্রই যোগ করা হবে!'); return false;">
+    <div class="pdf-icon">📄</div>
+    <div class="pdf-info">
+      <div class="p-title">2023 Answer Sheet PDF</div>
+      <div class="p-sub">Tap to open PDF</div>
+    </div>
+  </a>
+  <div class="sec-title">✅ Questions & Answers</div>
+  
+<div class="qa-card">
+  <div class="q-part"><div class="q-label">Q1</div><div class="q-text">Explain register organization of 8085.</div></div>
+  <div class="a-part"><div class="a-label">Answer</div><div class="a-text">8085 has: Accumulator (A) — 8-bit, main arithmetic register. General purpose: B, C, D, E, H, L — can pair as BC, DE, HL for 16-bit ops. SP (Stack Pointer) — 16-bit, points to top of stack. PC (Program Counter) — 16-bit, holds next instruction address. Flag register — 8-bit: S, Z, AC, P, CY flags.</div></div>
+</div>
+<div class="qa-card">
+  <div class="q-part"><div class="q-label">Q2</div><div class="q-text">What is ISR? Explain TRAP and RST interrupts.</div></div>
+  <div class="a-part"><div class="a-label">Answer</div><div class="a-text">ISR (Interrupt Service Routine) is the program executed when an interrupt occurs. TRAP: Non-maskable, highest priority, edge and level triggered, jumps to 0024H. RST 7.5: edge triggered, maskable, jumps to 003CH. RST 6.5: level triggered, jumps to 0034H. RST 5.5: level triggered, jumps to 002CH.</div></div>
+</div>
+<div class="qa-card">
+  <div class="q-part"><div class="q-label">Q3</div><div class="q-text">Write 8085 program to multiply two 8-bit numbers.</div></div>
+  <div class="a-part"><div class="a-label">Answer</div><div class="a-text">MVI B, 05H — multiplier<br>MVI C, 04H — multiplicand<br>MVI A, 00H — clear accumulator<br>LOOP: ADD C — add C to A<br>DCR B — decrement B<br>JNZ LOOP — repeat until B=0<br>STA 3000H — store result<br>HLT</div></div>
+</div>
+<div class="qa-card">
+  <div class="q-part"><div class="q-label">Q4</div><div class="q-text">Describe PUSH and POP stack operations.</div></div>
+  <div class="a-part"><div class="a-label">Answer</div><div class="a-text">Stack: LIFO memory area. SP points to top. PUSH rp: SP decremented by 2, register pair stored. Example: PUSH BC stores B at SP-1, C at SP-2. POP rp: register pair loaded from stack, SP incremented by 2. Used for saving registers during subroutine calls.</div></div>
+</div>
+<div class="qa-card">
+  <div class="q-part"><div class="q-label">Q5</div><div class="q-text">Explain memory segmentation in 8086.</div></div>
+  <div class="a-part"><div class="a-label">Answer</div><div class="a-text">8086 divides 1MB memory into segments of 64KB each. CS (Code Segment): holds program code. DS (Data Segment): holds data. SS (Stack Segment): holds stack. ES (Extra Segment): extra data. Physical address = Segment × 10H + Offset.</div></div>
+</div>
+<div class="qa-card">
+  <div class="q-part"><div class="q-label">Q6</div><div class="q-text">What is ADC interfacing? Explain with circuit.</div></div>
+  <div class="a-part"><div class="a-label">Answer</div><div class="a-text">ADC (Analog to Digital Converter) converts analog signals to digital. ADC0804 is commonly interfaced with 8085. Steps: Send START pulse, wait for EOC (End of Conversion), read digital output via data bus. Used in temperature sensors, voltmeters.</div></div>
+</div>
+</body>
+</html>

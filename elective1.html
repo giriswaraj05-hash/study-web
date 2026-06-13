@@ -1,84 +1,104 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elective 1</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #0f172a; color: #f1f5f9; padding: 20px; }
-        .container { max-width: 600px; margin: auto; }
-        h1 { font-size: 20px; margin-bottom: 10px; color: #ffffff; text-align: center; }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elective-1</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:linear-gradient(135deg,#1e293b,#0f172a); color:#fff; font-family:'Segoe UI',sans-serif; min-height:100vh; padding:20px 16px 40px; }
+    .back-btn { display:inline-block; color:#f5a623; font-weight:700; font-size:15px; text-decoration:none; margin-bottom:18px; }
+    .page-header { text-align:center; margin-bottom:28px; }
+    .page-header h1 { font-size:22px; font-weight:800; color:#fff; letter-spacing:1px; }
+    .page-header p { color:#facc15; font-size:14px; font-weight:700; margin-top:6px; }
 
-        /* অপশনাল টেক্সট স্টাইল */
-        .optional-text { text-align: center; color: #facc15; font-size: 14px; margin-bottom: 25px; font-weight: bold; }
+    .subject-card {
+      background:#1e293b;
+      border:1.5px solid #334155;
+      border-radius:20px;
+      padding:22px;
+      margin-bottom:20px;
+      text-decoration:none;
+      display:block;
+      transition:all 0.2s;
+      position:relative;
+      overflow:hidden;
+    }
+    .subject-card::before {
+      content:'';
+      position:absolute;
+      top:0; left:0; right:0;
+      height:3px;
+      background:linear-gradient(90deg,#38bdf8,#a855f7);
+    }
+    .subject-card:hover { border-color:#38bdf8; transform:translateY(-2px); box-shadow:0 8px 25px rgba(56,189,248,0.2); }
+    .subject-card:active { transform:scale(0.98); }
 
-        /* বড় চতুর্ভুজ কার্ডের স্টাইল */
-        .subject-box { 
-            background: #1e293b; 
-            padding: 25px; 
-            border-radius: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid #334155;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
+    .card-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .card-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+    .mc-icon { background:linear-gradient(135deg,#1e3a5f,#0f2a4a); }
+    .acn-icon { background:linear-gradient(135deg,#1a3a2a,#0f2a1a); }
+    .card-info .c-title { font-size:19px; font-weight:800; margin-bottom:4px; }
+    .mc-title { color:#38bdf8; }
+    .acn-title { color:#22c55e; }
+    .card-info .c-sub { font-size:12px; color:#94a3b8; }
 
-        .sub-main { text-decoration: none; color: inherit; display: block; }
-        .title { font-weight: bold; color: #facc15; font-size: 18px; margin-bottom: 5px; }
-        .details { font-size: 13px; color: #94a3b8; }
+    .go-btn {
+      display:block; width:100%;
+      background:linear-gradient(90deg,#1565c0,#1e88e5);
+      color:#fff; font-weight:700; font-size:14px;
+      border:none; border-radius:12px; padding:13px;
+      text-align:center; cursor:pointer; text-decoration:none;
+      animation:glowBlue 2s ease-in-out infinite;
+    }
+    .acn-btn { background:linear-gradient(90deg,#16a34a,#22c55e); animation:glowGreen 2s ease-in-out infinite; }
+    @keyframes glowBlue { 0%,100%{box-shadow:0 0 6px #1e88e5;} 50%{box-shadow:0 0 22px #38bdf8,0 0 38px #1e88e5;} }
+    @keyframes glowGreen { 0%,100%{box-shadow:0 0 6px #22c55e;} 50%{box-shadow:0 0 22px #22c55e,0 0 38px #16a34a;} }
 
-        .syllabus-btn { 
-            background: #2563eb; 
-            color: white; 
-            padding: 12px; 
-            border-radius: 12px; 
-            text-align: center; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 14px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .back-btn { 
-            display: block; text-align: center; margin-top: 30px; 
-            color: #facc15; text-decoration: none; font-weight: bold; font-size: 16px;
-        }
-    </style>
+    .badge-row { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+    .badge { background:#0f172a; border:1px solid #334155; border-radius:20px; padding:4px 10px; font-size:11px; color:#94a3b8; }
+  </style>
 </head>
 <body>
-
-<div class="container">
+  <a class="back-btn" href="subject.html">← BACK</a>
+  <div class="page-header">
     <h1>SELECT SUBJECT</h1>
-    <p class="optional-text">📌 OPTIONAL: Choose any one</p>
+    <p>📌 OPTIONAL: Choose any one</p>
+  </div>
 
-    <!-- মোবাইল কম্পিউটিং বক্স -->
-    <div class="subject-box">
-        <a href="mobile_computing.html" class="sub-main">
-            <div class="title">📱 Mobile Computing</div>
-            <div class="details">5 Units • Theory & Practical</div>
-        </a>
-        <a href="syllabus_mc.html" class="syllabus-btn">
-            Syllabus ⏩⏩⏩
-        </a>
+  <!-- Mobile Computing -->
+  <div class="subject-card">
+    <div class="card-top">
+      <div class="card-icon mc-icon">📱</div>
+      <div class="card-info">
+        <div class="c-title mc-title">Mobile Computing</div>
+        <div class="c-sub">5 Units • Theory & Practical</div>
+      </div>
     </div>
-
-    <!-- নেটওয়ার্ক বক্স -->
-    <div class="subject-box">
-        <a href="acn.html" class="sub-main">
-            <div class="title">🌐 Advanced Computer Network</div>
-            <div class="details">5 Units • Theory & Practical</div>
-        </a>
-        <a href="syllabus_acn.html" class="syllabus-btn">
-            Syllabus ⏩⏩⏩
-        </a>
+    <div class="badge-row">
+      <span class="badge">📘 Theory</span>
+      <span class="badge">🔬 Practical</span>
+      <span class="badge">⭐ Elective</span>
     </div>
+    <a href="mc.html" class="go-btn">📱 Open Mobile Computing →</a>
+  </div>
 
-    <a href="subject.html" class="back-btn">← BACK</a>
-</div>
+  <!-- Advanced Computer Network -->
+  <div class="subject-card">
+    <div class="card-top">
+      <div class="card-icon acn-icon">🌐</div>
+      <div class="card-info">
+        <div class="c-title acn-title">Advanced Computer Network</div>
+        <div class="c-sub">5 Units • Theory & Practical</div>
+      </div>
+    </div>
+    <div class="badge-row">
+      <span class="badge">📘 Theory</span>
+      <span class="badge">🔬 Practical</span>
+      <span class="badge">⭐ Elective</span>
+    </div>
+    <a href="acn.html" class="go-btn acn-btn">🌐 Open Advanced Computer Network →</a>
+  </div>
 
 </body>
 </html>

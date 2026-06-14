@@ -1,72 +1,74 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elective 3</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
-        body { background-color: #0f172a; color: #f1f5f9; padding: 20px; }
-        .container { max-width: 600px; margin: auto; }
-        h1 { font-size: 20px; margin-bottom: 10px; color: #ffffff; text-align: center; }
-
-        /* অপশনাল টেক্সট স্টাইল */
-        .optional-text { text-align: center; color: #facc15; font-size: 14px; margin-bottom: 25px; font-weight: bold; }
-
-        /* বড় চতুর্ভুজ কার্ডের স্টাইল */
-        .subject-box { 
-            background: #1e293b; 
-            padding: 25px; 
-            border-radius: 20px; 
-            margin-bottom: 25px; 
-            border: 1px solid #334155;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .title { font-weight: bold; color: #facc15; font-size: 18px; margin-bottom: 5px; }
-        .details { font-size: 13px; color: #94a3b8; }
-
-        /* সিলেবাস বাটনের স্টাইল */
-        .syllabus-btn { 
-            background: #2563eb; 
-            color: white; 
-            padding: 12px; 
-            border-radius: 12px; 
-            text-align: center; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 14px;
-            display: block;
-        }
-
-        .back-btn { 
-            display: block; text-align: center; margin-top: 30px; 
-            color: #facc15; text-decoration: none; font-weight: bold; font-size: 16px;
-        }
-    </style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elective-3</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:linear-gradient(135deg,#1e293b,#0f172a); color:#fff; font-family:'Segoe UI',sans-serif; min-height:100vh; padding:20px 16px 40px; }
+    .back-btn { display:inline-block; color:#f5a623; font-weight:700; font-size:15px; text-decoration:none; margin-bottom:18px; }
+    .page-header { text-align:center; margin-bottom:28px; }
+    .page-header h1 { font-size:22px; font-weight:800; color:#fff; letter-spacing:1px; }
+    .page-header p { color:#facc15; font-size:14px; font-weight:700; margin-top:6px; }
+    .subject-card { background:#1e293b; border:1.5px solid #334155; border-radius:20px; padding:22px; margin-bottom:20px; display:block; text-decoration:none; transition:all 0.2s; position:relative; overflow:hidden; }
+    .subject-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#f97316,#eab308); }
+    .subject-card:hover { border-color:#f97316; transform:translateY(-2px); box-shadow:0 8px 25px rgba(249,115,22,0.2); }
+    .subject-card:active { transform:scale(0.98); }
+    .card-top { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+    .card-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:26px; flex-shrink:0; }
+    .cg-icon { background:linear-gradient(135deg,#3a2a1a,#2a1a0a); }
+    .dip-icon { background:linear-gradient(135deg,#1a2a3a,#0a1a2a); }
+    .card-info .c-title { font-size:19px; font-weight:800; margin-bottom:4px; }
+    .cg-title { color:#f97316; }
+    .dip-title { color:#38bdf8; }
+    .card-info .c-sub { font-size:12px; color:#94a3b8; }
+    .badge-row { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+    .badge { background:#0f172a; border:1px solid #334155; border-radius:20px; padding:4px 10px; font-size:11px; color:#94a3b8; }
+    .go-btn { display:block; width:100%; color:#fff; font-weight:700; font-size:14px; border:none; border-radius:12px; padding:13px; text-align:center; cursor:pointer; text-decoration:none; }
+    .cg-btn { background:linear-gradient(90deg,#c2410c,#f97316); animation:glowOrange 2s ease-in-out infinite; }
+    .dip-btn { background:linear-gradient(90deg,#1565c0,#1e88e5); animation:glowBlue 2s ease-in-out infinite; }
+    @keyframes glowOrange { 0%,100%{box-shadow:0 0 6px #f97316;} 50%{box-shadow:0 0 22px #f97316,0 0 38px #c2410c;} }
+    @keyframes glowBlue { 0%,100%{box-shadow:0 0 6px #1e88e5;} 50%{box-shadow:0 0 22px #38bdf8,0 0 38px #1e88e5;} }
+  </style>
 </head>
 <body>
-
-<div class="container">
+  <a class="back-btn" href="subject.html">← BACK</a>
+  <div class="page-header">
     <h1>ELECTIVE 3</h1>
-    <p class="optional-text">📌 OPTIONAL: Choose any one</p>
+    <p>📌 OPTIONAL: Choose any one</p>
+  </div>
 
-    <div class="subject-box">
-        <div class="title">🎨 Computer Graphics</div>
-        <div class="details">5 Units • Theory & Practical</div>
-        <a href="syllabus_graphics.html" class="syllabus-btn">FULL SYLLABUS ⏩⏩⏩</a>
+  <div class="subject-card">
+    <div class="card-top">
+      <div class="card-icon cg-icon">🎨</div>
+      <div class="card-info">
+        <div class="c-title cg-title">Computer Graphics</div>
+        <div class="c-sub">5 Units • Theory & Practical</div>
+      </div>
     </div>
-
-    <div class="subject-box">
-        <div class="title">🖼️ Digital Image Processing</div>
-        <div class="details">5 Units • Theory & Practical</div>
-        <a href="syllabus_dip.html" class="syllabus-btn">FULL SYLLABUS ⏩⏩⏩</a>
+    <div class="badge-row">
+      <span class="badge">📘 Theory</span>
+      <span class="badge">🔬 Practical</span>
+      <span class="badge">⭐ Elective</span>
     </div>
+    <a href="cg.html" class="go-btn cg-btn">🎨 Open Computer Graphics →</a>
+  </div>
 
-    <a href="subject.html" class="back-btn">← BACK</a>
-</div>
-
+  <div class="subject-card">
+    <div class="card-top">
+      <div class="card-icon dip-icon">🖼️</div>
+      <div class="card-info">
+        <div class="c-title dip-title">Digital Image Processing</div>
+        <div class="c-sub">5 Units • Theory & Practical</div>
+      </div>
+    </div>
+    <div class="badge-row">
+      <span class="badge">📘 Theory</span>
+      <span class="badge">🔬 Practical</span>
+      <span class="badge">⭐ Elective</span>
+    </div>
+    <a href="dip.html" class="go-btn dip-btn">🖼️ Open Digital Image Processing →</a>
+  </div>
 </body>
 </html>

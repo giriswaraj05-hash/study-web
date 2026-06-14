@@ -1,21 +1,3 @@
-
-NOTICE
-  
-  
- <a href="https://webscte.co.in/" target="_blank" class="scte-btn">
-        <span class="scte-left"> ➡️   WBSCTE WEBSITE</span>
-        <span class="live-badge">🔴 LIVE UPDATE</span>
-    </a>
-</div>
-  
-  
-  
-  
-  
-  
-  
-  
-      
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,7 +19,6 @@ NOTICE
         .name { font-weight: 600; font-size: 13px; margin-top: 8px; }
         .optional-badge { font-size: 9px; background: #334155; color: #94a3b8; padding: 2px 6px; border-radius: 5px; display: inline-block; margin-top: 5px; }
 
-        /* Elective expandable card on dashboard */
         .elective-card { background: #1e293b; border-radius: 20px; border: 1px solid #38bdf8; overflow: hidden; }
         .elective-card-header { display: flex; flex-direction: column; align-items: center; padding: 18px 10px 12px; cursor: pointer; text-decoration: none; color: #cbd5e1; }
         .elective-card-header .arrow-down { font-size: 10px; color: #64748b; margin-top: 4px; transition: transform 0.3s; }
@@ -52,7 +33,6 @@ NOTICE
         .unique-quiz-btn { background: linear-gradient(45deg, #a855f7, #6366f1); color: white; padding: 16px; border-radius: 18px; border: none; font-weight: 800; font-size: 15px; cursor: pointer; width: 100%; margin: 20px 0; }
         .chat-btn { display: block; background: #0f172a; border: 1px solid #10b981; color: #10b981; text-align: center; padding: 15px; border-radius: 18px; text-decoration: none; font-weight: bold; }
 
-        /* SCTE Button */
         .scte-btn { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding: 16px 20px; border-radius: 18px; text-decoration: none; font-weight: 800; font-size: 14px; background: linear-gradient(135deg, #0f172a, #1e1040); border: 1.5px solid #f59e0b; color: #fbbf24; position: relative; overflow: hidden; transition: 0.3s; }
         .scte-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(245,158,11,0.08), transparent); transform: translateX(-100%); animation: shimmer 2.5s infinite; }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
@@ -62,7 +42,6 @@ NOTICE
         .live-badge::before { content: ''; width: 7px; height: 7px; background: #ef4444; border-radius: 50%; animation: livePulse 1.2s ease-in-out infinite; display: inline-block; }
         @keyframes livePulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:0.4; transform:scale(0.7); } }
 
-        /* MODAL */
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 9999; align-items: center; justify-content: center; }
         .modal-overlay.active { display: flex; }
         .modal-box { background: #1e293b; border: 1px solid #6366f1; border-radius: 24px; padding: 28px 22px; width: 92%; max-width: 420px; animation: popIn 0.3s ease; position: relative; max-height: 90vh; overflow-y: auto; }
@@ -71,7 +50,6 @@ NOTICE
         .modal-box .modal-sub { text-align: center; font-size: 12px; color: #64748b; margin-bottom: 20px; }
         .close-x { position: absolute; top: 14px; right: 16px; background: none; border: none; color: #64748b; font-size: 20px; cursor: pointer; }
 
-        /* Quiz Items */
         .quiz-subjects { display: flex; flex-direction: column; gap: 10px; }
         .quiz-item { display: flex; align-items: center; gap: 14px; background: #0f172a; border: 1px solid #334155; border-radius: 14px; padding: 14px 16px; cursor: pointer; transition: 0.2s; user-select: none; }
         .quiz-item:hover { border-color: #6366f1; background: #1a2540; }
@@ -83,11 +61,9 @@ NOTICE
         .quiz-item .check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #334155; display: flex; align-items: center; justify-content: center; transition: 0.2s; flex-shrink: 0; font-size: 12px; font-weight: 900; color: white; }
         .quiz-item.selected .check { background: #a855f7; border-color: #a855f7; }
 
-        /* Elective expand arrow */
         .quiz-item .arrow { font-size: 12px; color: #64748b; margin-left: 4px; transition: 0.2s; }
         .quiz-item.open .arrow { transform: rotate(90deg); color: #a78bfa; }
 
-        /* Sub items */
         .sub-items { display: none; flex-direction: column; gap: 8px; padding: 4px 0 4px 16px; }
         .sub-items.show { display: flex; }
         .sub-item { display: flex; align-items: center; gap: 12px; background: #0a1020; border: 1px solid #1e293b; border-radius: 12px; padding: 12px 14px; cursor: pointer; transition: 0.2s; user-select: none; }
@@ -102,7 +78,6 @@ NOTICE
         .sub-item .check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #334155; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 900; color: white; }
         .sub-item.selected .check { background: #a855f7; border-color: #a855f7; }
 
-        /* ===== FLASH ANIMATION ===== */
         @keyframes flashGlow {
             0%   { background: #0a1020; border-color: #1e293b; box-shadow: none; }
             30%  { background: #1a0a40; border-color: #a855f7; box-shadow: 0 0 18px 4px rgba(168,85,247,0.55); }
@@ -134,7 +109,6 @@ NOTICE
             animation: iconFlash 0.9s ease-in-out infinite;
         }
 
-        /* Stagger second item */
         .sub-item.flashing:nth-child(2) {
             animation-delay: 0.18s;
         }
@@ -144,26 +118,60 @@ NOTICE
         .sub-item.flashing:nth-child(2) .s-icon {
             animation-delay: 0.18s;
         }
-        /* ===== END FLASH ===== */
 
         .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
         .btn-cancel { flex: 1; padding: 13px; border-radius: 14px; border: 1px solid #334155; background: transparent; color: #94a3b8; font-weight: 700; font-size: 14px; cursor: pointer; }
         .btn-start { flex: 2; padding: 13px; border-radius: 14px; border: none; background: linear-gradient(45deg, #a855f7, #6366f1); color: white; font-weight: 800; font-size: 14px; cursor: pointer; opacity: 0.4; transition: 0.2s; }
         .btn-start.ready { opacity: 1; }
+
+        /* ===== TOP BAR & 3-DOT MENU ===== */
+        .top-bar { display: flex; justify-content: flex-end; align-items: center; max-width: 600px; margin: 0 auto 10px; position: relative; }
+        .menu-btn { background: #1e293b; border: 1px solid #334155; color: #cbd5e1; width: 40px; height: 40px; border-radius: 12px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .menu-btn:hover { border-color: #38bdf8; }
+        .dropdown-menu { position: absolute; top: 48px; right: 0; background: #1e293b; border: 1px solid #334155; border-radius: 14px; padding: 8px; display: none; flex-direction: column; gap: 4px; min-width: 200px; box-shadow: 0 8px 20px rgba(0,0,0,0.4); z-index: 1000; }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a, .dropdown-menu button { display: flex; align-items: center; gap: 10px; background: transparent; border: none; color: #e2e8f0; text-decoration: none; padding: 10px 12px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; text-align: left; width: 100%; }
+        .dropdown-menu a:hover, .dropdown-menu button:hover { background: #334155; }
+        .dropdown-menu .menu-icon { font-size: 16px; width: 20px; text-align: center; }
+        .dropdown-menu hr { border: none; border-top: 1px solid #334155; margin: 4px 0; width: 100%; }
+
+        body.light-mode { background-color: #f1f5f9; color: #0f172a; }
+        body.light-mode .subject-card, body.light-mode .quiz-item, body.light-mode .sub-item,
+        body.light-mode .modal-box, body.light-mode .menu-btn, body.light-mode .dropdown-menu,
+        body.light-mode .elective-card, body.light-mode .lab-card { background: #ffffff; color: #0f172a; }
+        body.light-mode .name, body.light-mode .s-name, body.light-mode .ss-name { color: #0f172a; }
+        body.light-mode .dropdown-menu a, body.light-mode .dropdown-menu button { color: #0f172a; }
+        body.light-mode .dropdown-menu a:hover, body.light-mode .dropdown-menu button:hover { background: #e2e8f0; }
     </style>
 </head>
 <body>
 
+<!-- TOP BAR -->
+<div class="top-bar">
+    <button class="menu-btn" id="menuBtn">⋮</button>
+    <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html"><span class="menu-icon">🏠</span> Home</a>
+        <button onclick="location.reload()"><span class="menu-icon">🔄</span> Refresh</button>
+        <button id="themeToggle"><span class="menu-icon">🌓</span> Dark / Light Mode</button>
+        <hr>
+        <button onclick="shareSite()"><span class="menu-icon">📤</span> Share</button>
+        <a href="https://wa.me/?text=Check%20this%20out" target="_blank"><span class="menu-icon">💬</span> WhatsApp</a>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=" target="_blank" id="fbShareLink"><span class="menu-icon">📘</span> Facebook</a>
+        <hr>
+        <button onclick="openModal('aboutModal')"><span class="menu-icon">ℹ️</span> About</button>
+        <a href="mailto:?subject=Feedback - Quick Learn DCST"><span class="menu-icon">✉️</span> Feedback</a>
+    </div>
+</div>
+
 <div class="container">
     <h1 style="text-align:center; margin-bottom:25px;">SUBJECT DASHBOARD</h1>
 
+<a href="https://webscte.co.in/" target="_blank" class="scte-btn">
+    <span class="scte-left"> ➡️   WBSCTE WEBSITE</span>
+    <span class="live-badge">🔴 LIVE UPDATE</span>
+</a>
 
-
-
-
-  
-
-<div class="grid-container">
+<div class="grid-container" style="margin-top:20px;">
     <a href="micro.html" class="subject-card">
         <span>⚙️</span>
         <div class="name">Microprocessor</div>
@@ -195,12 +203,6 @@ NOTICE
     </a>
 </div>
 
-
-
-
-
-
-  
     <h2 class="section-title">PREPARATION</h2>
     <div class="grid-container">
         <a href="pyq_questions.html" class="subject-card"><span>📝</span><div class="name">PYQ QUESTIONS</div></a>
@@ -209,14 +211,38 @@ NOTICE
 
     <button class="unique-quiz-btn" id="quizBtn">🚀 START PYQ QUIZ</button>
     <a href="chat.html" class="chat-btn">💬 JOIN DISCUSSION GROUP</a>
-    
 
+    <h2 class="section-title">📚 ACADEMICS</h2>
 
+    <div class="grid-container">
+        <div class="subject-card" onclick="openModal('teacherModal')" style="cursor:pointer;">
+            <span>👨‍🏫</span>
+            <div class="name">Teacher List</div>
+            <span class="optional-badge">Faculty</span>
+        </div>
+        <div class="subject-card" onclick="openModal('routineModal')" style="cursor:pointer;">
+            <span>📅</span>
+            <div class="name">Class Routine</div>
+            <span class="optional-badge">Schedule</span>
+        </div>
+    </div>
 
+    <h2 class="section-title">🧮 TOOLS</h2>
+    <div class="grid-container">
+        <div class="subject-card" onclick="window.open('cgpa.html')">
+            <span>📈</span>
+            <div class="name">CGPA Calculator</div>
+            <span class="optional-badge">Calculate</span>
+        </div>
+        <div class="subject-card" onclick="window.open('notes.html')">
+            <span>📚</span>
+            <div class="name">Notes Hub</div>
+            <span class="optional-badge">Download</span>
+        </div>
+    </div>
+</div>
 
-
-
-<!-- MODAL -->
+<!-- MODAL: QUIZ -->
 <div class="modal-overlay" id="quizModal">
     <div class="modal-box">
         <button class="close-x" id="closeBtn">✕</button>
@@ -225,21 +251,18 @@ NOTICE
 
         <div class="quiz-subjects">
 
-            <!-- Microprocessor -->
             <div class="quiz-item" data-subject="microprocessor" data-type="direct">
                 <span class="icon">⚙️</span>
                 <div class="info"><div class="s-name">Microprocessor</div><span class="s-tag">REQUIRED</span></div>
                 <div class="check"></div>
             </div>
 
-            <!-- IoT -->
             <div class="quiz-item" data-subject="iot" data-type="direct">
                 <span class="icon">🌐</span>
                 <div class="info"><div class="s-name">IoT</div><span class="s-tag">REQUIRED</span></div>
                 <div class="check"></div>
             </div>
 
-            <!-- Elective 1 -->
             <div class="quiz-item" data-type="elective" data-elective="1">
                 <span class="icon">📱</span>
                 <div class="info"><div class="s-name">Elective-1</div><span class="s-tag">Optional ▸ choose one</span></div>
@@ -258,7 +281,6 @@ NOTICE
                 </div>
             </div>
 
-            <!-- Elective 2 -->
             <div class="quiz-item" data-type="elective" data-elective="2">
                 <span class="icon">🤖</span>
                 <div class="info"><div class="s-name">Elective-2</div><span class="s-tag">Optional ▸ choose one</span></div>
@@ -277,7 +299,6 @@ NOTICE
                 </div>
             </div>
 
-            <!-- Elective 3 -->
             <div class="quiz-item" data-type="elective" data-elective="3">
                 <span class="icon">💻</span>
                 <div class="info"><div class="s-name">Elective-3</div><span class="s-tag">Optional ▸ choose one</span></div>
@@ -305,33 +326,193 @@ NOTICE
     </div>
 </div>
 
+<!-- TEACHER MODAL -->
+<div class="modal-overlay" id="teacherModal">
+    <div class="modal-box">
+        <button class="close-x" onclick="closeModal('teacherModal')">✕</button>
+        <h2>👨‍🏫 Faculty List</h2>
+        <p class="modal-sub">5th Sem CSE Department</p>
+
+        <div class="quiz-subjects">
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">⚙️</span>
+                <div class="info">
+                    <div class="s-name">Prof. A. Kumar</div>
+                    <span class="s-tag">Microprocessor | Room 301</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">🌐</span>
+                <div class="info">
+                    <div class="s-name">Dr. S. Das</div>
+                    <span class="s-tag">IoT | Room 205</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">📱</span>
+                <div class="info">
+                    <div class="s-name">Prof. R. Singh</div>
+                    <span class="s-tag">Mobile Computing | Room 304</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+
+            <div class="quiz-item" style="cursor:default;">
+                <span class="icon">🛠️</span>
+                <div class="info">
+                    <div class="s-name">Mr. P. Ghosh</div>
+                    <span class="s-tag">MP & MC Lab | Room 302</span>
+                </div>
+                <div style="font-size:18px;">📧</div>
+            </div>
+        </div>
+
+        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('teacherModal')">Close</button>
+    </div>
+</div>
+
+<!-- ROUTINE MODAL -->
+<div class="modal-overlay" id="routineModal">
+    <div class="modal-box" style="max-width:500px;">
+        <button class="close-x" onclick="closeModal('routineModal')">✕</button>
+        <h2>📅 Class Routine</h2>
+        <p class="modal-sub">5th Sem - Section A</p>
+
+        <div style="background:#0f172a; border-radius:14px; padding:16px; border:1px solid #334155;">
+            <div style="margin-bottom:16px;">
+                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px;">MONDAY</div>
+                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>2:00-5:00</span><span style="color:#a855f7; font-weight:700;">🛠️ MP Lab</span><span>302</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom:16px;">
+                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px;">TUESDAY</div>
+                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>10:00-11:00</span><span style="color:#38bdf8; font-weight:700;">📱 Elective-1</span><span>304</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px;">WEDNESDAY</div>
+                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
+                        <span>11:00-12:00</span><span style="color:#38bdf8; font-weight:700;">🤖 Elective-2</span><span>306</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('routineModal')">Close</button>
+    </div>
+</div>
+
+<!-- ABOUT MODAL -->
+<div class="modal-overlay" id="aboutModal">
+    <div class="modal-box">
+        <button class="close-x" onclick="closeModal('aboutModal')">✕</button>
+        <h2>ℹ️ About</h2>
+        <p class="modal-sub">Quick Learn DCST</p>
+        <div style="text-align:center; font-size:13px; line-height:1.8; color:#cbd5e1;">
+            <p>5th Semester CST study companion — subjects, PYQs, quizzes and notes in one place.</p>
+            <p style="margin-top:12px; color:#a78bfa; font-weight:800;">Developed by Swaraj Giri</p>
+            <p style="margin-top:6px; color:#64748b; font-size:11px;">© 2026 CST 5th Sem | All Rights Reserved</p>
+        </div>
+        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('aboutModal')">Close</button>
+    </div>
+</div>
+
 <script>
     var selectedSubject = null;
+
+    // ===== TOP MENU =====
+    document.getElementById('menuBtn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.getElementById('dropdownMenu').classList.toggle('active');
+    });
+    document.addEventListener('click', function(e) {
+        var menu = document.getElementById('dropdownMenu');
+        if (!e.target.closest('.top-bar') && menu.classList.contains('active')) {
+            menu.classList.remove('active');
+        }
+    });
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', function() {
+        document.body.classList.toggle('light-mode');
+    });
+
+    // Share
+    function shareSite() {
+        if (navigator.share) {
+            navigator.share({
+                title: document.title,
+                text: "QUICK LEARN DCST - Subject Dashboard",
+                url: window.location.href
+            }).catch(function(err) { console.log(err); });
+        } else {
+            navigator.clipboard.writeText(window.location.href);
+            alert("লিংক কপি হয়েছে!");
+        }
+    }
+    document.getElementById('fbShareLink').href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(window.location.href);
+
+    // ===== MODALS =====
+    function openModal(id) {
+        document.getElementById(id).classList.add('active');
+    }
+    function closeModal(id) {
+        if (id === 'quizModal') {
+            document.getElementById('quizModal').classList.remove('active');
+            resetAll();
+            return;
+        }
+        document.getElementById(id).classList.remove('active');
+    }
+    document.querySelectorAll('.modal-overlay').forEach(function(modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                if (this.id === 'quizModal') { resetAll(); }
+                this.classList.remove('active');
+            }
+        });
+    });
 
     function toggleDashElective(id) {
         var card = document.getElementById(id);
         var isOpen = card.classList.contains('open');
-        // Close all
         document.querySelectorAll('.elective-card').forEach(function(c) { c.classList.remove('open'); });
         if (!isOpen) card.classList.add('open');
     }
 
-    // Open modal
+    // Open quiz modal
     document.getElementById('quizBtn').addEventListener('click', function() {
         document.getElementById('quizModal').classList.add('active');
     });
 
-    // Close modal
-    document.getElementById('closeBtn').addEventListener('click', closeModal);
-    document.getElementById('cancelBtn').addEventListener('click', closeModal);
-    document.getElementById('quizModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-    });
-
-    function closeModal() {
-        document.getElementById('quizModal').classList.remove('active');
-        resetAll();
-    }
+    // Close quiz modal
+    document.getElementById('closeBtn').addEventListener('click', function() { closeModal('quizModal'); });
+    document.getElementById('cancelBtn').addEventListener('click', function() { closeModal('quizModal'); });
 
     function resetAll() {
         selectedSubject = null;
@@ -343,7 +524,6 @@ NOTICE
         });
         document.querySelectorAll('.sub-items').forEach(function(el) {
             el.classList.remove('show');
-            // Remove flashing from all sub-items when closing
             el.querySelectorAll('.sub-item').forEach(function(si) {
                 si.classList.remove('flashing');
             });
@@ -372,7 +552,6 @@ NOTICE
             var subList = document.getElementById('sub-elective' + num);
             var isOpen = el.classList.contains('open');
 
-            // Clear EVERYTHING first
             selectedSubject = null;
             document.getElementById('startBtn').classList.remove('ready');
             document.querySelectorAll('.quiz-item').forEach(function(e) {
@@ -385,7 +564,6 @@ NOTICE
                 e.querySelector('.check').textContent = '';
             });
 
-            // Close all electives first & remove flashing
             document.querySelectorAll('.quiz-item[data-type="elective"]').forEach(function(e) {
                 e.classList.remove('open');
             });
@@ -399,8 +577,6 @@ NOTICE
             if (!isOpen) {
                 el.classList.add('open');
                 subList.classList.add('show');
-
-                // Add flashing to all sub-items in this elective
                 subList.querySelectorAll('.sub-item').forEach(function(si) {
                     si.classList.add('flashing');
                 });
@@ -408,15 +584,13 @@ NOTICE
         });
     });
 
-    // Sub-item selection — stop flashing on click
+    // Sub-item selection
     document.querySelectorAll('.sub-item').forEach(function(el) {
         el.addEventListener('click', function() {
-            // Clear all sub selections and flashing
             document.querySelectorAll('.sub-item').forEach(function(e) {
                 e.classList.remove('selected', 'flashing');
                 e.querySelector('.check').textContent = '';
             });
-            // Clear direct selections
             document.querySelectorAll('.quiz-item[data-type="direct"]').forEach(function(e) {
                 e.classList.remove('selected');
                 var c = e.querySelector('.check');
@@ -441,180 +615,4 @@ NOTICE
 </body>
 </html>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h2 class="section-title">📚 ACADEMICS</h2>
-    
-    <div class="grid-container">
-        <div class="subject-card" onclick="openModal('teacherModal')" style="cursor:pointer;">
-            <span>👨‍🏫</span>
-            <div class="name">Teacher List</div>
-            <span class="optional-badge">Faculty</span>
-        </div>
-        <div class="subject-card" onclick="openModal('routineModal')" style="cursor:pointer;">
-            <span>📅</span>
-            <div class="name">Class Routine</div>
-            <span class="optional-badge">Schedule</span>
-        </div>
-    </div>
-</div>
-
-<!-- TEACHER MODAL -->
-<div class="modal-overlay" id="teacherModal">
-    <div class="modal-box">
-        <button class="close-x" onclick="closeModal('teacherModal')">✕</button>
-        <h2>👨‍🏫 Faculty List</h2>
-        <p class="modal-sub">5th Sem CSE Department</p>
-
-        <div class="quiz-subjects">
-            <!-- Microprocessor -->
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">⚙️</span>
-                <div class="info">
-                    <div class="s-name">Prof. A. Kumar</div>
-                    <span class="s-tag">Microprocessor | Room 301</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
-
-            <!-- IoT -->
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">🌐</span>
-                <div class="info">
-                    <div class="s-name">Dr. S. Das</div>
-                    <span class="s-tag">IoT | Room 205</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
-
-            <!-- Elective -->
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">📱</span>
-                <div class="info">
-                    <div class="s-name">Prof. R. Singh</div>
-                    <span class="s-tag">Mobile Computing | Room 304</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
-
-            <!-- Lab -->
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">🛠️</span>
-                <div class="info">
-                    <div class="s-name">Mr. P. Ghosh</div>
-                    <span class="s-tag">MP & MC Lab | Room 302</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
-        </div>
-
-        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('teacherModal')">Close</button>
-    </div>
-</div>
-  
-
-
-
-<!-- ROUTINE MODAL -->
-<div class="modal-overlay" id="routineModal">
-    <div class="modal-box" style="max-width:500px;">
-        <button class="close-x" onclick="closeModal('routineModal')">✕</button>
-        <h2>📅 Class Routine</h2>
-        <p class="modal-sub">5th Sem - Section A</p>
-
-        <div style="background:#0f172a; border-radius:14px; padding:16px; border:1px solid #334155;">
-            <!-- Monday -->
-            <div style="margin-bottom:16px;">
-                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px; font-family:'Orbitron',monospace;">MONDAY</div>
-                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>2:00-5:00</span><span style="color:#a855f7; font-weight:700;">🛠️ MP Lab</span><span>302</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tuesday -->
-            <div style="margin-bottom:16px;">
-                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px; font-family:'Orbitron',monospace;">TUESDAY</div>
-                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>10:00-11:00</span><span style="color:#38bdf8; font-weight:700;">📱 Elective-1</span><span>304</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Wednesday -->
-            <div>
-                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px; font-family:'Orbitron',monospace;">WEDNESDAY</div>
-                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>11:00-12:00</span><span style="color:#38bdf8; font-weight:700;">🤖 Elective-2</span><span>306</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('routineModal')">Close</button>
-    </div>
-</div>
-
-<script>
-// Modal functions
-function openModal(id) {
-    document.getElementById(id).classList.add('active');
-}
-function closeModal(id) {
-    document.getElementById(id).classList.remove('active');
-}
-// Close on outside click
-document.querySelectorAll('.modal-overlay').forEach(function(modal) {
-    modal.addEventListener('click', function(e) {
-        if (e.target === this) this.classList.remove('active');
-    });
-});
-</script>
-       
-       
-       
-       
-       
-       
-       
-       <h2 class="section-title">🧮 TOOLS</h2>
-<div class="grid-container">
-    <div class="subject-card" onclick="window.open('cgpa.html')">
-        <span>📈</span>
-        <div class="name">CGPA Calculator</div>
-        <span class="optional-badge">Calculate</span>
-    </div>
-    <div class="subject-card" onclick="window.open('notes.html')">
-        <span>📚</span>
-        <div class="name">Notes Hub</div>
-        <span class="optional-badge">Download</span>
-    </div>
-</div>
+                        

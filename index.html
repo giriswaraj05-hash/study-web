@@ -25,14 +25,11 @@
         .install-btn { background: transparent; color: #38bdf8; border: 2px solid #38bdf8; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; margin-top: 20px; animation: pump 2s infinite; }
         @keyframes pump { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
-        /* Share Button + Menu */
-        .share-container {
+        /* Share Button */
+        .share-btn {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 999;
-        }
-        .share-btn {
             background: #38bdf8;
             color: #0f172a;
             border: none;
@@ -42,44 +39,54 @@
             font-size: 24px;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            z-index: 999;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: 0.3s;
         }
-        .share-btn:hover { transform: scale(1.1) rotate(15deg); }
+        .share-btn:hover { transform: scale(1.1); }
 
+        /* Share Options Menu */
         .share-menu {
-            position: absolute;
-            bottom: 70px;
-            right: 0;
+            position: fixed;
+            bottom: 85px;
+            right: 20px;
             background: #1e293b;
-            border-radius: 15px;
+            border-radius: 16px;
             padding: 10px;
             display: none;
             flex-direction: column;
-            gap: 5px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            min-width: 200px;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            z-index: 999;
         }
-        .share-menu.show { display: flex; }
-
-        .share-option {
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border: none;
-            padding: 12px 15px;
-            border-radius: 10px;
-            text-align: left;
-            cursor: pointer;
+        .share-menu.active { display: flex; }
+        .share-menu a, .share-menu button {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.05);
+            color: #ffffff;
             text-decoration: none;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 10px;
             font-size: 14px;
-            transition: 0.2s;
+            font-weight: bold;
+            cursor: pointer;
+            white-space: nowrap;
         }
-        .share-option:hover {
-            background: #38bdf8;
-            color: #0f172a;
+        .share-menu a:hover, .share-menu button:hover { background: rgba(255,255,255,0.15); }
+        .share-menu .icon-circle {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; flex-shrink: 0;
         }
+        .wa-icon { background: #25D366; color: #fff; }
+        .fb-icon { background: #1877F2; color: #fff; }
+        .copy-icon { background: #38bdf8; color: #0f172a; }
+        .more-icon { background: #94a3b8; color: #0f172a; }
     </style>
 </head>
 <body>
@@ -112,35 +119,32 @@
         <button class="install-btn" id="installBtn">Install App</button>
     </div>
 
-    <!-- Share Button + Menu -->
-    <div class="share-container">
-        <button class="share-btn" onclick="toggleShareMenu(event)" title="Share">
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="18" cy="5" r="3"></circle>
-                <circle cx="6" cy="12" r="3"></circle>
-                <circle cx="18" cy="19" r="3"></circle>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-            </svg>
+    <!-- Share Menu -->
+    <div class="share-menu" id="shareMenu">
+        <a href="#" id="waShare" target="_blank">
+            <span class="icon-circle wa-icon">💬</span> WhatsApp
+        </a>
+        <a href="#" id="fbShare" target="_blank">
+            <span class="icon-circle fb-icon">f</span> Facebook
+        </a>
+        <button onclick="copyLink()">
+            <span class="icon-circle copy-icon">🔗</span> Copy Link
         </button>
-        
-        <div class="share-menu" id="shareMenu">
-            <button onclick="nativeShare(event)" class="share-option">
-                📱 সব অ্যাপে শেয়ার
-            </button>
-            <a href="https://wa.me/?text=QUICK%20LEARN%20DCST%20-%20DCST%205th%20Sem%20এর%20সব%20নোট%20এখানে:%20https://giriswaraj05-hash.github.io/study-web/" 
-               target="_blank" class="share-option" onclick="closeMenu()">
-                💬 WhatsApp
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://giriswaraj05-hash.github.io/study-web/" 
-               target="_blank" class="share-option" onclick="closeMenu()">
-                📘 Facebook
-            </a>
-            <button onclick="copyLink(event)" class="share-option">
-                🔗 লিংক কপি
-            </button>
-        </div>
+        <button onclick="shareSite()">
+            <span class="icon-circle more-icon">⋯</span> More
+        </button>
     </div>
+
+    <!-- Share Button -->
+    <button class="share-btn" onclick="toggleShareMenu()" title="Share">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+        </svg>
+    </button>
 
     <footer style="text-align:center; margin-top:40px; padding-top:20px; border-top:1px solid #1e293b;">
         <p style="font-size:12px; color:#5a6e8a; letter-spacing:1px;">
@@ -171,46 +175,45 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // Share Menu Toggle - FIXED
-        function toggleShareMenu(event) {
-            event.stopPropagation();
-            document.getElementById('shareMenu').classList.toggle('show');
+        // Share Menu Toggle
+        function toggleShareMenu() {
+            const menu = document.getElementById('shareMenu');
+            menu.classList.toggle('active');
+
+            const url = encodeURIComponent(window.location.href);
+            const text = encodeURIComponent("এই ওয়েবসাইটটি দেখুন: QUICK LEARN DCST");
+
+            document.getElementById('waShare').href = `https://wa.me/?text=${text}%20${url}`;
+            document.getElementById('fbShare').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
         }
 
-        function closeMenu() {
-            document.getElementById('shareMenu').classList.remove('show');
+        function copyLink() {
+            navigator.clipboard.writeText(window.location.href);
+            alert("লিংক কপি হয়েছে! এখন পেস্ট করে শেয়ার করো।");
+            document.getElementById('shareMenu').classList.remove('active');
         }
 
-        // Click outside to close
+        // Close menu if clicked outside
         document.addEventListener('click', function(e) {
-            const container = document.querySelector('.share-container');
-            if (!container.contains(e.target)) {
-                document.getElementById('shareMenu').classList.remove('show');
+            const menu = document.getElementById('shareMenu');
+            const btn = document.querySelector('.share-btn');
+            if (menu.classList.contains('active') && !menu.contains(e.target) && !btn.contains(e.target)) {
+                menu.classList.remove('active');
             }
         });
 
-        // Native Share - মোবাইলে সব অ্যাপ আসবে
-        function nativeShare(event) {
-            event.stopPropagation();
+        // Share (native fallback)
+        function shareSite() {
             if (navigator.share) {
                 navigator.share({
-                    title: 'QUICK LEARN DCST',
-                    text: 'DCST 5th Sem এর সব নোট, PYQ এখানে পাবে',
-                    url: 'https://giriswaraj05-hash.github.io/study-web/'
+                    title: document.title,
+                    text: "এই ওয়েবসাইটটি দেখুন: QUICK LEARN DCST",
+                    url: window.location.href
                 }).catch(err => console.log(err));
             } else {
-                copyLink(event);
+                navigator.clipboard.writeText(window.location.href);
+                alert("লিংক কপি হয়েছে! এখন পেস্ট করে শেয়ার করো।");
             }
-            closeMenu();
-        }
-
-        // Link Copy
-        function copyLink(event) {
-            event.stopPropagation();
-            navigator.clipboard.writeText('https://giriswaraj05-hash.github.io/study-web/').then(() => {
-                alert('লিংক কপি হয়ে গেছে! ✅ এখন WhatsApp/Facebook এ পেস্ট করো');
-            });
-            closeMenu();
         }
 
         // Install
@@ -228,7 +231,7 @@
             }
         });
 
-        // Service Worker Register
+        // Service Worker Register ✅
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')

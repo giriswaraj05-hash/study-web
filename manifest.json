@@ -1,15 +1,25 @@
 {
   "name": "QUICK LEARN DCST",
   "short_name": "DCST",
-  "start_url": "index.html",
+  "description": "Smart way to master your CST 5th Sem subjects",
+  "start_url": "/study-web/index.html",
+  "scope": "/study-web/",
   "display": "standalone",
-  "background_color": "#facc15",
-  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "background_color": "#0f172a",
+  "theme_color": "#38bdf8",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2920/2920343.png",
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

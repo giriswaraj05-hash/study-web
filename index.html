@@ -114,7 +114,7 @@
 
     <!-- Share Button + Menu -->
     <div class="share-container">
-        <button class="share-btn" onclick="toggleShareMenu()" title="Share">
+        <button class="share-btn" onclick="toggleShareMenu(event)" title="Share">
             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="18" cy="5" r="3"></circle>
                 <circle cx="6" cy="12" r="3"></circle>
@@ -125,18 +125,18 @@
         </button>
         
         <div class="share-menu" id="shareMenu">
-            <button onclick="nativeShare()" class="share-option">
+            <button onclick="nativeShare(event)" class="share-option">
                 📱 সব অ্যাপে শেয়ার
             </button>
             <a href="https://wa.me/?text=QUICK%20LEARN%20DCST%20-%20DCST%205th%20Sem%20এর%20সব%20নোট%20এখানে:%20https://giriswaraj05-hash.github.io/study-web/" 
-               target="_blank" class="share-option">
+               target="_blank" class="share-option" onclick="closeMenu()">
                 💬 WhatsApp
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://giriswaraj05-hash.github.io/study-web/" 
-               target="_blank" class="share-option">
+               target="_blank" class="share-option" onclick="closeMenu()">
                 📘 Facebook
             </a>
-            <button onclick="copyLink()" class="share-option">
+            <button onclick="copyLink(event)" class="share-option">
                 🔗 লিংক কপি
             </button>
         </div>
@@ -171,9 +171,14 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // Share Menu Toggle
-        function toggleShareMenu() {
+        // Share Menu Toggle - FIXED
+        function toggleShareMenu(event) {
+            event.stopPropagation();
             document.getElementById('shareMenu').classList.toggle('show');
+        }
+
+        function closeMenu() {
+            document.getElementById('shareMenu').classList.remove('show');
         }
 
         // Click outside to close
@@ -185,7 +190,8 @@
         });
 
         // Native Share - মোবাইলে সব অ্যাপ আসবে
-        function nativeShare() {
+        function nativeShare(event) {
+            event.stopPropagation();
             if (navigator.share) {
                 navigator.share({
                     title: 'QUICK LEARN DCST',
@@ -193,17 +199,18 @@
                     url: 'https://giriswaraj05-hash.github.io/study-web/'
                 }).catch(err => console.log(err));
             } else {
-                copyLink();
+                copyLink(event);
             }
-            toggleShareMenu();
+            closeMenu();
         }
 
         // Link Copy
-        function copyLink() {
+        function copyLink(event) {
+            event.stopPropagation();
             navigator.clipboard.writeText('https://giriswaraj05-hash.github.io/study-web/').then(() => {
                 alert('লিংক কপি হয়ে গেছে! ✅ এখন WhatsApp/Facebook এ পেস্ট করো');
             });
-            toggleShareMenu();
+            closeMenu();
         }
 
         // Install
@@ -232,8 +239,3 @@
     </script>
 </body>
 </html>
-
-           
-           
-    
-      

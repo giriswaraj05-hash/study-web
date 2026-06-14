@@ -1,5 +1,5 @@
- 
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
@@ -26,11 +26,14 @@
         .install-btn { background: transparent; color: #38bdf8; border: 2px solid #38bdf8; padding: 12px 30px; border-radius: 30px; cursor: pointer; font-weight: bold; margin-top: 20px; animation: pump 2s infinite; }
         @keyframes pump { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
-        /* Share Button */
-        .share-btn {
+        /* Share Button + Menu */
+        .share-container {
             position: fixed;
             bottom: 20px;
             right: 20px;
+            z-index: 999;
+        }
+        .share-btn {
             background: #38bdf8;
             color: #0f172a;
             border: none;
@@ -40,18 +43,50 @@
             font-size: 24px;
             cursor: pointer;
             box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-            z-index: 999;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: 0.3s;
         }
-        .share-btn:hover { transform: scale(1.1); }
+        .share-btn:hover { transform: scale(1.1) rotate(15deg); }
+
+        .share-menu {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: #1e293b;
+            border-radius: 15px;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            min-width: 200px;
+        }
+        .share-menu.show { display: flex; }
+
+        .share-option {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 10px;
+            text-align: left;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+        .share-option:hover {
+            background: #38bdf8;
+            color: #0f172a;
+        }
     </style>
 </head>
 <body>
 
     <!-- বড় ঘড়ির মোডাল -->
-    <div class="modal" id="clockModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:#0f172a; z-index:1000; align-items:center; justify-content:center; flex-direction:column;">
+    <div class="modal" id="clockModal">
         <span class="close-btn" onclick="closeBigClock()">✕</span>
         <div id="big-time">00:00:00</div>
     </div>
@@ -78,16 +113,35 @@
         <button class="install-btn" id="installBtn">Install App</button>
     </div>
 
-    <!-- Share Button -->
-    <button class="share-btn" onclick="shareSite()" title="Share">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="18" cy="5" r="3"></circle>
-            <circle cx="6" cy="12" r="3"></circle>
-            <circle cx="18" cy="19" r="3"></circle>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-        </svg>
-    </button>
+    <!-- Share Button + Menu -->
+    <div class="share-container">
+        <button class="share-btn" onclick="toggleShareMenu()" title="Share">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f172a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+        </button>
+        
+        <div class="share-menu" id="shareMenu">
+            <button onclick="nativeShare()" class="share-option">
+                📱 সব অ্যাপে শেয়ার
+            </button>
+            <a href="https://wa.me/?text=QUICK%20LEARN%20DCST%20-%20DCST%205th%20Sem%20এর%20সব%20নোট%20এখানে:%20https://giriswaraj05.github.io/studyweb" 
+               target="_blank" class="share-option">
+                💬 WhatsApp
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://giriswaraj05.github.io/studyweb" 
+               target="_blank" class="share-option">
+                📘 Facebook
+            </a>
+            <button onclick="copyLink()" class="share-option">
+                🔗 লিংক কপি
+            </button>
+        </div>
+    </div>
 
     <footer style="text-align:center; margin-top:40px; padding-top:20px; border-top:1px solid #1e293b;">
         <p style="font-size:12px; color:#5a6e8a; letter-spacing:1px;">
@@ -118,18 +172,39 @@
         setInterval(updateTime, 1000);
         updateTime();
 
-        // Share
-        function shareSite() {
+        // Share Menu Toggle
+        function toggleShareMenu() {
+            document.getElementById('shareMenu').classList.toggle('show');
+        }
+
+        // Click outside to close
+        document.addEventListener('click', function(e) {
+            const container = document.querySelector('.share-container');
+            if (!container.contains(e.target)) {
+                document.getElementById('shareMenu').classList.remove('show');
+            }
+        });
+
+        // Native Share - মোবাইলে সব অ্যাপ আসবে
+        function nativeShare() {
             if (navigator.share) {
                 navigator.share({
-                    title: document.title,
-                    text: "এই ওয়েবসাইটটি দেখুন: QUICK LEARN DCST",
-                    url: window.location.href
+                    title: 'QUICK LEARN DCST',
+                    text: 'DCST 5th Sem এর সব নোট, PYQ এখানে পাবে',
+                    url: 'https://giriswaraj05.github.io/studyweb'
                 }).catch(err => console.log(err));
             } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert("লিংক কপি হয়েছে! এখন পেস্ট করে শেয়ার করো।");
+                copyLink();
             }
+            toggleShareMenu();
+        }
+
+        // Link Copy
+        function copyLink() {
+            navigator.clipboard.writeText('https://giriswaraj05.github.io/studyweb').then(() => {
+                alert('লিংক কপি হয়ে গেছে! ✅ এখন WhatsApp/Facebook এ পেস্ট করো');
+            });
+            toggleShareMenu();
         }
 
         // Install
@@ -147,7 +222,7 @@
             }
         });
 
-        // Service Worker Register ✅
+        // Service Worker Register
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
@@ -157,4 +232,4 @@
         }
     </script>
 </body>
-</html>
+</html>      

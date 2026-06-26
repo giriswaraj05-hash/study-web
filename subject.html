@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -405,107 +405,55 @@
         </div>
     </div>
 </div>
+  
+
+
 
 <!-- TEACHER MODAL -->
 <div class="modal-overlay" id="teacherModal">
     <div class="modal-box">
         <button class="close-x" onclick="closeModal('teacherModal')">✕</button>
-        <h2>👨‍🏫 Faculty List</h2>
+        <h2>👨‍🏫 Teacher List</h2>
         <p class="modal-sub">5th Sem CSE Department</p>
 
-        <div class="quiz-subjects">
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">⚙️</span>
-                <div class="info">
-                    <div class="s-name">Prof. A. Kumar</div>
-                    <span class="s-tag">Microprocessor | Room 301</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
-
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">🌐</span>
-                <div class="info">
-                    <div class="s-name">Dr. S. Das</div>
-                    <span class="s-tag">IoT | Room 205</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
-
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">📱</span>
-                <div class="info">
-                    <div class="s-name">Prof. R. Singh</div>
-                    <span class="s-tag">Mobile Computing | Room 304</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
-
-            <div class="quiz-item" style="cursor:default;">
-                <span class="icon">🛠️</span>
-                <div class="info">
-                    <div class="s-name">Mr. P. Ghosh</div>
-                    <span class="s-tag">MP & MC Lab | Room 302</span>
-                </div>
-                <div style="font-size:18px;">📧</div>
-            </div>
+        <div style="text-align:center; padding: 40px 20px;">
+            <div style="font-size: 60px; margin-bottom: 20px; filter: drop-shadow(0 0 20px #a855f7);">📅</div>
+            <p style="font-size: 16px; font-weight: 700; color: #e2e8f0; line-height: 1.6;">
+                The schedule will be provided<br>once classes start.
+            </p>
         </div>
 
-        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('teacherModal')">Close</button>
+        <button class="btn-cancel" style="width:100%; margin-top:10px;" onclick="closeModal('teacherModal')">Close</button>
     </div>
 </div>
 
 <!-- ROUTINE MODAL -->
 <div class="modal-overlay" id="routineModal">
-    <div class="modal-box" style="max-width:500px;">
+    <div class="modal-box">
         <button class="close-x" onclick="closeModal('routineModal')">✕</button>
         <h2>📅 Class Routine</h2>
         <p class="modal-sub">5th Sem - Section A</p>
 
-        <div style="background:#0f172a; border-radius:14px; padding:16px; border:1px solid #334155;">
-            <div style="margin-bottom:16px;">
-                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px;">MONDAY</div>
-                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>2:00-5:00</span><span style="color:#a855f7; font-weight:700;">🛠️ MP Lab</span><span>302</span>
-                    </div>
-                </div>
-            </div>
-
-            <div style="margin-bottom:16px;">
-                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px;">TUESDAY</div>
-                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>10:00-11:00</span><span style="color:#38bdf8; font-weight:700;">📱 Elective-1</span><span>304</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>11:00-12:00</span><span style="color:#facc15; font-weight:700;">⚙️ Microprocessor</span><span>301</span>
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <div style="color:#a855f7; font-weight:800; font-size:13px; margin-bottom:8px;">WEDNESDAY</div>
-                <div style="display:flex; flex-direction:column; gap:6px; font-size:12px;">
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>10:00-11:00</span><span style="color:#facc15; font-weight:700;">🌐 IoT</span><span>205</span>
-                    </div>
-                    <div style="display:flex; justify-content:space-between; background:#1e293b; padding:8px 10px; border-radius:8px;">
-                        <span>11:00-12:00</span><span style="color:#38bdf8; font-weight:700;">🤖 Elective-2</span><span>306</span>
-                    </div>
-                </div>
-            </div>
+        <div style="text-align:center; padding: 40px 20px;">
+            <div style="font-size: 60px; margin-bottom: 20px; filter: drop-shadow(0 0 20px #3a86ff);">⏰</div>
+            <p style="font-size: 16px; font-weight: 700; color: #e2e8f0; line-height: 1.6;">
+                The schedule will be provided<br>once classes start.
+            </p>
         </div>
 
-        <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('routineModal')">Close</button>
+        <button class="btn-cancel" style="width:100%; margin-top:10px;" onclick="closeModal('routineModal')">Close</button>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+            
 
 <!-- ABOUT MODAL -->
 <div class="modal-overlay" id="aboutModal">
@@ -886,4 +834,3 @@
 
 </body>
 </html>
-           

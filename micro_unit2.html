@@ -3,119 +3,62 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Microprocessor Units</title>
+  <title>MP – Unit 2</title>
   <style>
-    * {margin:0;padding:0;box-sizing:border-box;}
-    body{background:linear-gradient(135deg,#1e293b,#0f172a);color:#fff;font-family:'Segoe UI',sans-serif;min-height:100vh;padding:20px 16px 40px;}
-    .back-btn{display:inline-block;color:#f5a623;font-weight:700;font-size:15px;text-decoration:none;margin-bottom:18px;}
-    .page-title{font-size:22px;font-weight:800;margin-bottom:18px;color:#fff;}
-    .unit-card{background:#162032;border:1.5px solid #2a3a50;border-radius:16px;margin-bottom:14px;overflow:hidden;}
-    .unit-header{display:flex;align-items:center;gap:16px;padding:16px 18px;cursor:pointer;}
-    .unit-header:hover{background:#1e2f45;}
-    .u-icon{width:52px;height:52px;background:#1e3a5f;border:1.5px solid #c0392b;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
-    .u-text{flex:1;}
-    .u-text h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:3px;}
-    .u-text p{font-size:13px;color:#7a93ad;}
-    .u-arrow{color:#7a93ad;font-size:20px;transition:0.3s;}
-    .unit-content{display:none;padding:0 18px 18px;background:#0d1520;}
-    .unit-content.show{display:block;}
-    .pdf-link-btn{display:block;background:#22c55e;color:#0f172a;padding:12px;text-align:center;border-radius:8px;font-weight:700;text-decoration:none;margin-top:10px;}
-    .active .u-arrow{transform:rotate(90deg);}
-    .lab .u-icon{background:#1e3a2f;border-color:#2e8b57;}
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:linear-gradient(135deg,#1e293b,#0f172a); color:#fff; font-family:'Segoe UI',sans-serif; min-height:100vh; padding:20px 16px 40px; }
+    .back-btn { display:inline-block; color:#f5a623; font-weight:700; font-size:15px; text-decoration:none; margin-bottom:18px; }
+    .unit-header { background:#162032; border:1.5px solid #f5a623; border-radius:16px; padding:20px; margin-bottom:20px; text-align:center; }
+    .unit-header .u-num { font-size:13px; color:#5a7a9a; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+    .unit-header .u-title { font-size:20px; font-weight:800; color:#f5a623; }
+    .pdf-btn {
+      display:flex; align-items:center; gap:14px; background:#162032;
+      border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px;
+      margin-bottom:12px; text-decoration:none; transition:all 0.2s; cursor:pointer;
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+    @keyframes glowPulse {
+      0%,100% { box-shadow:0 0 6px #1e88e5; }
+      50% { box-shadow:0 0 20px #38bdf8, 0 0 35px #1e88e5; }
+    }
+    .pdf-btn:active { border-color:#f5a623; }
+    .pdf-icon { width:48px; height:48px; background:#1e3a5f; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
+    .pdf-info .p-title { font-size:15px; font-weight:700; color:#e0e0e0; margin-bottom:3px; }
+    .pdf-info .p-sub { font-size:12px; color:#5a7a9a; }
+    .topics { background:#0d1b2a; border:1px solid #2a3a50; border-radius:14px; padding:16px; margin-top:8px; }
+    .topics h3 { font-size:14px; color:#f5a623; margin-bottom:12px; }
+    .topics li { font-size:13px; color:#c8d4e0; padding:7px 0; border-bottom:1px solid #1e2e3e; list-style:none; display:flex; gap:8px; line-height:1.5; }
+    .topics li:last-child { border-bottom:none; }
+    .topics li::before { content:"▸"; color:#f5a623; font-size:11px; margin-top:2px; flex-shrink:0; }
   </style>
 </head>
 <body>
-  <a class="back-btn" href="mc_microprocessor.html">← BACK</a>
-  <div class="page-title">📚 Microprocessor Units</div>
-
-  <!-- Unit 1 -->
-  <div class="unit-card">
-    <div class="unit-header">
-      <div class="u-icon">📖</div>
-      <div class="u-text"><h3>Unit 1</h3><p>Introduction to Microprocessor</p></div>
-      <div class="u-arrow">›</div>
-    </div>
-    <div class="unit-content">
-      <a class="pdf-link-btn" href="https://drive.google.com/file/d/1dcAoKS1yaYtSa8pmuw7YiQ_priXYgpav/view" target="_blank">
-        📄 Open Unit 1 PDF
-      </a>
-    </div>
+  <a class="back-btn" href="micro_units.html">← BACK</a>
+  <div class="unit-header">
+    <div class="u-num">Microprocessor • Unit 2</div>
+    <div class="u-title">Instruction Set & Programming of 8085</div>
   </div>
 
-  <!-- Unit 2 -->
-  <div class="unit-card">
-    <div class="unit-header">
-      <div class="u-icon">📖</div>
-      <div class="u-text"><h3>Unit 2</h3><p>Instruction Set & Programming of 8085</p></div>
-      <div class="u-arrow">›</div>
+  <a href="https://drive.google.com/file/d/1cDRslNlDpUd00KqfFuwuqu70PhaqPy6-/preview" target="_blank" class="pdf-btn">
+    <div class="pdf-icon">📄</div>
+    <div class="pdf-info">
+      <div class="p-title">Unit 2 – Full Notes PDF</div>
+      <div class="p-sub">Tap to open PDF</div>
     </div>
-    <div class="unit-content">
-      <a class="pdf-link-btn" href="https://drive.google.com/file/d/1cDRslNlDpUd00KqfFuwuqu70PhaqPy6-/view" target="_blank">
-        📄 Open Unit 2 PDF
-      </a>
-    </div>
-  </div>
+  </a>
 
-  <!-- Unit 3 -->
-  <div class="unit-card">
-    <div class="unit-header">
-      <div class="u-icon">📖</div>
-      <div class="u-text"><h3>Unit 3</h3><p>Interrupts & Stack Operations</p></div>
-      <div class="u-arrow">›</div>
-    </div>
-    <div class="unit-content">
-      <p style="color:#8a9bb0; text-align:center; padding:10px;">PDF will be added soon</p>
-    </div>
+  <div class="topics">
+    <h3>📌 Topics Covered</h3>
+    <ul>
+      <li>8085 Instruction set classification</li>
+      <li>Data transfer, Arithmetic, Logical instructions</li>
+      <li>Branch & Machine control instructions</li>
+      <li>Addressing modes of 8085</li>
+      <li>Assembly language programming</li>
+      <li>Looping, Counting & Indexing</li>
+      <li>Stack & Subroutine programs</li>
+      <li>Time delay programs</li>
+    </ul>
   </div>
-
-  <!-- Unit 4 -->
-  <div class="unit-card">
-    <div class="unit-header">
-      <div class="u-icon">📖</div>
-      <div class="u-text"><h3>Unit 4</h3><p>Interfacing & Peripheral Devices</p></div>
-      <div class="u-arrow">›</div>
-    </div>
-    <div class="unit-content">
-      <p style="color:#8a9bb0; text-align:center; padding:10px;">PDF will be added soon</p>
-    </div>
-  </div>
-
-  <!-- Unit 5 -->
-  <div class="unit-card">
-    <div class="unit-header">
-      <div class="u-icon">📖</div>
-      <div class="u-text"><h3>Unit 5</h3><p>Advanced Microprocessors (8086 & Beyond)</p></div>
-      <div class="u-arrow">›</div>
-    </div>
-    <div class="unit-content">
-      <p style="color:#8a9bb0; text-align:center; padding:10px;">PDF will be added soon</p>
-    </div>
-  </div>
-
-  <!-- Lab -->
-  <div class="unit-card lab">
-    <div class="unit-header">
-      <div class="u-icon">🔬</div>
-      <div class="u-text"><h3>Lab / Practical</h3><p>Experiments & Programs</p></div>
-      <div class="u-arrow">›</div>
-    </div>
-    <div class="unit-content">
-      <p style="color:#8a9bb0; text-align:center; padding:10px;">Lab PDFs will be added soon</p>
-    </div>
-  </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const headers = document.querySelectorAll('.unit-header');
-    headers.forEach(header => {
-      header.addEventListener('click', function() {
-        const card = this.parentElement;
-        card.classList.toggle('active');
-        const content = this.nextElementSibling;
-        content.classList.toggle('show');
-      });
-    });
-  });
-</script>
 </body>
 </html>

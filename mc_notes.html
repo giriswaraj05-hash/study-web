@@ -10,6 +10,10 @@
       background:#0f172a; color:#fff; font-family:'Segoe UI',sans-serif; 
       min-height:100vh; padding:20px 16px 40px; 
     }
+    .back-btn { 
+      display:inline-block; color:#f5a623; font-weight:700; 
+      font-size:15px; text-decoration:none; margin-bottom:18px; 
+    }
     .header { text-align:center; margin-bottom:30px; }
     .header h1 { font-size:24px; color:#38bdf8; font-weight:800; margin-bottom:4px; }
     .header p { font-size:14px; color:#94a3b8; }
@@ -20,7 +24,14 @@
     .card {
       background:#1e293b; border:1.5px solid #334155; border-radius:16px;
       padding:24px 16px; text-align:center; text-decoration:none; 
-      transition:all 0.2s; cursor:pointer;
+      transition:all 0.2s; cursor:pointer; width:100%; 
+      color:#e2e8f0; font-family:inherit;
+      animation: cardGlow 2.5s ease-in-out infinite;
+    }
+    button.card { border:1.5px solid #334155; }
+    @keyframes cardGlow {
+      0%,100% { box-shadow:0 0 8px #0ea5e9; }
+      50% { box-shadow:0 0 18px #38bdf8, 0 0 30px #0ea5e9; }
     }
     .card:active { border-color:#38bdf8; transform:scale(0.97); }
     .card-icon { font-size:32px; margin-bottom:12px; }
@@ -28,7 +39,10 @@
   </style>
 </head>
 <body>
+  <a class="back-btn" href="index.html">← BACK</a>
+  
   <div class="header">
+    <div style="font-size:32px; margin-bottom:8px;">📱</div>
     <h1>MOBILE COMPUTING</h1>
     <p>Elective-1 • 5th Semester</p>
   </div>
@@ -49,11 +63,11 @@
       <div class="card-title">PYQ ANSWER</div>
     </a>
     
-    <!-- NOTES বাটন - ক্লিক করলেই তোমার PDF খুলবে -->
-    <a href="https://drive.google.com/file/d/19tF_4p4piGf01XUJuhuze-eiSX67X7mq/view" target="_blank" class="card">
+    <!-- NOTES - এটাই সঠিক, পেজ রিলোড হবে না -->
+    <button type="button" onclick="window.open('https://drive.google.com/uc?export=view&id=1nZ9tSkhketUtaj07I6JdwGe7i7bQcINI','_blank')" class="card">
       <div class="card-icon">📋</div>
       <div class="card-title">NOTES</div>
-    </a>
+    </button>
   </div>
 </body>
 </html>

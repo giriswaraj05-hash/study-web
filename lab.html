@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MP & MC LAB</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #0f172a; color: #f1f5f9; padding: 20px; }
+.container { max-width: 600px; margin: auto; }
+.back-link { display: inline-flex; align-items: center; gap: 6px; color: #94a3b8; text-decoration: none; font-size: 13px; font-weight: 700; margin-bottom: 16px; }
+.back-link:hover { color: #38bdf8; }
+.page-title { text-align: center; margin-bottom: 6px; font-size: 26px; }
+.page-sub { text-align: center; color: #94a3b8; font-size: 12px; margin-bottom: 25px; }
+.grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.exp-card { background: linear-gradient(145deg, #1e1b4b, #0f172a); padding: 18px 12px; border-radius: 20px; text-align: center; border: 1px solid #a855f7; cursor: pointer; transition: 0.25s; }
+.exp-card:hover { border-color: #facc15; transform: scale(1.02); box-shadow: 0 0 18px rgba(168,85,247,0.3); }
+.exp-num { font-size: 11px; color: #c4b5fd; font-weight: 800; letter-spacing: 0.5px; }
+.exp-name { font-weight: 700; font-size: 13px; margin-top: 8px; color: #e9d5ff; line-height: 1.4; }
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 9999; align-items: center; justify-content: center; }
+.modal-overlay.active { display: flex; }
+.modal-box { background: #1e293b; border: 1px solid #a855f7; border-radius: 22px; padding: 26px 20px; width: 92%; max-width: 440px; max-height: 85vh; overflow-y: auto; animation: popIn 0.25s ease; position: relative; }
+@keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.close-x { position: absolute; top: 14px; right: 16px; background: none; border: none; color: #64748b; font-size: 20px; cursor: pointer; }
+.modal-box h2 { font-size: 17px; font-weight: 800; color: #e9d5ff; margin-bottom: 4px; padding-right: 25px; }
+.modal-tag { display: inline-block; font-size: 10px; background: #a855f7; color: #fff; padding: 3px 9px; border-radius: 6px; font-weight: 800; margin-bottom: 14px; }
+.modal-box h4 { font-size: 13px; color: #facc15; margin: 14px 0 6px; }
+.modal-box p, .modal-box li { font-size: 13.5px; color: #cbd5e1; line-height: 1.7; }
+.modal-box ul, .modal-box ol { margin-left: 18px; margin-bottom: 8px; }
+.btn-cancel { width: 100%; margin-top: 18px; padding: 12px; border-radius: 14px; border: 1px solid #334155; background: transparent; color: #94a3b8; font-weight: 700; font-size: 14px; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <a href="subject.html" class="back-link">⬅ Back to Dashboard</a>
+    <h1 class="page-title">🛠️ MP & MC LAB</h1>
+    <p class="page-sub">Tap any experiment to view theory</p>
+
+    <div class="grid-container" id="expGrid"></div>
+</div>
+
+<div class="modal-overlay" id="theoryModal">
+    <div class="modal-box">
+        <button class="close-x" onclick="closeModal()">✕</button>
+        <h2 id="mTitle"></h2>
+        <span class="modal-tag" id="mTag"></span>
+        <div id="mBody"></div>
+        <button class="btn-cancel" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<script>
+const experiments = [
+  {
+    tag: "EXP 1",
+    name: "8085 Architecture & Pin Diagram",
+    title: "Study of 8085 Microprocessor",
+    theory: `
+      <h4>Aim</h4>
+      <p>To study the architecture, pin diagram and register organization of the 8085 microprocessor.</p>
+      <h4>Theory</h4>
+      <p>The 8085 is an 8-bit microprocessor with a 16-bit address bus (64KB addressing range) and an 8-bit data bus. It operates on a single +5V supply and has a clock frequency of up to 3 MHz.</p>
+      <p>Main internal blocks: Accumulator (A), six general purpose registers (B, C, D, E, H, L) which can be used as register pairs, a 16-bit Program Counter (PC), a 16-bit Stack Pointer (SP), an Arithmetic & Logic Unit (ALU), Instruction Decoder, and a Flag register (5 flags: Sign, Zero, Auxiliary Carry, Parity, Carry).</p>
+      <p>It also has control & timing circuitry, and dedicated pins for interrupts (INTR, RST 5.5/6.5/7.5), serial I/O (SID, SOD), and DMA (HOLD/HLDA).</p>`
+  },
+  {
+    tag: "EXP 2",
+    name: "8085 Addressing Modes",
+    title: "Addressing Modes of 8085",
+    theory: `
+      <h4>Aim</h4>
+      <p>To study the different addressing modes supported by the 8085 instruction set.</p>
+      <h4>Theory</h4>
+      <ul>
+        <li><b>Immediate:</b> Data given directly in the instruction. Eg: MVI A, 05H</li>
+        <li><b>Register:</b> Data is in a register. Eg: MOV A, B</li>
+        <li><b>Direct:</b> Address of data given directly. Eg: LDA 2000H</li>
+        <li><b>Indirect:</b> Address of data is held in a register pair. Eg: MOV A, M (uses H-L pair)</li>
+        <li><b>Implied/Implicit:</b> No operand needed, opcode itself specifies data. Eg: CMA, RAL</li>
+      </ul>
+      <p>Choosing the right addressing mode affects instruction length and execution speed.</p>`
+  },
+  {
+    tag: "EXP 3",
+    name: "Addition of Two 8-bit Numbers",
+    title: "ALP: Addition of Two Numbers",
+    theory: `
+      <h4>Aim</h4>
+      <p>Write an Assembly Language Program to add two 8-bit numbers using 8085.</p>
+      <h4>Theory</h4>
+      <p>Two 8-bit numbers are loaded into the Accumulator and a register one at a time, then added using the <b>ADD</b> instruction. If the result exceeds FFH, the Carry flag (CY) is set, indicating a 9-bit result.</p>
+      <h4>Algorithm</h4>
+      <ol>
+        <li>Load first number into Accumulator (MVI A, data1)</li>
+        <li>Load second number into register B (MVI B, data2)</li>
+        <li>Add B to A (ADD B)</li>
+        <li>Store result in memory (STA address)</li>
+        <li>Halt (HLT)</li>
+      </ol>`
+  },
+  {
+    tag: "EXP 4",
+    name: "Subtraction of Two Numbers",
+    title: "ALP: Subtraction of Two Numbers",
+    theory: `
+      <h4>Aim</h4>
+      <p>Write an ALP to subtract two 8-bit numbers using 8085.</p>
+      <h4>Theory</h4>
+      <p>The 8085 performs subtraction using 2's complement addition internally via the <b>SUB</b> instruction. If the minuend is smaller than the subtrahend, the Carry flag is set (borrow indication) and the result is in 2's complement form.</p>
+      <h4>Algorithm</h4>
+      <ol>
+        <li>Load minuend into Accumulator</li>
+        <li>Load subtrahend into register B</li>
+        <li>Subtract: SUB B</li>
+        <li>Store result (STA address)</li>
+        <li>HLT</li>
+      </ol>`
+  },
+  {
+    tag: "EXP 5",
+    name: "Largest Number in an Array",
+    title: "ALP: Largest Number in Array",
+    theory: `
+      <h4>Aim</h4>
+      <p>To find the largest number among a set of 8-bit numbers stored in memory.</p>
+      <h4>Theory</h4>
+      <p>The program initializes the first number as the largest, then compares it with every other number in the array using the <b>CMP</b> instruction, which sets/resets the Carry and Zero flags based on comparison. Conditional jumps (JC/JNC) are then used to update the largest value.</p>
+      <h4>Algorithm</h4>
+      <ol>
+        <li>Load count of numbers and base address</li>
+        <li>Assume first number as largest</li>
+        <li>Compare next number with current largest (CMP)</li>
+        <li>If new number is bigger, update largest</li>
+        <li>Repeat for all numbers, then store result</li>
+      </ol>`
+  },
+  {
+    tag: "EXP 6",
+    name: "Ascending Order Sorting",
+    title: "ALP: Sorting (Ascending Order)",
+    theory: `
+      <h4>Aim</h4>
+      <p>To arrange a given set of 8-bit numbers in ascending order using 8085.</p>
+      <h4>Theory</h4>
+      <p>This uses the <b>Bubble Sort</b> technique — adjacent elements are repeatedly compared (CMP) and swapped (using XCHG-style move operations) if they are in the wrong order, across multiple passes, until the whole array is sorted.</p>
+      <h4>Algorithm</h4>
+      <ol>
+        <li>Load array base address and count (n)</li>
+        <li>For each pass, compare adjacent elements</li>
+        <li>Swap if first &gt; second</li>
+        <li>Repeat for (n-1) passes</li>
+        <li>Store sorted array back to memory</li>
+      </ol>`
+  },
+  {
+    tag: "EXP 7",
+    name: "8051 Microcontroller Architecture",
+    title: "Study of 8051 Microcontroller",
+    theory: `
+      <h4>Aim</h4>
+      <p>To study the internal architecture of the 8051 microcontroller.</p>
+      <h4>Theory</h4>
+      <p>The 8051 is an 8-bit microcontroller with 4KB internal ROM, 128 bytes internal RAM, four 8-bit bidirectional I/O ports (P0–P3), two 16-bit timers/counters, a full-duplex serial port (UART), and 5 interrupt sources, all on a single chip.</p>
+      <p>Unlike a microprocessor, a microcontroller integrates CPU, memory and I/O on one chip, making it ideal for embedded, standalone control applications such as appliances and automation systems.</p>`
+  },
+  {
+    tag: "EXP 8",
+    name: "LED Interfacing with 8051",
+    title: "Interfacing LED with 8051",
+    theory: `
+      <h4>Aim</h4>
+      <p>To interface an LED with the 8051 microcontroller and blink it with a time delay.</p>
+      <h4>Theory</h4>
+      <p>An LED is connected (through a current-limiting resistor) to a port pin, e.g., P1.0. Setting the pin HIGH/LOW turns the LED ON/OFF. A software delay loop (using a counter) is used between toggles to create a visible blink effect.</p>
+      <h4>Algorithm</h4>
+      <ol>
+        <li>Configure port pin as output</li>
+        <li>Set pin HIGH (LED ON)</li>
+        <li>Call delay subroutine</li>
+        <li>Set pin LOW (LED OFF)</li>
+        <li>Call delay subroutine, repeat</li>
+      </ol>`
+  }
+];
+
+const grid = document.getElementById('expGrid');
+experiments.forEach((exp, i) => {
+    const card = document.createElement('div');
+    card.className = 'exp-card';
+    card.onclick = () => openTheory(i);
+    card.innerHTML = `<div class="exp-num">${exp.tag}</div><div class="exp-name">${exp.name}</div>`;
+    grid.appendChild(card);
+});
+
+function openTheory(i) {
+    const exp = experiments[i];
+    document.getElementById('mTitle').textContent = exp.title;
+    document.getElementById('mTag').textContent = exp.tag;
+    document.getElementById('mBody').innerHTML = exp.theory;
+    document.getElementById('theoryModal').classList.add('active');
+}
+function closeModal() {
+    document.getElementById('theoryModal').classList.remove('active');
+}
+document.getElementById('theoryModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+});
+</script>
+
+</body>
+</html>

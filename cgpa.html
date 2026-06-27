@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CGPA Calculator — DCST 5th Sem</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+  :root {
+    --bg:       #080d1a;
+    --surface:  #0f1729;
+    --card:     #141e35;
+    --border:   #1e2d50;
+    --accent:   #38bdf8;
+    --accent2:  #818cf8;
+    --green:    #34d399;
+    --yellow:   #fbbf24;
+    --red:      #f87171;
+    --text:     #e2e8f0;
+    --muted:    #64748b;
+    --radius:   16px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding-bottom: 60px;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .back-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+  }
+  .topbar-title { font-size: 16px; font-weight: 700; letter-spacing: .5px; }
+  .topbar-sub   { font-size: 11px; color: var(--muted); margin-top: 1px; }
+
+  /* ── HERO RESULT CARD ── */
+  .result-hero {
+    margin: 20px 16px 0;
+    background: linear-gradient(135deg, #0f1f45 0%, #1a1040 100%);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .result-hero::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(56,189,248,.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .result-block { text-align: center; }
+  .result-label { font-size: 10px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 6px; }
+  .result-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .result-value.green { background: linear-gradient(135deg, var(--green), #6ee7b7); -webkit-background-clip: text; background-clip: text; }
+  .result-divider { width: 1px; height: 60px; background: var(--border); }
+  .grade-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 6px;
+    letter-spacing: .5px;
+  }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex;
+    margin: 20px 16px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+  }
+  .tab-btn {
+    flex: 1;
+    padding: 10px 0;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .tab-btn.active {
+    background: linear-gradient(135deg, #1e3a5f, #1e1a4f);
+    color: var(--accent);
+    box-shadow: 0 2px 8px rgba(0,0,0,.4);
+  }
+
+  /* ── SECTIONS ── */
+  .section { display: none; padding: 0 16px; }
+  .section.active { display: block; }
+
+  /* ── SEMESTER BLOCK ── */
+  .sem-block {
+    margin-top: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .sem-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    user-select: none;
+  }
+  .sem-header-left { display: flex; align-items: center; gap: 10px; }
+  .sem-dot {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px; font-weight: 700; color: #000;
+  }
+  .sem-name  { font-size: 14px; font-weight: 600; }
+  .sem-sgpa  { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); }
+  .chevron   { color: var(--muted); font-size: 12px; transition: transform .25s; }
+  .chevron.open { transform: rotate(180deg); }
+
+  .sem-body { padding: 14px 16px; display: none; }
+  .sem-body.open { display: block; }
+
+  /* ── SUBJECT ROW ── */
+  .subject-row {
+    display: grid;
+    grid-template-columns: 1fr 72px 110px 28px;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .input-field {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    outline: none;
+    width: 100%;
+    transition: border-color .2s;
+  }
+  .input-field:focus { border-color: var(--accent); }
+  .input-field::placeholder { color: var(--muted); }
+
+  .grade-select {
+    appearance: none;
+    background: var(--surface) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2364748b'/%3E%3C/svg%3E") no-repeat right 10px center;
+    padding-right: 28px;
+  }
+
+  .del-btn {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .2s;
+    line-height: 1;
+  }
+  .del-btn:hover { background: rgba(248,113,113,.15); color: var(--red); border-color: var(--red); }
+
+  .row-labels {
+    display: grid;
+    grid-template-columns: 1fr 72px 110px 28px;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .row-label { font-size: 10px; color: var(--muted); letter-spacing: .8px; text-transform: uppercase; padding-left: 2px; }
+
+  .add-subject-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1.5px dashed var(--border);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: all .2s;
+  }
+  .add-subject-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── CALCULATE BTN ── */
+  .calc-btn {
+    width: 100%;
+    margin-top: 24px;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #0ea5e9, #6366f1);
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(99,102,241,.35);
+    transition: transform .15s, box-shadow .15s;
+  }
+  .calc-btn:active { transform: scale(.98); box-shadow: 0 2px 10px rgba(99,102,241,.2); }
+
+  .reset-btn {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .reset-btn:hover { border-color: var(--red); color: var(--red); }
+
+  /* ── GRADE INFO ── */
+  .grade-table {
+    margin-top: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .grade-table-header {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 10px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .grade-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    align-items: center;
+    transition: background .15s;
+  }
+  .grade-row:last-child { border-bottom: none; }
+  .grade-row:hover { background: rgba(255,255,255,.03); }
+  .g-chip {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── SGPA HISTORY ── */
+  .history-card {
+    margin-top: 16px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+  }
+  .history-title { font-size: 12px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+  .history-bar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .history-sem-label { font-size: 11px; color: var(--muted); width: 28px; flex-shrink: 0; text-align: right; }
+  .history-bar-track { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .history-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width .6s cubic-bezier(.4,0,.2,1); }
+  .history-val { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--accent); width: 32px; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed;
+    bottom: 24px; left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--green);
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: transform .35s cubic-bezier(.4,0,.2,1);
+    z-index: 999;
+    white-space: nowrap;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  .info-box {
+    background: rgba(56,189,248,.08);
+    border: 1px solid rgba(56,189,248,.2);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+  .info-box span { color: var(--accent); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <a href="subject.html" class="back-btn">←</a>
+  <div>
+    <div class="topbar-title">📊 CGPA Calculator</div>
+    <div class="topbar-sub">WBSCTE · CST 5th Sem</div>
+  </div>
+</div>
+
+<!-- RESULT HERO -->
+<div class="result-hero">
+  <div class="result-block">
+    <div class="result-label">CGPA</div>
+    <div class="result-value" id="cgpa-display">—</div>
+    <div class="grade-badge" id="cgpa-grade-badge" style="background:rgba(100,116,139,.15);color:#64748b;">Enter grades</div>
+  </div>
+  <div class="result-divider"></div>
+  <div class="result-block">
+    <div class="result-label">Current SGPA</div>
+    <div class="result-value green" id="sgpa-display">—</div>
+    <div style="font-size:11px; color:var(--muted); margin-top:6px;" id="credits-display">0 credits</div>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="tab-bar">
+  <button class="tab-btn active" onclick="switchTab('sgpa')">SGPA</button>
+  <button class="tab-btn" onclick="switchTab('cgpa')">All Sems CGPA</button>
+  <button class="tab-btn" onclick="switchTab('info')">Grade Info</button>
+</div>
+
+<!-- ══════════════ TAB: SGPA ══════════════ -->
+<div class="section active" id="tab-sgpa">
+
+  <div class="sem-block" style="margin-top:16px;">
+    <div class="sem-header" style="cursor:default;">
+      <div class="sem-header-left">
+        <div class="sem-dot">5</div>
+        <div>
+          <div class="sem-name">5th Semester</div>
+          <div style="font-size:11px; color:var(--muted);">Add your subjects below</div>
+        </div>
+      </div>
+      <div class="sem-sgpa" id="live-sgpa">SGPA: —</div>
+    </div>
+
+    <div class="sem-body open" id="subjects-container">
+      <div class="row-labels">
+        <div class="row-label">Subject</div>
+        <div class="row-label">Credit</div>
+        <div class="row-label">Grade / Marks</div>
+        <div class="row-label"></div>
+      </div>
+      <!-- rows injected here -->
+    </div>
+  </div>
+
+  <div class="info-box">
+    💡 Grade points: <span>O=10, A+=9, A=8, B+=7, B=6, C=5, D=4, F=0</span><br>
+    SGPA = Σ(Credit × Grade Point) ÷ Σ Credits
+  </div>
+
+  <button class="calc-btn" onclick="calculateSGPA()">⚡ Calculate SGPA</button>
+  <button class="reset-btn" onclick="resetSGPA()">↺ Reset</button>
+</div>
+
+<!-- ══════════════ TAB: ALL SEMS CGPA ══════════════ -->
+<div class="section" id="tab-cgpa">
+
+  <div id="all-sems-container">
+    <!-- sem blocks injected -->
+  </div>
+
+  <div class="info-box" style="margin-top:16px;">
+    💡 CGPA = Σ(SGPA × Credits of that sem) ÷ Total Credits across all sems
+  </div>
+
+  <button class="calc-btn" onclick="calculateCGPA()">⚡ Calculate CGPA</button>
+  <button class="reset-btn" onclick="resetCGPA()">↺ Reset All</button>
+
+  <div class="history-card" id="history-section" style="display:none;">
+    <div class="history-title">📈 Semester Progress</div>
+    <div id="history-bars"></div>
+  </div>
+</div>
+
+<!-- ══════════════ TAB: GRADE INFO ══════════════ -->
+<div class="section" id="tab-info">
+  <div class="grade-table">
+    <div class="grade-table-header">
+      <div>Grade</div>
+      <div>Points</div>
+      <div>Marks</div>
+      <div>Status</div>
+    </div>
+  </div>
+
+  <div class="info-box" style="margin-top:16px;">
+    <span>Formula:</span><br>
+    SGPA = Σ(Cᵢ × GPᵢ) / ΣCᵢ<br><br>
+    <span>Percentage:</span><br>
+    % ≈ (CGPA − 0.5) × 10<br><br>
+    <span>Note:</span> Practical subjects may vary. Refer to your marksheet for exact values.
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✓ Calculated!</div>
+
+<script>
+// ── GRADE SYSTEM ──
+const GRADES = [
+  { g:'O',   gp:10, min:90, max:100, color:'#34d399', bg:'rgba(52,211,153,.12)' },
+  { g:'A+',  gp:9,  min:80, max:89,  color:'#38bdf8', bg:'rgba(56,189,248,.12)' },
+  { g:'A',   gp:8,  min:70, max:79,  color:'#818cf8', bg:'rgba(129,140,248,.12)' },
+  { g:'B+',  gp:7,  min:60, max:69,  color:'#fb923c', bg:'rgba(251,146,60,.12)' },
+  { g:'B',   gp:6,  min:50, max:59,  color:'#fbbf24', bg:'rgba(251,191,36,.12)' },
+  { g:'C',   gp:5,  min:45, max:49,  color:'#e879f9', bg:'rgba(232,121,249,.12)' },
+  { g:'D',   gp:4,  min:40, max:44,  color:'#94a3b8', bg:'rgba(148,163,184,.12)' },
+  { g:'F',   gp:0,  min:0,  max:39,  color:'#f87171', bg:'rgba(248,113,113,.12)' },
+];
+
+function gpFromGrade(g) { return (GRADES.find(x=>x.g===g)||{gp:0}).gp; }
+function gpFromMarks(m) {
+  const n = parseFloat(m);
+  if(isNaN(n)) return null;
+  for(const gr of GRADES) if(n>=gr.min && n<=gr.max) return gr.gp;
+  return 0;
+}
+function gradeLabel(cgpa) {
+  if(cgpa>=9)   return {text:'Outstanding',  color:'#34d399', bg:'rgba(52,211,153,.15)'};
+  if(cgpa>=8)   return {text:'Excellent',    color:'#38bdf8', bg:'rgba(56,189,248,.15)'};
+  if(cgpa>=7)   return {text:'Very Good',    color:'#818cf8', bg:'rgba(129,140,248,.15)'};
+  if(cgpa>=6)   return {text:'Good',         color:'#fb923c', bg:'rgba(251,146,60,.15)'};
+  if(cgpa>=5)   return {text:'Average',      color:'#fbbf24', bg:'rgba(251,191,36,.15)'};
+  if(cgpa>=4)   return {text:'Pass',         color:'#94a3b8', bg:'rgba(148,163,184,.15)'};
+  return              {text:'Fail',          color:'#f87171', bg:'rgba(248,113,113,.15)'};
+}
+
+// ── GRADE TABLE ──
+(function buildGradeTable(){
+  const t = document.querySelector('.grade-table');
+  GRADES.forEach(gr => {
+    const row = document.createElement('div');
+    row.className = 'grade-row';
+    row.innerHTML = `
+      <div><span class="g-chip" style="background:${gr.bg};color:${gr.color}">${gr.g}</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-weight:700;color:${gr.color}">${gr.gp}</div>
+      <div style="color:#94a3b8;font-size:12px">${gr.min}–${gr.max}</div>
+      <div style="font-size:11px;color:${gr.gp>=5?'#34d399':'#f87171'}">${gr.gp>=5?'✓ Pass':'✗ Fail'}</div>
+    `;
+    t.appendChild(row);
+  });
+})();
+
+// ── SUBJECT ROWS (SGPA tab) ──
+let subjectCount = 0;
+
+function addSubjectRow(name='', credit='', val='') {
+  subjectCount++;
+  const id = subjectCount;
+  const c = document.getElementById('subjects-container');
+  const div = document.createElement('div');
+  div.className = 'subject-row';
+  div.id = `srow-${id}`;
+  div.innerHTML = `
+    <input class="input-field" placeholder="Subject name" value="${name}" id="sname-${id}">
+    <input class="input-field" type="number" placeholder="Cr" min="1" max="6" value="${credit}" id="scred-${id}" oninput="liveSGPA()">
+    <select class="input-field grade-select" id="sgrade-${id}" onchange="liveSGPA()">
+      <option value="">— Grade —</option>
+      ${GRADES.map(g=>`<option value="${g.g}" ${val===g.g?'selected':''}>${g.g} (${g.gp} pts)</option>`).join('')}
+      <option value="marks" ${val==='marks'?'selected':''}>Enter Marks</option>
+    </select>
+    <button class="del-btn" onclick="delRow(${id})">×</button>
+  `;
+  // Insert before add button
+  const addBtn = document.getElementById('add-subj-btn');
+  c.insertBefore(div, addBtn);
+  updateMarksInput(id, val);
+}
+
+function updateMarksInput(id, sel) {
+  const sel2 = document.getElementById(`sgrade-${id}`);
+  if(!sel2) return;
+  const v = sel || sel2.value;
+  let old = document.getElementById(`smarks-${id}`);
+  if(v === 'marks') {
+    if(!old) {
+      const row = document.getElementById(`srow-${id}`);
+      const inp = document.createElement('input');
+      inp.className = 'input-field';
+      inp.type = 'number';
+      inp.placeholder = 'Marks (0-100)';
+      inp.id = `smarks-${id}`;
+      inp.min = 0; inp.max = 100;
+      inp.style.gridColumn = '1/-1';
+      inp.style.marginTop = '-2px';
+      inp.oninput = liveSGPA;
+      row.after(inp);
+    }
+  } else {
+    if(old) old.remove();
+    liveSGPA();
+  }
+}
+
+document.getElementById('sgrade-1') && null; // placeholder
+
+function delRow(id) {
+  document.getElementById(`srow-${id}`)?.remove();
+  document.getElementById(`smarks-${id}`)?.remove();
+  liveSGPA();
+}
+
+function getSubjectGP(id) {
+  const sel = document.getElementById(`sgrade-${id}`);
+  if(!sel) return null;
+  const v = sel.value;
+  if(!v) return null;
+  if(v === 'marks') {
+    const m = document.getElementById(`smarks-${id}`);
+    if(!m || !m.value) return null;
+    return gpFromMarks(m.value);
+  }
+  return gpFromGrade(v);
+}
+
+function liveSGPA() {
+  const rows = document.querySelectorAll('[id^="srow-"]');
+  let totalCr=0, totalPts=0, valid=true;
+  rows.forEach(row => {
+    const id = row.id.replace('srow-','');
+    const cr = parseFloat(document.getElementById(`scred-${id}`)?.value);
+    const gp = getSubjectGP(id);
+    if(!isNaN(cr) && cr>0 && gp!==null) {
+      totalCr += cr; totalPts += cr*gp;
+    }
+  });
+  const sgpa = totalCr>0 ? (totalPts/totalCr).toFixed(2) : null;
+  document.getElementById('live-sgpa').textContent = sgpa ? `SGPA: ${sgpa}` : 'SGPA: —';
+  return { sgpa: sgpa ? parseFloat(sgpa) : null, credits: totalCr };
+}
+
+function calculateSGPA() {
+  const {sgpa, credits} = liveSGPA();
+  if(!sgpa) { showToast('⚠️ Fill in credits & grades!', '#fbbf24'); return; }
+  document.getElementById('sgpa-display').textContent = sgpa.toFixed(2);
+  document.getElementById('credits-display').textContent = `${credits} credits`;
+  const gl = gradeLabel(sgpa);
+  const b = document.getElementById('cgpa-grade-badge');
+  b.textContent = gl.text;
+  b.style.background = gl.bg;
+  b.style.color = gl.color;
+  showToast('✓ SGPA Calculated!');
+}
+
+function resetSGPA() {
+  document.querySelectorAll('[id^="srow-"]').forEach(r=>r.remove());
+  document.querySelectorAll('[id^="smarks-"]').forEach(r=>r.remove());
+  subjectCount = 0;
+  document.getElementById('live-sgpa').textContent = 'SGPA: —';
+  document.getElementById('sgpa-display').textContent = '—';
+  document.getElementById('credits-display').textContent = '0 credits';
+  // re-add defaults
+  initSGPARows();
+}
+
+function initSGPARows() {
+  const defaultSubs = [
+    'Microprocessor','IoT','Elective-1','Elective-2','Elective-3','MP & MC Lab'
+  ];
+  defaultSubs.forEach(s => addSubjectRow(s, '', ''));
+  // add button
+  if(!document.getElementById('add-subj-btn')) {
+    const btn = document.createElement('button');
+    btn.id = 'add-subj-btn';
+    btn.className = 'add-subject-btn';
+    btn.textContent = '+ Add Subject';
+    btn.onclick = ()=>addSubjectRow();
+    document.getElementById('subjects-container').appendChild(btn);
+  }
+}
+
+// ── ALL SEMS CGPA ──
+const SEM_NAMES = ['1st Sem','2nd Sem','3rd Sem','4th Sem','5th Sem','6th Sem'];
+let semData = [];
+
+function buildAllSems() {
+  const c = document.getElementById('all-sems-container');
+  c.innerHTML = '';
+  semData = [];
+  SEM_NAMES.forEach((name, i) => {
+    semData.push({ sgpa: null, credits: null });
+    const block = document.createElement('div');
+    block.className = 'sem-block';
+    block.innerHTML = `
+      <div class="sem-header" onclick="toggleSem(${i})">
+        <div class="sem-header-left">
+          <div class="sem-dot">${i+1}</div>
+          <div>
+            <div class="sem-name">${name}</div>
+            <div style="font-size:11px;color:var(--muted)">Enter SGPA & total credits</div>
+          </div>
+        </div>
+        <span class="chevron" id="chev-${i}">▼</span>
+      </div>
+      <div class="sem-body" id="sebody-${i}" style="display:none;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div>
+            <div style="font-size:10px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px">SGPA</div>
+            <input class="input-field" type="number" step="0.01" min="0" max="10"
+              placeholder="e.g. 8.25" id="sgpa-in-${i}"
+              oninput="semData[${i}].sgpa=parseFloat(this.value)||null">
+          </div>
+          <div>
+            <div style="font-size:10px;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;margin-bottom:6px">Total Credits</div>
+            <input class="input-field" type="number" min="1" max="30"
+              placeholder="e.g. 22" id="cred-in-${i}"
+              oninput="semData[${i}].credits=parseFloat(this.value)||null">
+          </div>
+        </div>
+      </div>
+    `;
+    c.appendChild(block);
+  });
+  // open 5th sem by default
+  toggleSem(4);
+}
+
+function toggleSem(i) {
+  const body = document.getElementById(`sebody-${i}`);
+  const chev = document.getElementById(`chev-${i}`);
+  const open = body.style.display === 'block';
+  body.style.display = open ? 'none' : 'block';
+  chev.classList.toggle('open', !open);
+}
+
+function calculateCGPA() {
+  let totalW=0, totalCr=0;
+  let hasAny = false;
+  semData.forEach(s => {
+    if(s.sgpa && s.credits) {
+      totalW  += s.sgpa * s.credits;
+      totalCr += s.credits;
+      hasAny = true;
+    }
+  });
+  if(!hasAny) { showToast('⚠️ Fill at least one semester!', '#fbbf24'); return; }
+  const cgpa = (totalW / totalCr).toFixed(2);
+  document.getElementById('cgpa-display').textContent = cgpa;
+  document.getElementById('credits-display').textContent = `${totalCr} total credits`;
+  const gl = gradeLabel(parseFloat(cgpa));
+  const b = document.getElementById('cgpa-grade-badge');
+  b.textContent = gl.text;
+  b.style.background = gl.bg;
+  b.style.color = gl.color;
+  buildHistoryBars();
+  showToast('✓ CGPA Calculated!');
+}
+
+function buildHistoryBars() {
+  const sec = document.getElementById('history-section');
+  const bars = document.getElementById('history-bars');
+  bars.innerHTML = '';
+  let any = false;
+  semData.forEach((s,i) => {
+    if(s.sgpa) {
+      any = true;
+      const pct = (s.sgpa/10*100).toFixed(0);
+      bars.innerHTML += `
+        <div class="history-bar-row">
+          <div class="history-sem-label">S${i+1}</div>
+          <div class="history-bar-track">
+            <div class="history-bar-fill" style="width:0%" data-pct="${pct}"></div>
+          </div>
+          <div class="history-val">${s.sgpa.toFixed(2)}</div>
+        </div>`;
+    }
+  });
+  if(any) {
+    sec.style.display = 'block';
+    setTimeout(() => {
+      document.querySelectorAll('.history-bar-fill').forEach(b => {
+        b.style.width = b.dataset.pct + '%';
+      });
+    }, 50);
+  }
+}
+
+function resetCGPA() {
+  buildAllSems();
+  document.getElementById('cgpa-display').textContent = '—';
+  document.getElementById('history-section').style.display = 'none';
+}
+
+// ── TABS ──
+function switchTab(name) {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(`tab-${name}`).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── TOAST ──
+function showToast(msg, color='#34d399') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.background = color;
+  t.style.color = color==='#fbbf24' ? '#000' : '#000';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+// ── INIT ──
+initSGPARows();
+buildAllSems();
+</script>
+</body>
+</html>

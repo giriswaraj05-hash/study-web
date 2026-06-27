@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PYQ Quiz</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+body { background:#0f172a; color:#f1f5f9; padding:20px; }
+.container { max-width:600px; margin:auto; }
+.top-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+.back-link { color:#94a3b8; text-decoration:none; font-size:13px; font-weight:700; }
+.subject-tag { background:#1e293b; border:1px solid #a855f7; color:#e9d5ff; font-size:12px; font-weight:800; padding:6px 12px; border-radius:10px; }
+.progress-wrap { margin-bottom:20px; }
+.progress-text { font-size:12px; color:#94a3b8; margin-bottom:6px; font-weight:700; }
+.progress-bar { background:#1e293b; height:8px; border-radius:6px; overflow:hidden; border:1px solid #334155; }
+.progress-fill { background:linear-gradient(90deg,#38bdf8,#a855f7); height:100%; width:0%; transition:width .3s; }
+.q-card { background:#1e293b; border:1px solid #334155; border-radius:18px; padding:20px; margin-bottom:16px; }
+.q-text { font-size:16px; font-weight:700; line-height:1.5; color:#f1f5f9; }
+.opt { background:#0f172a; border:1px solid #334155; border-radius:14px; padding:14px 16px; margin-bottom:10px; font-size:14px; cursor:pointer; transition:.2s; display:flex; align-items:center; gap:10px; }
+.opt:hover { border-color:#6366f1; }
+.opt.selected { border-color:#a855f7; background:#1e1040; }
+.opt .letter { width:24px; height:24px; border-radius:50%; background:#1e293b; border:1px solid #334155; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex-shrink:0; }
+.opt.selected .letter { background:#a855f7; border-color:#a855f7; color:#fff; }
+.next-btn { width:100%; padding:15px; border:none; border-radius:16px; background:linear-gradient(45deg,#a855f7,#6366f1); color:#fff; font-weight:800; font-size:15px; cursor:pointer; opacity:.4; transition:.2s; }
+.next-btn.ready { opacity:1; }
+/* RESULTS */
+.result-box { text-align:center; padding:10px 0 20px; }
+.score-circle { width:140px; height:140px; border-radius:50%; background:#1e293b; border:6px solid #a855f7; display:flex; flex-direction:column; align-items:center; justify-content:center; margin:0 auto 20px; }
+.score-num { font-size:32px; font-weight:900; color:#e9d5ff; }
+.score-label { font-size:11px; color:#94a3b8; font-weight:700; }
+.result-msg { font-size:15px; font-weight:800; margin-bottom:18px; }
+.stat-row { display:flex; gap:12px; margin-bottom:20px; }
+.stat-box { flex:1; background:#1e293b; border-radius:14px; padding:14px; text-align:center; border:1px solid #334155; }
+.stat-box.correct { border-color:#10b981; }
+.stat-box.wrong { border-color:#ef4444; }
+.stat-num { font-size:22px; font-weight:900; }
+.stat-box.correct .stat-num { color:#10b981; }
+.stat-box.wrong .stat-num { color:#ef4444; }
+.stat-lbl { font-size:11px; color:#94a3b8; font-weight:700; margin-top:2px; }
+.review-title { font-size:13px; font-weight:800; color:#94a3b8; text-transform:uppercase; margin:20px 0 12px; border-bottom:1px solid #334155; padding-bottom:8px; }
+.review-item { background:#1e293b; border-left:3px solid #ef4444; border-radius:10px; padding:14px; margin-bottom:10px; }
+.review-q { font-size:13px; font-weight:700; margin-bottom:8px; color:#e2e8f0; }
+.review-line { font-size:12.5px; margin-bottom:3px; }
+.review-line.your { color:#f87171; }
+.review-line.correct { color:#34d399; }
+.action-btns { display:flex; gap:10px; margin-top:20px; }
+.btn-retry { flex:1; padding:14px; border-radius:14px; border:1px solid #334155; background:transparent; color:#cbd5e1; font-weight:700; cursor:pointer; font-size:13px; }
+.btn-home { flex:1; padding:14px; border-radius:14px; border:none; background:linear-gradient(45deg,#a855f7,#6366f1); color:#fff; font-weight:800; cursor:pointer; font-size:13px; text-decoration:none; display:flex; align-items:center; justify-content:center; }
+.no-wrong { text-align:center; color:#34d399; font-weight:700; font-size:14px; padding:20px 0; }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="top-row">
+    <a href="subject.html" class="back-link">⬅ Dashboard</a>
+    <span class="subject-tag" id="subjectTag">--</span>
+  </div>
+
+  <!-- QUIZ SCREEN -->
+  <div id="quizScreen">
+    <div class="progress-wrap">
+      <div class="progress-text" id="progressText">Question 1 of 10</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+    </div>
+    <div class="q-card">
+      <div class="q-text" id="qText">Loading...</div>
+    </div>
+    <div id="optionsWrap"></div>
+    <button class="next-btn" id="nextBtn">Next →</button>
+  </div>
+
+  <!-- RESULT SCREEN -->
+  <div id="resultScreen" style="display:none;">
+    <div class="result-box">
+      <div class="score-circle">
+        <div class="score-num" id="scoreNum">0/0</div>
+        <div class="score-label">SCORE</div>
+      </div>
+      <div class="result-msg" id="resultMsg"></div>
+      <div class="stat-row">
+        <div class="stat-box correct"><div class="stat-num" id="correctCount">0</div><div class="stat-lbl">✅ CORRECT</div></div>
+        <div class="stat-box wrong"><div class="stat-num" id="wrongCount">0</div><div class="stat-lbl">❌ WRONG</div></div>
+      </div>
+    </div>
+    <div class="review-title">📋 Review</div>
+    <div id="reviewWrap"></div>
+    <div class="action-btns">
+      <button class="btn-retry" id="retryBtn">🔄 Retry Quiz</button>
+      <a href="subject.html" class="btn-home">🏠 Dashboard</a>
+    </div>
+  </div>
+</div>
+
+<!-- All subject question banks (only the matching one is used) -->
+<script src="q_data_microprocessor.js"></script>
+<script src="q_data_iot.js"></script>
+<script src="q_data_mobile_computing.js"></script>
+<script src="q_data_acn.js"></script>
+<script src="q_data_automata.js"></script>
+<script src="q_data_ai.js"></script>
+<script src="q_data_graphics.js"></script>
+<script src="q_data_dip.js"></script>
+
+<script>
+var subjectMeta = {
+  microprocessor: { name:"Microprocessor", icon:"⚙️" },
+  iot: { name:"IoT", icon:"🌐" },
+  mobile_computing: { name:"Mobile Computing", icon:"📱" },
+  acn: { name:"Advanced Computer Network", icon:"🌐" },
+  automata: { name:"Theory of Automata", icon:"🤖" },
+  ai: { name:"Fundamentals of AI", icon:"🧠" },
+  graphics: { name:"Computer Graphics", icon:"🎨" },
+  dip: { name:"Digital Image Processing", icon:"🖼️" }
+};
+
+var params = new URLSearchParams(window.location.search);
+var subjectKey = params.get('subject');
+var meta = subjectMeta[subjectKey];
+var rawQuestions = (window.QUIZ_DATA && window.QUIZ_DATA[subjectKey]) ? window.QUIZ_DATA[subjectKey] : [];
+
+document.getElementById('subjectTag').textContent = meta ? (meta.icon + ' ' + meta.name) : 'Unknown';
+
+var quiz = [];
+var current = 0;
+var selectedIndex = null;
+var score = 0;
+var wrongList = [];
+
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
+  }
+  return a;
+}
+
+function buildQuizSet() {
+  var base = shuffle(rawQuestions);
+  quiz = base.map(function(item) {
+    var optsWithIndex = item.options.map(function(opt, idx) { return { text: opt, isCorrect: idx === item.answer }; });
+    var shuffledOpts = shuffle(optsWithIndex);
+    return {
+      q: item.q,
+      options: shuffledOpts.map(function(o){ return o.text; }),
+      answer: shuffledOpts.findIndex(function(o){ return o.isCorrect; })
+    };
+  });
+}
+
+function startQuiz() {
+  current = 0; score = 0; wrongList = [];
+  buildQuizSet();
+  document.getElementById('quizScreen').style.display = 'block';
+  document.getElementById('resultScreen').style.display = 'none';
+  renderQuestion();
+}
+
+function renderQuestion() {
+  selectedIndex = null;
+  var total = quiz.length;
+  var q = quiz[current];
+  document.getElementById('progressText').textContent = 'Question ' + (current+1) + ' of ' + total;
+  document.getElementById('progressFill').style.width = ((current)/total*100) + '%';
+  document.getElementById('qText').textContent = q.q;
+
+  var wrap = document.getElementById('optionsWrap');
+  wrap.innerHTML = '';
+  var letters = ['A','B','C','D','E','F'];
+  q.options.forEach(function(opt, idx) {
+    var div = document.createElement('div');
+    div.className = 'opt';
+    div.innerHTML = '<span class="letter">' + letters[idx] + '</span><span>' + opt + '</span>';
+    div.addEventListener('click', function() {
+      document.querySelectorAll('.opt').forEach(function(o){ o.classList.remove('selected'); });
+      div.classList.add('selected');
+      selectedIndex = idx;
+      document.getElementById('nextBtn').classList.add('ready');
+    });
+    wrap.appendChild(div);
+  });
+
+  document.getElementById('nextBtn').classList.remove('ready');
+  document.getElementById('nextBtn').textContent = (current === total - 1) ? 'Finish ✓' : 'Next →';
+}
+
+document.getElementById('nextBtn').addEventListener('click', function() {
+  if (selectedIndex === null) return;
+  var q = quiz[current];
+  if (selectedIndex === q.answer) {
+    score++;
+  } else {
+    wrongList.push({
+      question: q.q,
+      yourAnswer: q.options[selectedIndex],
+      correctAnswer: q.options[q.answer]
+    });
+  }
+  if (current < quiz.length - 1) {
+    current++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+});
+
+function showResults() {
+  document.getElementById('quizScreen').style.display = 'none';
+  document.getElementById('resultScreen').style.display = 'block';
+  var total = quiz.length;
+  var wrongCount = wrongList.length;
+  document.getElementById('scoreNum').textContent = score + '/' + total;
+  document.getElementById('correctCount').textContent = score;
+  document.getElementById('wrongCount').textContent = wrongCount;
+
+  var pct = Math.round((score/total)*100);
+  var msg = '';
+  if (pct === 100) msg = '🏆 Perfect Score!';
+  else if (pct >= 80) msg = '🔥 Excellent Work!';
+  else if (pct >= 50) msg = '👍 Good, keep practicing!';
+  else msg = '📚 Needs more revision';
+  document.getElementById('resultMsg').textContent = msg;
+
+  var reviewWrap = document.getElementById('reviewWrap');
+  reviewWrap.innerHTML = '';
+  if (wrongCount === 0) {
+    reviewWrap.innerHTML = '<div class="no-wrong">🎉 All answers correct — no mistakes!</div>';
+  } else {
+    wrongList.forEach(function(item) {
+      var div = document.createElement('div');
+      div.className = 'review-item';
+      div.innerHTML =
+        '<div class="review-q">' + item.question + '</div>' +
+        '<div class="review-line your">✗ Your answer: ' + item.yourAnswer + '</div>' +
+        '<div class="review-line correct">✓ Correct answer: ' + item.correctAnswer + '</div>';
+      reviewWrap.appendChild(div);
+    });
+  }
+}
+
+document.getElementById('retryBtn').addEventListener('click', startQuiz);
+
+if (!meta || rawQuestions.length === 0) {
+  document.getElementById('qText').textContent = 'No questions found for this subject yet.';
+  document.getElementById('optionsWrap').innerHTML = '';
+  document.getElementById('nextBtn').style.display = 'none';
+} else {
+  startQuiz();
+}
+</script>
+
+</body>
+</html>

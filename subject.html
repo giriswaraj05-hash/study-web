@@ -19,7 +19,6 @@
         .subject-card:hover { border-color: #facc15; transform: scale(1.02); }
         .name { font-weight: 600; font-size: 13px; margin-top: 8px; }
         .optional-badge { font-size: 9px; background: #334155; color: #94a3b8; padding: 2px 6px; border-radius: 5px; display: inline-block; margin-top: 5px; }
-
         .elective-card { background: #1e293b; border-radius: 20px; border: 1px solid #38bdf8; overflow: hidden; }
         .elective-card-header { display: flex; flex-direction: column; align-items: center; padding: 18px 10px 12px; cursor: pointer; text-decoration: none; color: #cbd5e1; }
         .elective-card-header .arrow-down { font-size: 10px; color: #64748b; margin-top: 4px; transition: transform 0.3s; }
@@ -33,7 +32,6 @@
         .lab-name { font-weight: 800; font-size: 13px; margin-top: 8px; color: #e9d5ff; }
         .unique-quiz-btn { background: linear-gradient(45deg, #a855f7, #6366f1); color: white; padding: 16px; border-radius: 18px; border: none; font-weight: 800; font-size: 15px; cursor: pointer; width: 100%; margin: 20px 0; }
         .chat-btn { display: block; background: #0f172a; border: 1px solid #10b981; color: #10b981; text-align: center; padding: 15px; border-radius: 18px; text-decoration: none; font-weight: bold; }
-
         .scte-btn { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; padding: 16px 20px; border-radius: 18px; text-decoration: none; font-weight: 800; font-size: 14px; background: linear-gradient(135deg, #0f172a, #1e1040); border: 1.5px solid #f59e0b; color: #fbbf24; position: relative; overflow: hidden; transition: 0.3s; }
         .scte-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, rgba(245,158,11,0.08), transparent); transform: translateX(-100%); animation: shimmer 2.5s infinite; }
         @keyframes shimmer { 100% { transform: translateX(100%); } }
@@ -42,7 +40,6 @@
         .live-badge { display: flex; align-items: center; gap: 5px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.4); color: #f87171; font-size: 10px; font-weight: 800; padding: 4px 10px; border-radius: 20px; letter-spacing: 0.5px; white-space: nowrap; }
         .live-badge::before { content: ''; width: 7px; height: 7px; background: #ef4444; border-radius: 50%; animation: livePulse 1.2s ease-in-out infinite; display: inline-block; }
         @keyframes livePulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:0.4; transform:scale(0.7); } }
-
         .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); backdrop-filter: blur(6px); z-index: 9999; align-items: center; justify-content: center; }
         .modal-overlay.active { display: flex; }
         .modal-box { background: #1e293b; border: 1px solid #6366f1; border-radius: 24px; padding: 28px 22px; width: 92%; max-width: 420px; animation: popIn 0.3s ease; position: relative; max-height: 90vh; overflow-y: auto; }
@@ -50,7 +47,6 @@
         .modal-box h2 { text-align: center; font-size: 18px; font-weight: 800; color: #a78bfa; margin-bottom: 6px; }
         .modal-box .modal-sub { text-align: center; font-size: 12px; color: #64748b; margin-bottom: 20px; }
         .close-x { position: absolute; top: 14px; right: 16px; background: none; border: none; color: #64748b; font-size: 20px; cursor: pointer; }
-
         .quiz-subjects { display: flex; flex-direction: column; gap: 10px; }
         .quiz-item { display: flex; align-items: center; gap: 14px; background: #0f172a; border: 1px solid #334155; border-radius: 14px; padding: 14px 16px; cursor: pointer; transition: 0.2s; user-select: none; }
         .quiz-item:hover { border-color: #6366f1; background: #1a2540; }
@@ -61,10 +57,8 @@
         .quiz-item .s-tag { font-size: 10px; color: #94a3b8; background: #1e293b; padding: 2px 7px; border-radius: 5px; display: inline-block; margin-top: 3px; }
         .quiz-item .check { width: 22px; height: 22px; border-radius: 50%; border: 2px solid #334155; display: flex; align-items: center; justify-content: center; transition: 0.2s; flex-shrink: 0; font-size: 12px; font-weight: 900; color: white; }
         .quiz-item.selected .check { background: #a855f7; border-color: #a855f7; }
-
         .quiz-item .arrow { font-size: 12px; color: #64748b; margin-left: 4px; transition: 0.2s; }
         .quiz-item.open .arrow { transform: rotate(90deg); color: #a78bfa; }
-
         .sub-items { display: none; flex-direction: column; gap: 8px; padding: 4px 0 4px 16px; }
         .sub-items.show { display: flex; }
         .sub-item { display: flex; align-items: center; gap: 12px; background: #0a1020; border: 1px solid #1e293b; border-radius: 12px; padding: 12px 14px; cursor: pointer; transition: 0.2s; user-select: none; }
@@ -78,7 +72,6 @@
         @keyframes tapBlink { 0%,100%{opacity:0.4;} 50%{opacity:1;} }
         .sub-item .check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid #334155; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 900; color: white; }
         .sub-item.selected .check { background: #a855f7; border-color: #a855f7; }
-
         @keyframes flashGlow {
             0%   { background: #0a1020; border-color: #1e293b; box-shadow: none; }
             30%  { background: #1a0a40; border-color: #a855f7; box-shadow: 0 0 18px 4px rgba(168,85,247,0.55); }
@@ -86,45 +79,26 @@
             80%  { background: #0d1535; border-color: #6366f1; box-shadow: 0 0 10px 2px rgba(99,102,241,0.35); }
             100% { background: #0a1020; border-color: #1e293b; box-shadow: none; }
         }
-
         @keyframes textFlash {
             0%, 100% { color: #cbd5e1; }
             30%       { color: #e9d5ff; text-shadow: 0 0 8px rgba(168,85,247,0.8); }
             80%       { color: #c7d2fe; text-shadow: 0 0 5px rgba(99,102,241,0.6); }
         }
-
         @keyframes iconFlash {
             0%, 100% { filter: none; }
             30%       { filter: drop-shadow(0 0 6px rgba(168,85,247,0.9)); transform: scale(1.15); }
             80%       { filter: drop-shadow(0 0 4px rgba(99,102,241,0.7)); transform: scale(1.05); }
         }
-
-        .sub-item.flashing {
-            animation: flashGlow 0.9s ease-in-out infinite;
-        }
-        .sub-item.flashing .ss-name {
-            animation: textFlash 0.9s ease-in-out infinite;
-        }
-        .sub-item.flashing .s-icon {
-            display: inline-block;
-            animation: iconFlash 0.9s ease-in-out infinite;
-        }
-
-        .sub-item.flashing:nth-child(2) {
-            animation-delay: 0.18s;
-        }
-        .sub-item.flashing:nth-child(2) .ss-name {
-            animation-delay: 0.18s;
-        }
-        .sub-item.flashing:nth-child(2) .s-icon {
-            animation-delay: 0.18s;
-        }
-
+        .sub-item.flashing { animation: flashGlow 0.9s ease-in-out infinite; }
+        .sub-item.flashing .ss-name { animation: textFlash 0.9s ease-in-out infinite; }
+        .sub-item.flashing .s-icon { display: inline-block; animation: iconFlash 0.9s ease-in-out infinite; }
+        .sub-item.flashing:nth-child(2) { animation-delay: 0.18s; }
+        .sub-item.flashing:nth-child(2) .ss-name { animation-delay: 0.18s; }
+        .sub-item.flashing:nth-child(2) .s-icon { animation-delay: 0.18s; }
         .modal-actions { display: flex; gap: 10px; margin-top: 20px; }
         .btn-cancel { flex: 1; padding: 13px; border-radius: 14px; border: 1px solid #334155; background: transparent; color: #94a3b8; font-weight: 700; font-size: 14px; cursor: pointer; }
         .btn-start { flex: 2; padding: 13px; border-radius: 14px; border: none; background: linear-gradient(45deg, #a855f7, #6366f1); color: white; font-weight: 800; font-size: 14px; cursor: pointer; opacity: 0.4; transition: 0.2s; }
         .btn-start.ready { opacity: 1; }
-
         .top-bar { display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto 10px; position: relative; }
         .visitor-pill { background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 11px; font-weight: 700; padding: 8px 14px; border-radius: 20px; display: flex; align-items: center; gap: 6px; }
         .menu-btn { background: #1e293b; border: 1px solid #334155; color: #cbd5e1; width: 40px; height: 40px; border-radius: 12px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
@@ -135,23 +109,19 @@
         .dropdown-menu a:hover, .dropdown-menu button:hover { background: #334155; }
         .dropdown-menu .menu-icon { font-size: 16px; width: 20px; text-align: center; }
         .dropdown-menu hr { border: none; border-top: 1px solid #334155; margin: 4px 0; width: 100%; }
-
         .tree-display { text-align: center; font-size: 70px; margin: 10px 0; }
         .tree-day { text-align: center; font-size: 18px; font-weight: 800; color: #a78bfa; margin-bottom: 4px; }
         .tree-msg { text-align: center; font-size: 12px; color: #94a3b8; margin-bottom: 16px; }
         .tree-progress-bar { background: #0f172a; border-radius: 10px; height: 10px; overflow: hidden; border: 1px solid #334155; }
         .tree-progress-fill { background: linear-gradient(90deg, #38bdf8, #a855f7); height: 100%; width: 0%; transition: width 0.6s ease; }
         .tree-stages { display: flex; justify-content: space-between; font-size: 10px; color: #64748b; margin-top: 6px; }
-
         .countdown-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 16px 0; }
         .countdown-box { background: #0f172a; border: 1px solid #334155; border-radius: 14px; padding: 14px 6px; text-align: center; }
         .countdown-num { font-size: 24px; font-weight: 800; color: #38bdf8; font-family: monospace; }
         .countdown-label { font-size: 9px; color: #94a3b8; text-transform: uppercase; margin-top: 4px; letter-spacing: 0.5px; }
-
         .update-item { background: #0f172a; border: 1px solid #334155; border-left: 3px solid #38bdf8; border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
         .update-date { font-size: 10px; color: #64748b; font-weight: 700; margin-bottom: 4px; }
         .update-text { font-size: 13px; color: #e2e8f0; }
-
         body.light-mode { background-color: #f1f5f9; color: #0f172a; }
         body.light-mode .subject-card, body.light-mode .quiz-item, body.light-mode .sub-item,
         body.light-mode .modal-box, body.light-mode .menu-btn, body.light-mode .dropdown-menu,
@@ -159,64 +129,24 @@
         body.light-mode .name, body.light-mode .s-name, body.light-mode .ss-name { color: #0f172a; }
         body.light-mode .dropdown-menu a, body.light-mode .dropdown-menu button { color: #0f172a; }
         body.light-mode .dropdown-menu a:hover, body.light-mode .dropdown-menu button:hover { background: #e2e8f0; }
-
         .menu-btn { position: relative; }
         .menu-btn.attention { animation: menuBounce 1.4s ease-in-out infinite; }
-        @keyframes menuBounce {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-4px) scale(1.08); }
-        }
-        .menu-badge {
-            position: absolute; top: -4px; right: -4px;
-            width: 12px; height: 12px; border-radius: 50%;
-            background: #ef4444; border: 2px solid #0f172a;
-            display: none;
-        }
+        @keyframes menuBounce { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-4px) scale(1.08); } }
+        .menu-badge { position: absolute; top: -4px; right: -4px; width: 12px; height: 12px; border-radius: 50%; background: #ef4444; border: 2px solid #0f172a; display: none; }
         .menu-badge.show { display: block; animation: badgePulse 1.2s ease-in-out infinite; }
-        @keyframes badgePulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(0.8); }
-        }
+        @keyframes badgePulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
         body.light-mode .menu-badge { border-color: #ffffff; }
-
-        .menu-tooltip {
-            position: absolute; top: 50px; right: 0;
-            background: #6366f1; color: #fff;
-            font-size: 12px; font-weight: 700;
-            padding: 10px 14px; border-radius: 12px;
-            white-space: nowrap; box-shadow: 0 6px 16px rgba(0,0,0,0.4);
-            z-index: 1001; display: none;
-            animation: tooltipFloat 1.6s ease-in-out infinite;
-        }
+        .menu-tooltip { position: absolute; top: 50px; right: 0; background: #6366f1; color: #fff; font-size: 12px; font-weight: 700; padding: 10px 14px; border-radius: 12px; white-space: nowrap; box-shadow: 0 6px 16px rgba(0,0,0,0.4); z-index: 1001; display: none; animation: tooltipFloat 1.6s ease-in-out infinite; }
         .menu-tooltip.show { display: block; }
-        .menu-tooltip::after {
-            content: ''; position: absolute; top: -6px; right: 14px;
-            border-width: 0 6px 6px 6px; border-style: solid;
-            border-color: transparent transparent #6366f1 transparent;
-        }
-        @keyframes tooltipFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
-        .menu-arrow {
-            position: absolute; top: 8px; right: 48px;
-            font-size: 22px; color: #facc15;
-            display: none;
-            filter: drop-shadow(0 0 6px rgba(250,204,21,0.7));
-            animation: arrowSlide 1s ease-in-out infinite;
-            pointer-events: none;
-        }
+        .menu-tooltip::after { content: ''; position: absolute; top: -6px; right: 14px; border-width: 0 6px 6px 6px; border-style: solid; border-color: transparent transparent #6366f1 transparent; }
+        @keyframes tooltipFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+        .menu-arrow { position: absolute; top: 8px; right: 48px; font-size: 22px; color: #facc15; display: none; filter: drop-shadow(0 0 6px rgba(250,204,21,0.7)); animation: arrowSlide 1s ease-in-out infinite; pointer-events: none; }
         .menu-arrow.show { display: block; }
-        @keyframes arrowSlide {
-            0%, 100% { transform: translateX(0); opacity: 1; }
-            50% { transform: translateX(8px); opacity: 0.5; }
-        }
+        @keyframes arrowSlide { 0%, 100% { transform: translateX(0); opacity: 1; } 50% { transform: translateX(8px); opacity: 0.5; } }
     </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
 <div class="top-bar">
     <div class="visitor-pill" id="visitorPill">👥 <span id="visitorCount">--</span></div>
     <span class="menu-arrow" id="menuArrow">➤</span>
@@ -246,49 +176,47 @@
 <div class="container">
     <h1 style="text-align:center; margin-bottom:25px;">SUBJECT DASHBOARD</h1>
 
-<a href="https://webscte.co.in/" target="_blank" class="scte-btn">
-    <span class="scte-left"> ➡️   WBSCTE WEBSITE</span>
-    <span class="live-badge">🔴 LIVE UPDATE</span>
-</a>
+    <a href="https://webscte.co.in/" target="_blank" class="scte-btn">
+        <span class="scte-left"> ➡️   WBSCTE WEBSITE</span>
+        <span class="live-badge">🔴 LIVE UPDATE</span>
+    </a>
 
-<div class="grid-container" style="margin-top:20px;">
-    <a href="micro.html" class="subject-card">
-        <span>⚙️</span>
-        <div class="name">Microprocessor</div>
-        <span class="compulsory-badge">REQUIRED</span>
-    </a>
-    <a href="iot.html" class="subject-card">
-        <span>🌐</span>
-        <div class="name">IoT</div>
-        <span class="compulsory-badge">REQUIRED</span>
-    </a>
-    <a href="elective1.html" class="subject-card">
-        <span>📱</span>
-        <div class="name">Elective-1</div>
-        <span class="optional-badge">Optional</span>
-    </a>
-    <a href="elective2.html" class="subject-card">
-        <span>🤖</span>
-        <div class="name">Elective-2</div>
-        <span class="optional-badge">Optional</span>
-    </a>
-    <a href="elective3.html" class="subject-card">
-        <span>💻</span>
-        <div class="name">Elective-3</div>
-        <span class="optional-badge">Optional</span>
-    </a>
-    <a href="lab.html" class="lab-card">
-        <span>🛠️</span>
-        <div class="lab-name">MP & MC LAB</div>
-    </a>
-</div>
-
+    <div class="grid-container" style="margin-top:20px;">
+        <a href="micro.html" class="subject-card">
+            <span>⚙️</span>
+            <div class="name">Microprocessor</div>
+            <span class="compulsory-badge">REQUIRED</span>
+        </a>
+        <a href="iot.html" class="subject-card">
+            <span>🌐</span>
+            <div class="name">IoT</div>
+            <span class="compulsory-badge">REQUIRED</span>
+        </a>
+        <a href="elective1.html" class="subject-card">
+            <span>📱</span>
+            <div class="name">Elective-1</div>
+            <span class="optional-badge">Optional</span>
+        </a>
+        <a href="elective2.html" class="subject-card">
+            <span>🤖</span>
+            <div class="name">Elective-2</div>
+            <span class="optional-badge">Optional</span>
+        </a>
+        <a href="elective3.html" class="subject-card">
+            <span>💻</span>
+            <div class="name">Elective-3</div>
+            <span class="optional-badge">Optional</span>
+        </a>
+        <a href="lab.html" class="lab-card">
+            <span>🛠️</span>
+            <div class="lab-name">MP & MC LAB</div>
+        </a>
+    </div>
 
     <button class="unique-quiz-btn" id="quizBtn">🚀 START PYQ QUIZ</button>
     <a href="chat.html" class="chat-btn">💬 JOIN DISCUSSION GROUP</a>
 
     <h2 class="section-title">📚 ACADEMICS</h2>
-
     <div class="grid-container">
         <div class="subject-card" onclick="openModal('teacherModal')" style="cursor:pointer;">
             <span>👨‍🏫</span>
@@ -323,21 +251,17 @@
         <button class="close-x" id="closeBtn">✕</button>
         <h2>🚀 Select Subject</h2>
         <p class="modal-sub">Choose a subject to start your PYQ Quiz</p>
-
         <div class="quiz-subjects">
-
             <div class="quiz-item" data-subject="microprocessor" data-type="direct">
                 <span class="icon">⚙️</span>
                 <div class="info"><div class="s-name">Microprocessor</div><span class="s-tag">REQUIRED</span></div>
                 <div class="check"></div>
             </div>
-
             <div class="quiz-item" data-subject="iot" data-type="direct">
                 <span class="icon">🌐</span>
                 <div class="info"><div class="s-name">IoT</div><span class="s-tag">REQUIRED</span></div>
                 <div class="check"></div>
             </div>
-
             <div class="quiz-item" data-type="elective" data-elective="1">
                 <span class="icon">📱</span>
                 <div class="info"><div class="s-name">Elective-1</div><span class="s-tag">Optional ▸ choose one</span></div>
@@ -355,7 +279,6 @@
                     <div class="check"></div>
                 </div>
             </div>
-
             <div class="quiz-item" data-type="elective" data-elective="2">
                 <span class="icon">🤖</span>
                 <div class="info"><div class="s-name">Elective-2</div><span class="s-tag">Optional ▸ choose one</span></div>
@@ -373,7 +296,6 @@
                     <div class="check"></div>
                 </div>
             </div>
-
             <div class="quiz-item" data-type="elective" data-elective="3">
                 <span class="icon">💻</span>
                 <div class="info"><div class="s-name">Elective-3</div><span class="s-tag">Optional ▸ choose one</span></div>
@@ -391,9 +313,7 @@
                     <div class="check"></div>
                 </div>
             </div>
-
         </div>
-
         <div class="modal-actions">
             <button class="btn-cancel" id="cancelBtn">Cancel</button>
             <button class="btn-start" id="startBtn">Start Quiz →</button>
@@ -401,21 +321,18 @@
     </div>
 </div>
 
-
 <!-- TEACHER MODAL -->
 <div class="modal-overlay" id="teacherModal">
     <div class="modal-box">
         <button class="close-x" onclick="closeModal('teacherModal')">✕</button>
         <h2>👨‍🏫 Teacher List</h2>
         <p class="modal-sub">5th Sem CST Department</p>
-
         <div style="text-align:center; padding: 40px 20px;">
             <div style="font-size: 60px; margin-bottom: 20px; filter: drop-shadow(0 0 20px #a855f7);">👨‍🏫</div>
             <p style="font-size: 16px; font-weight: 700; color: #e2e8f0; line-height: 1.6;">
-                Add the teacher list<br>when the classes start
+                Add the teacher list<br>when the classes start.
             </p>
         </div>
-
         <button class="btn-cancel" style="width:100%; margin-top:10px;" onclick="closeModal('teacherModal')">Close</button>
     </div>
 </div>
@@ -426,14 +343,12 @@
         <button class="close-x" onclick="closeModal('routineModal')">✕</button>
         <h2>📅 Class Routine</h2>
         <p class="modal-sub">5th Sem - Section A</p>
-
         <div style="text-align:center; padding: 40px 20px;">
             <div style="font-size: 60px; margin-bottom: 20px; filter: drop-shadow(0 0 20px #3a86ff);">📅</div>
             <p style="font-size: 16px; font-weight: 700; color: #e2e8f0; line-height: 1.6;">
-                Will be added when the classes start<br>
+                Will be added when the classes start.
             </p>
         </div>
-
         <button class="btn-cancel" style="width:100%; margin-top:10px;" onclick="closeModal('routineModal')">Close</button>
     </div>
 </div>
@@ -459,11 +374,9 @@
         <button class="close-x" onclick="closeModal('treeModal')">✕</button>
         <h2>🌳 Knowledge Tree</h2>
         <p class="modal-sub">Visit daily to grow your tree</p>
-
         <div class="tree-display" id="treeDisplay">🌱</div>
         <div class="tree-day" id="treeDayText">Day 1</div>
         <div class="tree-msg" id="treeMsgText">Welcome! Come back tomorrow to grow your tree.</div>
-
         <div class="tree-progress-bar"><div class="tree-progress-fill" id="treeProgressFill"></div></div>
         <div class="tree-stages">
             <span>🌱 Seed</span>
@@ -471,7 +384,6 @@
             <span>🌳 Tree</span>
             <span>🌳✨ Master</span>
         </div>
-
         <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('treeModal')">Close</button>
     </div>
 </div>
@@ -482,16 +394,13 @@
         <button class="close-x" onclick="closeModal('countdownModal')">✕</button>
         <h2>⏳ Exam Countdown</h2>
         <p class="modal-sub" id="countdownSub">5th Semester Examination</p>
-
         <div class="countdown-grid">
             <div class="countdown-box"><div class="countdown-num" id="cdDays">--</div><div class="countdown-label">Days</div></div>
             <div class="countdown-box"><div class="countdown-num" id="cdHours">--</div><div class="countdown-label">Hours</div></div>
             <div class="countdown-box"><div class="countdown-num" id="cdMins">--</div><div class="countdown-label">Mins</div></div>
             <div class="countdown-box"><div class="countdown-num" id="cdSecs">--</div><div class="countdown-label">Secs</div></div>
         </div>
-
         <p style="text-align:center; font-size:12px; color:#94a3b8;">Stay focused — every day counts! 📚</p>
-
         <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('countdownModal')">Close</button>
     </div>
 </div>
@@ -502,7 +411,6 @@
         <button class="close-x" onclick="closeModal('whatsNewModal')">✕</button>
         <h2>🆕 What's New</h2>
         <p class="modal-sub">Latest updates & improvements</p>
-
         <div class="update-item">
             <div class="update-date">JUNE 2026</div>
             <div class="update-text">🌳 New: Knowledge Tree — grow a tree by visiting daily!</div>
@@ -519,7 +427,6 @@
             <div class="update-date">JUNE 2026</div>
             <div class="update-text">🌓 Dark/Light mode now remembers your choice.</div>
         </div>
-
         <button class="btn-cancel" style="width:100%; margin-top:20px;" onclick="closeModal('whatsNewModal')">Close</button>
     </div>
 </div>
@@ -534,17 +441,12 @@
         var tooltip = document.getElementById('menuTooltip');
         var arrow = document.getElementById('menuArrow');
         var seenMenu = localStorage.getItem('menuFeaturesSeen');
-
         arrow.classList.add('show');
-
         if (!seenMenu) {
             menuBtn.classList.add('attention');
             badge.classList.add('show');
-            setTimeout(function() {
-                tooltip.classList.add('show');
-            }, 600);
+            setTimeout(function() { tooltip.classList.add('show'); }, 600);
         }
-
         menuBtn.addEventListener('click', function() {
             if (!seenMenu) {
                 menuBtn.classList.remove('attention');
@@ -580,11 +482,7 @@
 
     function shareSite() {
         if (navigator.share) {
-            navigator.share({
-                title: document.title,
-                text: "QUICK LEARN DCST - Subject Dashboard",
-                url: window.location.href
-            }).catch(function(err) { console.log(err); });
+            navigator.share({ title: document.title, text: "QUICK LEARN DCST - Subject Dashboard", url: window.location.href }).catch(function(err) { console.log(err); });
         } else {
             navigator.clipboard.writeText(window.location.href);
             alert("লিংক কপি হয়েছে!");
@@ -596,19 +494,13 @@
         var today = new Date().toDateString();
         var lastVisit = localStorage.getItem('lastVisit');
         var streak = parseInt(localStorage.getItem('streak') || '0');
-
         if (lastVisit !== today) {
             var yesterday = new Date();
             yesterday.setDate(yesterday.getDate() - 1);
-            if (lastVisit === yesterday.toDateString()) {
-                streak += 1;
-            } else {
-                streak = 1;
-            }
+            if (lastVisit === yesterday.toDateString()) { streak += 1; } else { streak = 1; }
             localStorage.setItem('streak', streak);
             localStorage.setItem('lastVisit', today);
         }
-
         var stages = ['🌱', '🌱', '🌿', '🌿', '🌿', '🌳', '🌳', '🌳', '🌳✨'];
         var messages = [
             "Welcome! Come back tomorrow to grow your tree.",
@@ -623,21 +515,17 @@
         ];
         var idx = Math.min(streak - 1, stages.length - 1);
         var emoji = streak >= 9 ? '🌳✨' : stages[idx];
-
         document.getElementById('treeMenuIcon').textContent = emoji;
         document.getElementById('treeDisplay').textContent = emoji;
         document.getElementById('treeDayText').textContent = 'Day ' + streak;
         document.getElementById('treeMsgText').textContent = messages[Math.min(idx, messages.length - 1)];
-
-        var progress = Math.min((streak / 9) * 100, 100);
-        document.getElementById('treeProgressFill').style.width = progress + '%';
+        document.getElementById('treeProgressFill').style.width = Math.min((streak / 9) * 100, 100) + '%';
     })();
 
     function updateCountdown() {
         var now = new Date().getTime();
         var examTime = new Date(EXAM_DATE).getTime();
         var diff = examTime - now;
-
         if (diff <= 0) {
             document.getElementById('cdDays').textContent = '0';
             document.getElementById('cdHours').textContent = '0';
@@ -646,16 +534,10 @@
             document.getElementById('countdownSub').textContent = 'Exam time has arrived. Good luck! 🍀';
             return;
         }
-
-        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        var secs = Math.floor((diff % (1000 * 60)) / 1000);
-
-        document.getElementById('cdDays').textContent = days;
-        document.getElementById('cdHours').textContent = hours;
-        document.getElementById('cdMins').textContent = mins;
-        document.getElementById('cdSecs').textContent = secs;
+        document.getElementById('cdDays').textContent = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('cdHours').textContent = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('cdMins').textContent = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('cdSecs').textContent = Math.floor((diff % (1000 * 60)) / 1000);
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
@@ -663,45 +545,22 @@
     (function() {
         fetch('https://api.countapi.xyz/hit/quicklearndcst/visits')
             .then(function(res) { return res.json(); })
-            .then(function(data) {
-                document.getElementById('visitorCount').textContent = data.value.toLocaleString();
-            })
-            .catch(function() {
-                document.getElementById('visitorCount').textContent = '—';
-            });
+            .then(function(data) { document.getElementById('visitorCount').textContent = data.value.toLocaleString(); })
+            .catch(function() { document.getElementById('visitorCount').textContent = '—'; });
     })();
 
-    function openModal(id) {
-        document.getElementById(id).classList.add('active');
-    }
+    function openModal(id) { document.getElementById(id).classList.add('active'); }
     function closeModal(id) {
-        if (id === 'quizModal') {
-            document.getElementById('quizModal').classList.remove('active');
-            resetAll();
-            return;
-        }
+        if (id === 'quizModal') { document.getElementById('quizModal').classList.remove('active'); resetAll(); return; }
         document.getElementById(id).classList.remove('active');
     }
     document.querySelectorAll('.modal-overlay').forEach(function(modal) {
         modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                if (this.id === 'quizModal') { resetAll(); }
-                this.classList.remove('active');
-            }
+            if (e.target === this) { if (this.id === 'quizModal') { resetAll(); } this.classList.remove('active'); }
         });
     });
 
-    function toggleDashElective(id) {
-        var card = document.getElementById(id);
-        var isOpen = card.classList.contains('open');
-        document.querySelectorAll('.elective-card').forEach(function(c) { c.classList.remove('open'); });
-        if (!isOpen) card.classList.add('open');
-    }
-
-    document.getElementById('quizBtn').addEventListener('click', function() {
-        document.getElementById('quizModal').classList.add('active');
-    });
-
+    document.getElementById('quizBtn').addEventListener('click', function() { document.getElementById('quizModal').classList.add('active'); });
     document.getElementById('closeBtn').addEventListener('click', function() { closeModal('quizModal'); });
     document.getElementById('cancelBtn').addEventListener('click', function() { closeModal('quizModal'); });
 
@@ -715,9 +574,7 @@
         });
         document.querySelectorAll('.sub-items').forEach(function(el) {
             el.classList.remove('show');
-            el.querySelectorAll('.sub-item').forEach(function(si) {
-                si.classList.remove('flashing');
-            });
+            el.querySelectorAll('.sub-item').forEach(function(si) { si.classList.remove('flashing'); });
         });
         document.querySelectorAll('.sub-item').forEach(function(el) {
             el.classList.remove('selected', 'flashing');
@@ -740,7 +597,6 @@
             var num = el.dataset.elective;
             var subList = document.getElementById('sub-elective' + num);
             var isOpen = el.classList.contains('open');
-
             selectedSubject = null;
             document.getElementById('startBtn').classList.remove('ready');
             document.querySelectorAll('.quiz-item').forEach(function(e) {
@@ -752,23 +608,15 @@
                 e.classList.remove('selected', 'flashing');
                 e.querySelector('.check').textContent = '';
             });
-
-            document.querySelectorAll('.quiz-item[data-type="elective"]').forEach(function(e) {
-                e.classList.remove('open');
-            });
+            document.querySelectorAll('.quiz-item[data-type="elective"]').forEach(function(e) { e.classList.remove('open'); });
             document.querySelectorAll('.sub-items').forEach(function(e) {
                 e.classList.remove('show');
-                e.querySelectorAll('.sub-item').forEach(function(si) {
-                    si.classList.remove('flashing');
-                });
+                e.querySelectorAll('.sub-item').forEach(function(si) { si.classList.remove('flashing'); });
             });
-
             if (!isOpen) {
                 el.classList.add('open');
                 subList.classList.add('show');
-                subList.querySelectorAll('.sub-item').forEach(function(si) {
-                    si.classList.add('flashing');
-                });
+                subList.querySelectorAll('.sub-item').forEach(function(si) { si.classList.add('flashing'); });
             }
         });
     });
@@ -784,7 +632,6 @@
                 var c = e.querySelector('.check');
                 if (c) c.textContent = '';
             });
-
             el.classList.add('selected');
             el.querySelector('.check').textContent = '✓';
             selectedSubject = el.dataset.subject;
@@ -793,9 +640,7 @@
     });
 
     document.getElementById('startBtn').addEventListener('click', function() {
-        if (selectedSubject) {
-            window.location.href = 'pyq_quiz.html?subject=' + selectedSubject;
-        }
+        if (selectedSubject) { window.location.href = 'pyq_quiz.html?subject=' + selectedSubject; }
     });
 </script>
 

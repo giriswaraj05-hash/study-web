@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIP Answers 2022</title>
+<style>
+  :root{
+    --bg:#0b1120;
+    --card:#101a2e;
+    --card-border:#22304a;
+    --blue:#38bdf8;
+    --green:#4ade80;
+    --orange:#fb923c;
+    --text:#e6edf7;
+    --text-dim:#8a97ad;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .topbar{
+    height:90px;
+    background:linear-gradient(135deg, #38bdf8, #60d5fb);
+  }
+  .container{
+    padding:24px 20px 10px;
+  }
+  .back-btn{
+    color:var(--orange);
+    font-weight:700;
+    font-size:1.05rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .year-badge{
+    border:1.5px solid var(--green);
+    border-radius:18px;
+    padding:26px 20px;
+    text-align:center;
+    margin-bottom:30px;
+    background:rgba(74,222,128,0.04);
+  }
+  .year-badge .eyebrow{
+    color:#7e8aa0;
+    letter-spacing:2px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .year-badge .year{
+    color:var(--green);
+    font-size:2.6rem;
+    font-weight:800;
+    margin-top:6px;
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#d7dee8;
+    margin-bottom:18px;
+  }
+  .acard{
+    border-left:3px solid var(--green);
+    background:rgba(255,255,255,0.015);
+    border-radius:0 12px 12px 0;
+    padding:16px 16px 18px;
+    margin-bottom:18px;
+  }
+  .acard .qnum{
+    color:var(--orange);
+    font-weight:800;
+    font-size:0.95rem;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  .acard .qtext{
+    color:#cdd6e4;
+    font-size:0.96rem;
+    line-height:1.5;
+    font-style:italic;
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px dashed var(--card-border);
+  }
+  .acard .alabel{
+    color:var(--green);
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .acard .atext{
+    color:#e6edf7;
+    font-size:1.0rem;
+    line-height:1.65;
+  }
+  .acard .atext ul{
+    margin:8px 0 0 18px;
+  }
+  .acard .atext li{
+    margin-bottom:6px;
+  }
+  @media (min-width:600px){
+    .container{ max-width:640px; margin:0 auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <div class="container">
+    <a class="back-btn" href="dip_ans_list.html">&larr; BACK</a>
+
+    <div class="year-badge">
+      <div class="eyebrow">DIGITAL IMAGE PROCESSING &middot; ANSWER SHEET</div>
+      <div class="year">2022</div>
+    </div>
+
+    <div class="section-title">✅ Answers</div>
+
+    <div class="acard">
+      <div class="qnum">Q1</div>
+      <div class="qtext">What is image segmentation? Explain edge detection using the Sobel and Prewitt operators.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Image segmentation is the process of partitioning a digital image into multiple regions or sets of pixels that share common characteristics (intensity, color, texture), making it easier to analyze meaningful objects rather than the whole image.
+        <br><br>
+        <b>Edge detection</b> finds points where intensity changes sharply, using gradient-based masks:
+        <ul>
+          <li><b>Sobel operator:</b> Uses two 3×3 kernels (Gx and Gy) that approximate the derivative in horizontal and vertical directions, with weighting that gives more importance to center pixels — this provides smoothing along with edge detection, reducing noise sensitivity.</li>
+          <li><b>Prewitt operator:</b> Also uses two 3×3 kernels similar to Sobel, but with equal weights (no extra emphasis on center row/column) — slightly simpler but more noise-sensitive than Sobel.</li>
+        </ul>
+        The gradient magnitude is computed as √(Gx² + Gy²), and pixels with magnitude above a threshold are marked as edges.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q2</div>
+      <div class="qtext">Explain region-based segmentation techniques: region growing and region splitting and merging.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Region growing:</b> Starts with one or more "seed" pixels and grows the region by appending neighboring pixels that satisfy a similarity criterion (e.g., similar intensity within a threshold). The process continues until no more pixels can be added — useful when seed points are known in advance.
+        <br><br>
+        <b>Region splitting and merging:</b> Starts by treating the whole image as one region, then:
+        <ul>
+          <li><b>Splitting:</b> If a region does not satisfy a homogeneity criterion, it is split into four quadrants (often using a quadtree structure), and the process repeats recursively.</li>
+          <li><b>Merging:</b> Adjacent regions that together satisfy the homogeneity criterion are merged back together.</li>
+        </ul>
+        This combined approach avoids over-segmentation and adapts well to images with regions of varying size.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q3</div>
+      <div class="qtext">What is image restoration? Explain the degradation model used in image restoration.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Image restoration is the process of recovering an original, clean image from a degraded (blurred/noisy) observed image by applying the inverse of the known or estimated degradation process — unlike enhancement, it uses an objective, mathematical model rather than subjective improvement.
+        <br><br>
+        <b>Degradation model:</b>
+        <br>
+        g(x,y) = h(x,y) * f(x,y) + η(x,y)
+        <ul>
+          <li><b>f(x,y)</b> = original image</li>
+          <li><b>h(x,y)</b> = degradation function (e.g., blur due to motion or out-of-focus lens), applied via convolution (*)</li>
+          <li><b>η(x,y)</b> = additive noise</li>
+          <li><b>g(x,y)</b> = observed degraded image</li>
+        </ul>
+        Restoration techniques (inverse filtering, Wiener filtering) attempt to estimate f(x,y) given g(x,y) and knowledge/estimates of h and η.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q4</div>
+      <div class="qtext">Describe the Wiener filter and its role in removing noise from a degraded image.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        The Wiener filter is a statistical approach to image restoration that minimizes the mean square error between the estimated and the original image, accounting for both the degradation function and the noise statistically — unlike inverse filtering, it does not blow up when noise is present.
+        <br><br>
+        In the frequency domain, the Wiener filter is given by:
+        <br>
+        F̂(u,v) = [ H*(u,v) / (|H(u,v)|² + Sη/Sf) ] × G(u,v)
+        <br><br>
+        where H*(u,v) is the complex conjugate of the degradation function, and Sη/Sf is the noise-to-signal power ratio. When noise is negligible, this reduces to simple inverse filtering; when noise is high, the filter automatically suppresses noise amplification, giving a more stable and visually better restored image than direct inverse filtering.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q5</div>
+      <div class="qtext">Explain different types of noise models in image processing: Gaussian, salt-and-pepper, and Rayleigh noise.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <ul>
+          <li><b>Gaussian noise:</b> Caused by sensor electronic noise or low lighting; its probability density function follows a bell-shaped (normal) curve. It affects every pixel slightly and is best reduced using averaging/Gaussian smoothing filters.</li>
+          <li><b>Salt-and-pepper noise:</b> Appears as random black and white pixels scattered across the image (caused by faulty sensors or transmission errors). It is best removed using a <b>median filter</b>, which is highly effective against this impulsive noise.</li>
+          <li><b>Rayleigh noise:</b> Common in range imaging; its PDF is skewed (non-symmetric) and is typically modeled with a characteristic function used in radar and ultrasound image restoration.</li>
+        </ul>
+        Choosing the right denoising filter depends on correctly identifying which noise model best matches the observed image's histogram shape.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q6</div>
+      <div class="qtext">What is thresholding? Explain global and adaptive (local) thresholding with examples.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Thresholding is a simple segmentation technique that converts a grayscale image into a binary image by classifying each pixel as foreground or background based on its intensity value compared to a threshold T.
+        <br><br>
+        <b>Global thresholding:</b> A single threshold value T is applied to the entire image: g(x,y) = 1 if f(x,y) > T, else 0. Works well when the image has uniform lighting and a clear bimodal histogram (e.g., scanned printed text on a clean white background).
+        <br><br>
+        <b>Adaptive (local) thresholding:</b> The threshold value varies across the image, computed separately for different regions/windows. This is necessary when illumination is uneven across the image (e.g., a photograph of a document with shadows), since a single global threshold would misclassify pixels in darker areas.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

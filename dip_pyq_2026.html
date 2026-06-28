@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIP PYQ 2026</title>
+<style>
+  :root{
+    --bg:#0b1120;
+    --bg2:#0e1729;
+    --card:#101a2e;
+    --card-border:#22304a;
+    --blue:#38bdf8;
+    --blue-soft:#7dd3fc;
+    --orange:#fb923c;
+    --text:#e6edf7;
+    --text-dim:#8a97ad;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .topbar{
+    height:90px;
+    background:linear-gradient(135deg, #38bdf8, #60d5fb);
+  }
+  .container{
+    padding:24px 20px 10px;
+  }
+  .back-btn{
+    color:var(--orange);
+    font-weight:700;
+    font-size:1.05rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .year-badge{
+    border:1.5px solid var(--orange);
+    border-radius:18px;
+    padding:26px 20px;
+    text-align:center;
+    margin-bottom:26px;
+    background:rgba(251,146,60,0.04);
+  }
+  .year-badge .eyebrow{
+    color:#7e8aa0;
+    letter-spacing:2px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .year-badge .year{
+    color:var(--orange);
+    font-size:2.6rem;
+    font-weight:800;
+    margin-top:6px;
+  }
+  .pdf-box{
+    border:1px solid var(--card-border);
+    border-radius:16px;
+    padding:18px 16px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:30px;
+    background:var(--card);
+    cursor:pointer;
+    transition:box-shadow .25s ease, transform .25s ease;
+    text-decoration:none;
+  }
+  .pdf-box:active{ transform:scale(0.98); }
+  .pdf-icon{
+    width:56px; height:56px;
+    border-radius:14px;
+    background:linear-gradient(160deg,#1d3a63,#15294a);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    box-shadow:0 0 0px rgba(56,189,248,0.0);
+    animation:glow 2.4s ease-in-out infinite;
+  }
+  @keyframes glow{
+    0%,100%{ box-shadow:0 0 8px rgba(56,189,248,0.25); }
+    50%{ box-shadow:0 0 22px rgba(56,189,248,0.65); }
+  }
+  .pdf-icon svg{ width:26px; height:26px; }
+  .pdf-text .title{
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--text);
+  }
+  .pdf-text .sub{
+    color:var(--text-dim);
+    font-size:0.88rem;
+    margin-top:2px;
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#d7dee8;
+    margin-bottom:18px;
+  }
+  .qcard{
+    border-left:3px solid var(--orange);
+    background:rgba(255,255,255,0.015);
+    border-radius:0 12px 12px 0;
+    padding:14px 16px;
+    margin-bottom:16px;
+  }
+  .qcard .qnum{
+    color:var(--orange);
+    font-weight:800;
+    font-size:0.95rem;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  .qcard .qtext{
+    color:#dde4ee;
+    font-size:1.02rem;
+    line-height:1.5;
+  }
+  @media (min-width:600px){
+    .container{ max-width:640px; margin:0 auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <div class="container">
+    <a class="back-btn" href="dip_pyq_list.html">&larr; BACK</a>
+
+    <div class="year-badge">
+      <div class="eyebrow">DIGITAL IMAGE PROCESSING &middot; QUESTION PAPER</div>
+      <div class="year">2026</div>
+    </div>
+
+    <a class="pdf-box" href="#" onclick="alert('Apnar PDF file ei link e jog korun.'); return false;">
+      <div class="pdf-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z" fill="#dbeafe"/>
+          <path d="M15 2v5h5" fill="#bfdbfe"/>
+        </svg>
+      </div>
+      <div class="pdf-text">
+        <div class="title">2026 Question Paper PDF</div>
+        <div class="sub">Tap to open PDF</div>
+      </div>
+    </a>
+
+    <div class="section-title">📋 Questions</div>
+
+    <div class="qcard">
+      <div class="qnum">Q1</div>
+      <div class="qtext">What is object recognition in image processing? Explain pattern and pattern classes with examples.</div>
+    </div>
+    <div class="qcard">
+      <div class="qnum">Q2</div>
+      <div class="qtext">Explain the boundary descriptors: chain codes and shape numbers, used in object representation.</div>
+    </div>
+    <div class="qcard">
+      <div class="qnum">Q3</div>
+      <div class="qtext">What is the wavelet transform? Explain its advantages over the Fourier transform for image analysis.</div>
+    </div>
+    <div class="qcard">
+      <div class="qnum">Q4</div>
+      <div class="qtext">Describe regional descriptors: area, perimeter, and texture, used in image feature extraction.</div>
+    </div>
+    <div class="qcard">
+      <div class="qnum">Q5</div>
+      <div class="qtext">Explain the minimum distance classifier for statistical pattern recognition.</div>
+    </div>
+    <div class="qcard">
+      <div class="qnum">Q6</div>
+      <div class="qtext">What is the Hough transform? Explain its use in detecting lines and shapes in an image.</div>
+    </div>
+  </div>
+</body>
+</html>

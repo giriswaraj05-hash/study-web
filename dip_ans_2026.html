@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIP Answers 2026</title>
+<style>
+  :root{
+    --bg:#0b1120;
+    --card:#101a2e;
+    --card-border:#22304a;
+    --blue:#38bdf8;
+    --green:#4ade80;
+    --orange:#fb923c;
+    --text:#e6edf7;
+    --text-dim:#8a97ad;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .topbar{
+    height:90px;
+    background:linear-gradient(135deg, #38bdf8, #60d5fb);
+  }
+  .container{
+    padding:24px 20px 10px;
+  }
+  .back-btn{
+    color:var(--orange);
+    font-weight:700;
+    font-size:1.05rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .year-badge{
+    border:1.5px solid var(--green);
+    border-radius:18px;
+    padding:26px 20px;
+    text-align:center;
+    margin-bottom:30px;
+    background:rgba(74,222,128,0.04);
+  }
+  .year-badge .eyebrow{
+    color:#7e8aa0;
+    letter-spacing:2px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .year-badge .year{
+    color:var(--green);
+    font-size:2.6rem;
+    font-weight:800;
+    margin-top:6px;
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#d7dee8;
+    margin-bottom:18px;
+  }
+  .acard{
+    border-left:3px solid var(--green);
+    background:rgba(255,255,255,0.015);
+    border-radius:0 12px 12px 0;
+    padding:16px 16px 18px;
+    margin-bottom:18px;
+  }
+  .acard .qnum{
+    color:var(--orange);
+    font-weight:800;
+    font-size:0.95rem;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  .acard .qtext{
+    color:#cdd6e4;
+    font-size:0.96rem;
+    line-height:1.5;
+    font-style:italic;
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px dashed var(--card-border);
+  }
+  .acard .alabel{
+    color:var(--green);
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .acard .atext{
+    color:#e6edf7;
+    font-size:1.0rem;
+    line-height:1.65;
+  }
+  .acard .atext ul{
+    margin:8px 0 0 18px;
+  }
+  .acard .atext li{
+    margin-bottom:6px;
+  }
+  @media (min-width:600px){
+    .container{ max-width:640px; margin:0 auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <div class="container">
+    <a class="back-btn" href="dip_ans_list.html">&larr; BACK</a>
+
+    <div class="year-badge">
+      <div class="eyebrow">DIGITAL IMAGE PROCESSING &middot; ANSWER SHEET</div>
+      <div class="year">2026</div>
+    </div>
+
+    <div class="section-title">✅ Answers</div>
+
+    <div class="acard">
+      <div class="qnum">Q1</div>
+      <div class="qtext">What is object recognition in image processing? Explain pattern and pattern classes with examples.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Object recognition is the final stage of an image processing pipeline, where labels (e.g., "circle", "letter A", "tumor") are assigned to segmented objects based on extracted descriptors, typically by comparing them against known reference patterns.
+        <br><br>
+        <b>Pattern:</b> An arrangement of descriptors (features) — such as a feature vector of measurements (area, perimeter, texture values) — that represents an object.
+        <br><br>
+        <b>Pattern class:</b> A family/category of patterns that share common properties, denoted as ω1, ω2, ..., ωW.
+        <br><br>
+        <b>Example:</b> In handwritten digit recognition, each digit (0–9) forms a separate pattern class. A new handwritten sample is converted into a feature vector (its "pattern") and classified into the pattern class (digit) whose reference patterns it most closely matches.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q2</div>
+      <div class="qtext">Explain the boundary descriptors: chain codes and shape numbers, used in object representation.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Chain codes:</b> Represent an object's boundary as a sequence of directional moves (typically 4-directional or 8-directional) from one boundary pixel to the next, where each direction is assigned a numeric code (e.g., 0=right, 1=up-right, 2=up, etc. for 8-direction code). This gives a compact, sequential representation of the shape's outline.
+        <br><br>
+        <b>Shape numbers:</b> Derived from the chain code by first computing the "first difference" of the chain code (the number of direction changes between consecutive code elements), then finding the rotation of this difference sequence that gives the minimum integer value. This makes the shape number invariant to the starting point on the boundary and to rotation (in multiples of the basic direction angle), making it useful for comparing and matching object shapes regardless of orientation.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q3</div>
+      <div class="qtext">What is the wavelet transform? Explain its advantages over the Fourier transform for image analysis.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        The wavelet transform decomposes an image into components at multiple scales (resolutions) using small wave-like functions called "wavelets" that are localized in both space and frequency, unlike the sine/cosine basis functions of the Fourier transform which extend infinitely.
+        <br><br>
+        <b>Advantages over Fourier transform:</b>
+        <ul>
+          <li><b>Joint space-frequency localization:</b> Wavelets capture both "where" (spatial location) and "what frequency" a feature occurs at, while Fourier transform only reveals global frequency content without spatial location.</li>
+          <li><b>Multiresolution analysis:</b> Wavelets naturally support analyzing an image at different resolutions simultaneously (coarse to fine), which is ideal for tasks like progressive image transmission and compression (e.g., JPEG2000).</li>
+          <li><b>Better handling of non-stationary signals:</b> Real images have features (edges, textures) that vary locally — wavelets adapt to this, whereas Fourier assumes global periodicity.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q4</div>
+      <div class="qtext">Describe regional descriptors: area, perimeter, and texture, used in image feature extraction.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Regional descriptors quantify properties of an entire object region (not just its boundary), useful for distinguishing and classifying objects.
+        <ul>
+          <li><b>Area:</b> The total number of pixels contained within the region — a simple but useful measure of object size.</li>
+          <li><b>Perimeter:</b> The length of the region's boundary (total number of boundary pixels, or computed via chain-code direction lengths) — used along with area to compute shape measures like compactness (perimeter² / area).</li>
+          <li><b>Texture:</b> Describes the surface properties of a region — smoothness, coarseness, and regularity of intensity patterns. Common texture measures include statistical methods (using the gray-level co-occurrence matrix, GLCM, to compute contrast, correlation, energy) and structural/spectral methods that analyze repeating patterns.
+        </ul>
+        Together, these descriptors form feature vectors used in classification and recognition tasks.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q5</div>
+      <div class="qtext">Explain the minimum distance classifier for statistical pattern recognition.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        The minimum distance classifier is a simple statistical pattern recognition method that assigns an unknown pattern to the class whose "mean vector" (prototype) is closest to it, using a distance measure (commonly Euclidean distance).
+        <br><br>
+        <b>Working:</b>
+        <ul>
+          <li>For each known class ωj, compute the mean feature vector m<sub>j</sub> from training samples.</li>
+          <li>For an unknown pattern x, compute the distance D<sub>j</sub>(x) = ||x − m<sub>j</sub>|| for every class.</li>
+          <li>Assign x to the class with the smallest distance D<sub>j</sub>(x).</li>
+        </ul>
+        This classifier works well when pattern classes form well-separated, compact clusters in feature space, but performs poorly when classes overlap significantly or have very different variances — in which case more advanced classifiers (Bayes classifier) are preferred.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q6</div>
+      <div class="qtext">What is the Hough transform? Explain its use in detecting lines and shapes in an image.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        The Hough transform is a feature extraction technique used to detect simple shapes (lines, circles) in an image, even when the shape is broken, noisy, or partially obscured, by transforming points in image space into a "parameter space."
+        <br><br>
+        <b>For line detection:</b> Every edge point (x,y) in the image votes for all possible lines (ρ, θ) that could pass through it, using the equation ρ = x·cosθ + y·sinθ. These votes accumulate in a 2-D accumulator array (Hough space); peaks in this accumulator correspond to lines that are strongly present across many edge points in the original image.
+        <br><br>
+        This robust voting-based mechanism allows the Hough transform to detect lines (and similarly circles, using a 3-parameter version) reliably even in the presence of gaps and noise — making it widely used for tasks like lane detection in road images.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

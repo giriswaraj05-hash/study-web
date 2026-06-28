@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIP Answers 2025</title>
+<style>
+  :root{
+    --bg:#0b1120;
+    --card:#101a2e;
+    --card-border:#22304a;
+    --blue:#38bdf8;
+    --green:#4ade80;
+    --orange:#fb923c;
+    --text:#e6edf7;
+    --text-dim:#8a97ad;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .topbar{
+    height:90px;
+    background:linear-gradient(135deg, #38bdf8, #60d5fb);
+  }
+  .container{
+    padding:24px 20px 10px;
+  }
+  .back-btn{
+    color:var(--orange);
+    font-weight:700;
+    font-size:1.05rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .year-badge{
+    border:1.5px solid var(--green);
+    border-radius:18px;
+    padding:26px 20px;
+    text-align:center;
+    margin-bottom:30px;
+    background:rgba(74,222,128,0.04);
+  }
+  .year-badge .eyebrow{
+    color:#7e8aa0;
+    letter-spacing:2px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .year-badge .year{
+    color:var(--green);
+    font-size:2.6rem;
+    font-weight:800;
+    margin-top:6px;
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#d7dee8;
+    margin-bottom:18px;
+  }
+  .acard{
+    border-left:3px solid var(--green);
+    background:rgba(255,255,255,0.015);
+    border-radius:0 12px 12px 0;
+    padding:16px 16px 18px;
+    margin-bottom:18px;
+  }
+  .acard .qnum{
+    color:var(--orange);
+    font-weight:800;
+    font-size:0.95rem;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  .acard .qtext{
+    color:#cdd6e4;
+    font-size:0.96rem;
+    line-height:1.5;
+    font-style:italic;
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px dashed var(--card-border);
+  }
+  .acard .alabel{
+    color:var(--green);
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .acard .atext{
+    color:#e6edf7;
+    font-size:1.0rem;
+    line-height:1.65;
+  }
+  .acard .atext ul{
+    margin:8px 0 0 18px;
+  }
+  .acard .atext li{
+    margin-bottom:6px;
+  }
+  @media (min-width:600px){
+    .container{ max-width:640px; margin:0 auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <div class="container">
+    <a class="back-btn" href="dip_ans_list.html">&larr; BACK</a>
+
+    <div class="year-badge">
+      <div class="eyebrow">DIGITAL IMAGE PROCESSING &middot; ANSWER SHEET</div>
+      <div class="year">2025</div>
+    </div>
+
+    <div class="section-title">✅ Answers</div>
+
+    <div class="acard">
+      <div class="qnum">Q1</div>
+      <div class="qtext">Explain spatial filtering. Differentiate between smoothing (low-pass) and sharpening (high-pass) spatial filters.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Spatial filtering is a technique where a small matrix called a "mask" or "kernel" is moved across every pixel of the image, and the output pixel value is computed as a function (usually weighted sum) of the pixel's neighborhood values under the mask.
+        <br><br>
+        <b>Smoothing (low-pass) filters:</b>
+        <ul>
+          <li>Blur the image by averaging neighboring pixel values, reducing sharp intensity transitions.</li>
+          <li>Used for noise reduction; examples: mean filter, Gaussian filter, median filter.</li>
+        </ul>
+        <b>Sharpening (high-pass) filters:</b>
+        <ul>
+          <li>Highlight fine details and edges by emphasizing intensity differences between neighboring pixels.</li>
+          <li>Used to enhance edges and details; examples: Laplacian filter, high-boost filter.</li>
+        </ul>
+        Smoothing reduces noise but blurs edges, while sharpening enhances edges but can amplify noise — so they are often used carefully in combination.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q2</div>
+      <div class="qtext">What is the Laplacian operator? Explain image sharpening using the Laplacian filter.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        The Laplacian is a second-order derivative operator that measures the rate of change of intensity in all directions, making it highly sensitive to fine detail, edges, and noise. For a 2-D function f(x,y), it is defined as:
+        <br><br>
+        ∇²f = [f(x+1,y) + f(x−1,y) + f(x,y+1) + f(x,y−1)] − 4f(x,y)
+        <br><br>
+        This is implemented as a 3×3 convolution mask (e.g., center value −4 or −8, surrounded by 1's).
+        <br><br>
+        <b>Image sharpening using Laplacian:</b> Since the Laplacian highlights edges, the sharpened image is obtained by subtracting the Laplacian result from the original image:
+        <br>
+        g(x,y) = f(x,y) − ∇²f(x,y) &nbsp;(if mask center is negative)
+        <br>
+        This enhances fine detail and edges while keeping the overall image structure intact, commonly used in medical and satellite image enhancement.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q3</div>
+      <div class="qtext">Explain the median filter and its effectiveness in removing salt-and-pepper noise.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        The median filter is a non-linear spatial filter that replaces each pixel's value with the median (middle value when sorted) of the intensity values in its neighborhood (e.g., a 3×3 window), instead of using an average.
+        <br><br>
+        <b>Effectiveness against salt-and-pepper noise:</b> Salt-and-pepper noise introduces extreme outlier pixel values (very bright "salt" or very dark "pepper" pixels) scattered randomly in the image. Since the median is robust to outliers (an extreme value just becomes the highest/lowest in the sorted list, but does not affect the middle value), the median filter effectively removes such impulsive noise while preserving edges much better than a mean (averaging) filter, which would instead blur the entire neighborhood including legitimate edges.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q4</div>
+      <div class="qtext">What is unsharp masking and high-boost filtering? Explain with formulas.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Unsharp masking:</b> A sharpening technique where a blurred (smoothed) version of the image is subtracted from the original to obtain a "mask" containing edge/detail information, which is then added back to the original:
+        <br><br>
+        f<sub>s</sub>(x,y) = f(x,y) + k × [f(x,y) − f̄(x,y)]
+        <br>
+        where f̄(x,y) is the blurred version, and k = 1 for standard unsharp masking.
+        <br><br>
+        <b>High-boost filtering:</b> A generalization of unsharp masking where k &gt; 1, amplifying the high-frequency (edge) component more strongly:
+        <br><br>
+        f<sub>hb</sub>(x,y) = A·f(x,y) − f̄(x,y), where A ≥ 1
+        <br><br>
+        A larger A value preserves more of the low-frequency content along with strongly emphasized edges, giving a sharper-looking result than standard sharpening alone.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q5</div>
+      <div class="qtext">Describe the basic relationships between pixels: neighbors, connectivity, and adjacency.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Neighbors:</b>
+        <ul>
+          <li><b>4-neighbors (N4):</b> The 4 pixels directly above, below, left, and right of a pixel.</li>
+          <li><b>Diagonal neighbors (ND):</b> The 4 diagonal pixels.</li>
+          <li><b>8-neighbors (N8):</b> Union of N4 and ND — all 8 surrounding pixels.</li>
+        </ul>
+        <b>Adjacency:</b> Two pixels are adjacent if they are neighbors and satisfy a similarity criterion (usually same intensity/gray-level set V):
+        <ul>
+          <li><b>4-adjacency:</b> Pixels are adjacent if they are in N4 and have values in V.</li>
+          <li><b>8-adjacency:</b> Pixels are adjacent if they are in N8 and have values in V.</li>
+          <li><b>m-adjacency (mixed):</b> Resolves ambiguities that arise in 8-adjacency by combining rules from 4- and diagonal-adjacency.</li>
+        </ul>
+        <b>Connectivity:</b> A path of adjacent pixels (all satisfying V) connecting two pixels establishes that they belong to the same connected region — this concept underlies segmentation and labeling of distinct objects in an image.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q6</div>
+      <div class="qtext">Explain gray level slicing and bit-plane slicing as image enhancement techniques.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Gray-level slicing:</b> Highlights a specific range of gray levels in an image while suppressing all others, either by setting the chosen range to a high value and everything else to 0 (binary slicing), or by displaying the chosen range with enhanced values while keeping the rest unchanged. Useful for highlighting specific features such as defects in an X-ray.
+        <br><br>
+        <b>Bit-plane slicing:</b> An 8-bit grayscale image can be decomposed into 8 separate binary "bit planes" (from the most significant bit, MSB, to the least significant bit, LSB). The MSB plane carries most of the visually significant information, while lower-order bit planes contribute finer detail/noise. This technique is useful for image compression (only transmitting higher-order planes) and for analyzing the relative importance of different bit levels in image data.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

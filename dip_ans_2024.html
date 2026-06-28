@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIP Answers 2024</title>
+<style>
+  :root{
+    --bg:#0b1120;
+    --card:#101a2e;
+    --card-border:#22304a;
+    --blue:#38bdf8;
+    --green:#4ade80;
+    --orange:#fb923c;
+    --text:#e6edf7;
+    --text-dim:#8a97ad;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .topbar{
+    height:90px;
+    background:linear-gradient(135deg, #38bdf8, #60d5fb);
+  }
+  .container{
+    padding:24px 20px 10px;
+  }
+  .back-btn{
+    color:var(--orange);
+    font-weight:700;
+    font-size:1.05rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .year-badge{
+    border:1.5px solid var(--green);
+    border-radius:18px;
+    padding:26px 20px;
+    text-align:center;
+    margin-bottom:30px;
+    background:rgba(74,222,128,0.04);
+  }
+  .year-badge .eyebrow{
+    color:#7e8aa0;
+    letter-spacing:2px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .year-badge .year{
+    color:var(--green);
+    font-size:2.6rem;
+    font-weight:800;
+    margin-top:6px;
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#d7dee8;
+    margin-bottom:18px;
+  }
+  .acard{
+    border-left:3px solid var(--green);
+    background:rgba(255,255,255,0.015);
+    border-radius:0 12px 12px 0;
+    padding:16px 16px 18px;
+    margin-bottom:18px;
+  }
+  .acard .qnum{
+    color:var(--orange);
+    font-weight:800;
+    font-size:0.95rem;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  .acard .qtext{
+    color:#cdd6e4;
+    font-size:0.96rem;
+    line-height:1.5;
+    font-style:italic;
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px dashed var(--card-border);
+  }
+  .acard .alabel{
+    color:var(--green);
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .acard .atext{
+    color:#e6edf7;
+    font-size:1.0rem;
+    line-height:1.65;
+  }
+  .acard .atext ul{
+    margin:8px 0 0 18px;
+  }
+  .acard .atext li{
+    margin-bottom:6px;
+  }
+  @media (min-width:600px){
+    .container{ max-width:640px; margin:0 auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <div class="container">
+    <a class="back-btn" href="dip_ans_list.html">&larr; BACK</a>
+
+    <div class="year-badge">
+      <div class="eyebrow">DIGITAL IMAGE PROCESSING &middot; ANSWER SHEET</div>
+      <div class="year">2024</div>
+    </div>
+
+    <div class="section-title">✅ Answers</div>
+
+    <div class="acard">
+      <div class="qnum">Q1</div>
+      <div class="qtext">What is morphological image processing? Explain dilation and erosion with examples.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Morphological image processing is a set of techniques for analyzing and processing the shape and structure of objects in an image, typically applied to binary images, using a small shape called a "structuring element" (kernel) that is moved across the image.
+        <br><br>
+        <b>Dilation:</b> Expands/grows the boundaries of foreground objects. A pixel is set to foreground if the structuring element overlaps with at least one foreground pixel of the image at that position. It is used to fill small holes and connect nearby objects.
+        <br><br>
+        <b>Erosion:</b> Shrinks the boundaries of foreground objects. A pixel remains foreground only if the structuring element is fully contained within the foreground region. It is used to remove small noise specks and thin object boundaries.
+        <br><br>
+        <b>Example:</b> Eroding a binary image of handwriting removes thin noise dots, while dilation can be used afterward to restore the original stroke thickness of the letters.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q2</div>
+      <div class="qtext">Explain the opening and closing operations in morphology and their applications.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Opening</b> = Erosion followed by Dilation (using the same structuring element).
+        <ul>
+          <li>Removes small objects/noise while preserving the size and shape of larger objects.</li>
+          <li>Smooths object contours by removing small protrusions.</li>
+          <li>Application: removing small dots/noise from a scanned binary image without shrinking the main objects.</li>
+        </ul>
+        <b>Closing</b> = Dilation followed by Erosion.
+        <ul>
+          <li>Fills small holes and gaps inside objects, and smooths concave boundary notches.</li>
+          <li>Connects nearby objects that are close together.</li>
+          <li>Application: filling small gaps inside a scanned character or connecting broken parts of a printed line.</li>
+        </ul>
+        Both operations are "idempotent" — applying them repeatedly after the first pass produces no further change.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q3</div>
+      <div class="qtext">Describe the RGB, HSI and YCbCr color models used in color image processing.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <ul>
+          <li><b>RGB model:</b> Represents color as a combination of Red, Green, and Blue intensities, forming a cube where each axis ranges 0–255. It is hardware-oriented (used by cameras, displays) but not intuitive for human perception-based editing.</li>
+          <li><b>HSI model (Hue, Saturation, Intensity):</b> Separates color information (hue = actual color, saturation = purity/vividness) from brightness (intensity). This matches how humans naturally describe colors, making it ideal for tasks like color-based segmentation.</li>
+          <li><b>YCbCr model:</b> Separates luminance (Y) from chrominance (Cb = blue difference, Cr = red difference). It is widely used in image/video compression (like JPEG, MPEG) because the human eye is less sensitive to chrominance detail, allowing chrominance channels to be compressed more aggressively than luminance.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q4</div>
+      <div class="qtext">What is pseudo color image processing? Explain intensity slicing with an example.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Pseudo color (false color) image processing assigns colors to a grayscale image based on a specified mapping, not because the object actually has that color, but to make certain features easier for the human eye to interpret and distinguish.
+        <br><br>
+        <b>Intensity slicing:</b> The simplest pseudo-coloring technique — the gray-level range (0 to L−1) is divided into a number of intervals, and a distinct color is assigned to each interval.
+        <br><br>
+        <b>Example:</b> In a satellite weather image, temperature data represented in grayscale can be sliced and color-coded — e.g., assigning blue to cold zones, yellow to moderate zones, and red to hot zones — making it instantly easier for viewers to identify storm intensity regions instead of reading subtle gray-level differences.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q5</div>
+      <div class="qtext">Explain boundary extraction and skeletonization as morphological algorithms.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Boundary extraction:</b> Obtains the outer boundary of an object by subtracting its eroded version from the original: β(A) = A − (A ⊖ B), where B is the structuring element. This isolates only the outermost layer of foreground pixels, giving a thin outline of the object.
+        <br><br>
+        <b>Skeletonization (thinning):</b> Reduces an object to its skeletal, single-pixel-wide representation while preserving its overall shape and connectivity. It is computed by iteratively applying morphological thinning, identifying the "medial axis" — points equidistant from the object's boundaries.
+        <br><br>
+        Both are widely used in applications like fingerprint analysis, character/shape recognition, and extracting structural features for object matching.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q6</div>
+      <div class="qtext">What is hit-or-miss transformation? Explain its role in shape detection.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        The Hit-or-Miss transform is a morphological operation used to detect specific shapes or patterns within a binary image, using a pair of disjoint structuring elements: B1 (must "hit" — match foreground pixels) and B2 (must "miss" — match background pixels) in the surrounding area.
+        <br><br>
+        A pixel location is marked as a match (output = 1) only if the foreground pattern matches B1 exactly AND the surrounding background matches B2 exactly at that location.
+        <br><br>
+        <b>Role in shape detection:</b> It is used to locate exact configurations — such as detecting specific corner shapes, isolated points, or particular junction patterns in a binary image — making it a precise tool for template-based shape matching within morphology.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

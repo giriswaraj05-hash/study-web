@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DIP Answers 2021</title>
+<style>
+  :root{
+    --bg:#0b1120;
+    --card:#101a2e;
+    --card-border:#22304a;
+    --blue:#38bdf8;
+    --green:#4ade80;
+    --orange:#fb923c;
+    --text:#e6edf7;
+    --text-dim:#8a97ad;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, Arial, sans-serif;
+    min-height:100vh;
+    padding-bottom:40px;
+  }
+  .topbar{
+    height:90px;
+    background:linear-gradient(135deg, #38bdf8, #60d5fb);
+  }
+  .container{
+    padding:24px 20px 10px;
+  }
+  .back-btn{
+    color:var(--orange);
+    font-weight:700;
+    font-size:1.05rem;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:22px;
+  }
+  .year-badge{
+    border:1.5px solid var(--green);
+    border-radius:18px;
+    padding:26px 20px;
+    text-align:center;
+    margin-bottom:30px;
+    background:rgba(74,222,128,0.04);
+  }
+  .year-badge .eyebrow{
+    color:#7e8aa0;
+    letter-spacing:2px;
+    font-size:0.78rem;
+    font-weight:600;
+    text-transform:uppercase;
+  }
+  .year-badge .year{
+    color:var(--green);
+    font-size:2.6rem;
+    font-weight:800;
+    margin-top:6px;
+  }
+  .section-title{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.15rem;
+    font-weight:700;
+    color:#d7dee8;
+    margin-bottom:18px;
+  }
+  .acard{
+    border-left:3px solid var(--green);
+    background:rgba(255,255,255,0.015);
+    border-radius:0 12px 12px 0;
+    padding:16px 16px 18px;
+    margin-bottom:18px;
+  }
+  .acard .qnum{
+    color:var(--orange);
+    font-weight:800;
+    font-size:0.95rem;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+  }
+  .acard .qtext{
+    color:#cdd6e4;
+    font-size:0.96rem;
+    line-height:1.5;
+    font-style:italic;
+    margin-bottom:10px;
+    padding-bottom:10px;
+    border-bottom:1px dashed var(--card-border);
+  }
+  .acard .alabel{
+    color:var(--green);
+    font-weight:700;
+    font-size:0.82rem;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .acard .atext{
+    color:#e6edf7;
+    font-size:1.0rem;
+    line-height:1.65;
+  }
+  .acard .atext ul{
+    margin:8px 0 0 18px;
+  }
+  .acard .atext li{
+    margin-bottom:6px;
+  }
+  @media (min-width:600px){
+    .container{ max-width:640px; margin:0 auto; }
+  }
+</style>
+</head>
+<body>
+  <div class="topbar"></div>
+  <div class="container">
+    <a class="back-btn" href="dip_ans_list.html">&larr; BACK</a>
+
+    <div class="year-badge">
+      <div class="eyebrow">DIGITAL IMAGE PROCESSING &middot; ANSWER SHEET</div>
+      <div class="year">2021</div>
+    </div>
+
+    <div class="section-title">✅ Answers</div>
+
+    <div class="acard">
+      <div class="qnum">Q1</div>
+      <div class="qtext">What is digital image processing? Explain the fundamental steps involved in image processing with a block diagram.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Digital Image Processing (DIP) is the use of a digital computer to process digital images through an algorithm. It converts an image into digital form (a matrix of pixel values) and applies operations on it to enhance, analyze, or extract useful information.
+        <ul>
+          <li><b>Image acquisition</b> — capturing the image using a sensor/camera and digitizing it.</li>
+          <li><b>Image enhancement</b> — improving visual appearance (contrast, brightness).</li>
+          <li><b>Image restoration</b> — removing degradation/noise using mathematical models.</li>
+          <li><b>Color image processing</b> — handling color models like RGB, HSI.</li>
+          <li><b>Wavelets/multiresolution</b> — processing image at different resolutions.</li>
+          <li><b>Compression</b> — reducing storage/transmission size (JPEG, etc.).</li>
+          <li><b>Morphological processing</b> — extracting shape-based image components.</li>
+          <li><b>Segmentation</b> — partitioning image into meaningful regions/objects.</li>
+          <li><b>Representation & description</b> — converting segmented data into a usable form.</li>
+          <li><b>Object recognition</b> — assigning labels to objects based on descriptors.</li>
+        </ul>
+        These steps form a continuous pipeline, with a knowledge base supporting each stage.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q2</div>
+      <div class="qtext">Explain the image formation model. Derive the relation between brightness, illumination and reflectance.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        An image is formed when light from a source falls on an object and is reflected toward a sensor. This is modeled mathematically as:
+        <br><br>
+        <b>f(x, y) = i(x, y) × r(x, y)</b>
+        <br><br>
+        where:
+        <ul>
+          <li><b>i(x, y)</b> = illumination component — the amount of light falling on the scene (determined by the light source).</li>
+          <li><b>r(x, y)</b> = reflectance component — the fraction of light reflected by the object's surface (0 to 1), determined by the object's properties.</li>
+          <li><b>f(x, y)</b> = resulting image intensity (brightness) at point (x, y).</li>
+        </ul>
+        Illumination depends on the light source and can range from very low (night) to very high (sunlight), while reflectance depends on the object material (e.g., black velvet ≈ 0.01, snow ≈ 0.93). This model is the foundation for techniques like homomorphic filtering, which separately processes the illumination and reflectance components to enhance images taken under poor lighting.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q3</div>
+      <div class="qtext">What is histogram equalization? Explain its working with a suitable example.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        Histogram equalization is a contrast enhancement technique that redistributes the intensity values of an image so that the output histogram is approximately uniform, making dark/low-contrast images clearer.
+        <br><br>
+        <b>Working:</b>
+        <ul>
+          <li>Compute the histogram (frequency of each gray level) of the input image.</li>
+          <li>Compute the normalized cumulative distribution function (CDF) of the gray levels.</li>
+          <li>Map each input gray level to a new gray level using the transformation: <b>s = T(r) = (L−1) × CDF(r)</b>, where L is the number of gray levels.</li>
+          <li>Replace original pixel values with the new mapped values.</li>
+        </ul>
+        <b>Example:</b> A dark, low-contrast X-ray image where most pixels are clustered in a narrow range (say 20–60) will, after equalization, have its pixel values spread across the full 0–255 range, making bone structures and soft tissue much more distinguishable.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q4</div>
+      <div class="qtext">Differentiate between spatial domain and frequency domain image enhancement techniques.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Spatial Domain:</b>
+        <ul>
+          <li>Operates directly on pixel values of the image: g(x,y) = T[f(x,y)].</li>
+          <li>Includes point processing (negation, log transform) and mask/filter-based processing (smoothing, sharpening).</li>
+          <li>Computationally simpler and faster for small kernels.</li>
+          <li>Examples: histogram equalization, median filtering, Laplacian sharpening.</li>
+        </ul>
+        <b>Frequency Domain:</b>
+        <ul>
+          <li>Image is first transformed using Fourier Transform into the frequency domain.</li>
+          <li>Filters (low-pass, high-pass, band-pass) are applied to the frequency components.</li>
+          <li>Inverse Fourier Transform converts the result back to the spatial domain.</li>
+          <li>Better suited for periodic noise removal and global frequency-based analysis.</li>
+          <li>Examples: ideal/Butterworth/Gaussian low-pass and high-pass filtering.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q5</div>
+      <div class="qtext">Explain the working of an ideal low-pass filter and a Butterworth low-pass filter in frequency domain.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Ideal Low-Pass Filter (ILPF):</b> Passes all frequencies within a circle of radius D₀ from the origin (center of frequency spectrum) and completely blocks all frequencies outside it.
+        <br>
+        H(u,v) = 1 if D(u,v) ≤ D₀, else 0.
+        <br>
+        Because of its sharp cutoff, it causes noticeable <b>ringing artifacts</b> (Gibbs phenomenon) in the output image.
+        <br><br>
+        <b>Butterworth Low-Pass Filter (BLPF):</b> Provides a smooth transition between passed and blocked frequencies, controlled by an order parameter <i>n</i>.
+        <br>
+        H(u,v) = 1 / [1 + (D(u,v)/D₀)<sup>2n</sup>]
+        <br>
+        A higher order n makes it behave more like an ideal filter (sharper cutoff), while a lower n gives a smoother transition with minimal ringing — making BLPF generally preferred over ILPF for practical smoothing.
+      </div>
+    </div>
+
+    <div class="acard">
+      <div class="qnum">Q6</div>
+      <div class="qtext">What is image sampling and quantization? Explain their effect on image quality.</div>
+      <div class="alabel">ANSWER</div>
+      <div class="atext">
+        <b>Sampling:</b> The process of digitizing the spatial coordinates of an image — converting a continuous image into a discrete grid of pixels. The number of samples determines the image's <b>spatial resolution</b>.
+        <br><br>
+        <b>Quantization:</b> The process of digitizing the amplitude (intensity) values at each sampled point into discrete gray levels. The number of quantization levels determines the <b>gray-level resolution</b>.
+        <br><br>
+        <b>Effect on quality:</b>
+        <ul>
+          <li>Low sampling rate → fewer pixels → blocky/pixelated image, loss of fine detail (checkerboard effect).</li>
+          <li>Low quantization levels → fewer gray shades → visible false contours / banding in smooth gradient regions.</li>
+          <li>Higher sampling and quantization improve image quality but increase storage and processing cost — so a trade-off is chosen based on application needs.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

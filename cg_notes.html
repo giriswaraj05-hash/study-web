@@ -3,42 +3,49 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Computer Graphics Units</title>
+<title>Lab</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:linear-gradient(135deg,#1e293b,#0f172a);color:#fff;font-family:'Segoe UI',sans-serif;min-height:100vh;padding:20px 16px 40px;}
 .back-btn{display:inline-block;color:#f5a623;font-weight:700;font-size:15px;text-decoration:none;margin-bottom:18px;}
-.sec-title{font-size:18px;font-weight:800;color:#f97316;margin-bottom:18px;}
-.unit-item{background:#162032;border:1.5px solid #2a3a50;border-radius:14px;padding:16px 18px;margin-bottom:12px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:all 0.2s;}
-.unit-item:hover{border-color:#f97316;background:#1e2f45;}
-.unit-item:active{transform:scale(0.98);}
-.unit-icon{width:48px;height:48px;background:#1e3a5f;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
-.unit-info{flex:1;}
-.u-title{font-size:16px;font-weight:700;color:#e8edf2;margin-bottom:3px;}
-.u-sub{font-size:12px;color:#5a7a9a;}
-.unit-arrow{color:#5a7a9a;font-size:18px;}
-.unit-item:hover .unit-arrow{color:#f97316;}
+.unit-header{background:#162032;border:1.5px solid #38bdf8;border-radius:16px;padding:20px;margin-bottom:20px;text-align:center;}
+.u-num{font-size:12px;color:#5a7a9a;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.u-title{font-size:19px;font-weight:800;color:#38bdf8;}
+.pdf-btn{display:flex;align-items:center;gap:14px;background:#162032;border:1.5px solid #2a3a50;border-radius:14px;padding:16px 18px;margin-bottom:16px;text-decoration:none;}
+.pdf-btn:hover{border-color:#38bdf8;background:#1e2f45;}
+.pdf-icon{width:48px;height:48px;background:#1e3a5f;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;}
+.pdf-info .p-title{font-size:15px;font-weight:700;color:#e0e0e0;margin-bottom:3px;}
+.pdf-info .p-sub{font-size:12px;color:#5a7a9a;}
+.topics{background:#0d1b2a;border:1px solid #2a3a50;border-radius:14px;padding:16px;}
+.topics h3{font-size:14px;color:#38bdf8;margin-bottom:12px;}
+.topics li{font-size:13px;color:#c8d4e0;padding:7px 0;border-bottom:1px solid #1e2e3e;list-style:none;display:flex;gap:8px;line-height:1.5;}
+.topics li:last-child{border-bottom:none;}
+.topics li::before{content:"🔬";font-size:11px;margin-top:2px;flex-shrink:0;}
 </style>
 </head>
 <body>
-  <a class="back-btn" href="cg.html">← BACK</a>
-  <div class="sec-title">📚 Units — Computer Graphics</div>
-  <a href="cg_unit1.html" class="unit-item"><div class="unit-icon">📖</div><div class="unit-info"><div class="u-title">Unit 1</div><div class="u-sub">Introduction to Computer Graphics</div></div><span class="unit-arrow">›</span></a>
-  <a href="cg_unit2.html" class="unit-item"><div class="unit-icon">📖</div><div class="unit-info"><div class="u-title">Unit 2</div><div class="u-sub">Output Primitives & Line Drawing</div></div><span class="unit-arrow">›</span></a>
-  <a href="cg_unit3.html" class="unit-item"><div class="unit-icon">📖</div><div class="unit-info"><div class="u-title">Unit 3</div><div class="u-sub">2D & 3D Transformations</div></div><span class="unit-arrow">›</span></a>
-  <a href="cg_unit4.html" class="unit-item"><div class="unit-icon">📖</div><div class="unit-info"><div class="u-title">Unit 4</div><div class="u-sub">Clipping, Projection & Viewing</div></div><span class="unit-arrow">›</span></a>
-  <a href="cg_unit5.html" class="unit-item"><div class="unit-icon">📖</div><div class="unit-info"><div class="u-title">Unit 5</div><div class="u-sub">Curves, Surfaces & Solid Modeling</div></div><span class="unit-arrow">›</span></a>
-  <a href="cg_lab.html" class="unit-item"><div class="unit-icon">🔬</div><div class="unit-info"><div class="u-title">Lab / Practical</div><div class="u-sub">Experiments & Programs</div></div><span class="unit-arrow">›</span></a>
+  <a class="back-btn" href="dip_units.html">← BACK</a>
+  <div class="unit-header"><div class="u-num">Practical</div><div class="u-title">Lab / Practical Work</div></div>
   
-  <!-- নতুন PDF লিঙ্ক এখানে Add করলাম -->
-  <a href="https://drive.google.com/file/d/1ZhfFPZeIbP3KsP4gVh0pZ72TCsVCQ6IJ/view?usp=drive_link" target="_blank" class="unit-item">
-    <div class="unit-icon">📄</div>
-    <div class="unit-info">
-      <div class="u-title">Syllabus / Notes PDF</div>
-      <div class="u-sub">Click to view full PDF</div>
+  <!-- এখানে লিঙ্কটা বসালাম -->
+  <a href="https://drive.google.com/file/d/1ZhfFPZeIbP3KsP4gVh0pZ72TCsVCQ6IJ/view?usp=drive_link" target="_blank" class="pdf-btn">
+    <div class="pdf-icon">📄</div>
+    <div class="pdf-info">
+      <div class="p-title">Lab Manual PDF</div>
+      <div class="p-sub">Tap to open PDF</div>
     </div>
-    <span class="unit-arrow">›</span>
   </a>
-
+  
+  <div class="topics">
+    <h3>🔬 Experiments</h3>
+    <ul>
+      <li>Implement DDA line drawing algorithm</li>
+      <li>Implement Bresenham's circle drawing</li>
+      <li>2D transformation programs (translation, rotation, scaling)</li>
+      <li>Implement Cohen-Sutherland clipping algorithm</li>
+      <li>Draw Bezier curve using control points</li>
+      <li>Image processing programs using Python/MATLAB</li>
+    </ul>
+  </div>
 </body>
 </html>

@@ -11,36 +11,114 @@
     .year-header { background:#162032; border:1.5px solid #f5a623; border-radius:16px; padding:18px; margin-bottom:20px; text-align:center; }
     .year-header .y-sub { font-size:12px; color:#5a7a9a; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
     .year-header .y-title { font-size:26px; font-weight:900; color:#f5a623; }
-    .pdf-btn { display:flex; align-items:center; gap:14px; background:#162032; border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px; margin-bottom:16px; text-decoration:none; animation:glow 2s ease-in-out infinite; }
+    .meta-row { display:flex; justify-content:center; gap:16px; font-size:11px; color:#5a7a9a; margin-top:8px; }
+    .pdf-btn { display:flex; align-items:center; gap:14px; background:#162032; border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px; margin-bottom:20px; text-decoration:none; animation:glow 2s ease-in-out infinite; }
     @keyframes glow { 0%,100%{box-shadow:0 0 6px #1e88e5;} 50%{box-shadow:0 0 22px #38bdf8,0 0 38px #1e88e5;} }
     .pdf-icon { width:48px; height:48px; background:#1e3a5f; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
     .pdf-info .p-title { font-size:15px; font-weight:700; color:#e0e0e0; margin-bottom:3px; }
     .pdf-info .p-sub { font-size:12px; color:#5a7a9a; }
+
+    .group-title { font-size:16px; color:#f5a623; font-weight:800; margin:24px 0 12px; padding-bottom:6px; border-bottom:1.5px solid #2a3a50; }
+    .group-note { font-size:11.5px; color:#8a9bb0; margin-bottom:14px; line-height:1.5; background:#162032; border-left:3px solid #5a7a9a; padding:10px 12px; border-radius:0 10px 10px 0; }
+
     .q-card { background:#162032; border-left:3px solid #f5a623; border-radius:0 12px 12px 0; padding:14px 14px; margin-bottom:10px; }
-    .q-num { color:#f5a623; font-weight:800; font-size:12px; margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; }
+    .q-num { color:#f5a623; font-weight:800; font-size:12px; margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; display:flex; justify-content:space-between; align-items:center; }
+    .q-marks { background:#1e3a5f; color:#9ecbff; font-size:10px; padding:2px 8px; border-radius:8px; font-weight:700; }
     .q-text { font-size:13px; color:#c8d4e0; line-height:1.6; }
+    .q-opts { font-size:12px; color:#8a9bb0; margin-top:6px; line-height:1.6; padding-left:2px; }
+
+    .mcq-card { background:#162032; border-left:3px solid #38bdf8; border-radius:0 12px 12px 0; padding:12px 14px; margin-bottom:9px; }
+    .mcq-card .q-num { color:#38bdf8; }
+
     .sec-title { font-size:14px; color:#8a9bb0; margin-bottom:12px; font-weight:600; }
   </style>
 </head>
 <body>
   <a class="back-btn" href="micro_pyq.html">← BACK</a>
+
   <div class="year-header">
-    <div class="y-sub">Microprocessor • Question Paper</div>
-    <div class="y-title">2024</div>
+    <div class="y-sub">Microprocessor &amp; Microcontroller • Question Paper</div>
+    <div class="y-title">January 2024</div>
+    <div class="meta-row">
+      <span>⏱ 2.5 Hours</span>
+      <span>📝 Full Marks: 60</span>
+    </div>
   </div>
-  <a href="#" class="pdf-btn" onclick="alert('PDF টি শীঘ্রই যোগ করা হবে!'); return false;">
+
+  <a href="https://drive.google.com/file/d/1BfmBNdY-DvzpyocrhdN0HwaEfXIYTsNK/view?usp=drivesdk" class="pdf-btn" target="_blank" rel="noopener noreferrer">
     <div class="pdf-icon">📄</div>
     <div class="pdf-info">
-      <div class="p-title">2024 Question Paper PDF</div>
+      <div class="p-title">January 2024 Question Paper PDF</div>
       <div class="p-sub">Tap to open PDF</div>
     </div>
   </a>
-  <div class="sec-title">📋 Questions</div>
-  <div class="q-card"><div class="q-num">Q1</div><div class="q-text">Describe the data bus, address bus and control bus of 8085.</div></div>
-<div class="q-card"><div class="q-num">Q2</div><div class="q-text">Explain BIU and EU in 8086 with a neat diagram.</div></div>
-<div class="q-card"><div class="q-num">Q3</div><div class="q-text">Write an 8085 program to find the largest number in an array.</div></div>
-<div class="q-card"><div class="q-num">Q4</div><div class="q-text">Explain the minimum mode and maximum mode configuration of 8086.</div></div>
-<div class="q-card"><div class="q-num">Q5</div><div class="q-text">What is a programmable interval timer? Explain 8253/8254 in detail.</div></div>
-<div class="q-card"><div class="q-num">Q6</div><div class="q-text">Differentiate between microprocessor and microcontroller with examples.</div></div>
+
+  <div class="group-title">📋 Group A — Q1 (2×10=20)</div>
+  <div class="group-note">Choose the correct answer from the given alternatives and explain your answer (any ten). 1 mark for right answer + 1 mark for correct explanation. Answer any Five (05) Questions from Group B.</div>
+
+  <div class="mcq-card"><div class="q-num">i</div><div class="q-text">Which of the following is true about microprocessors?</div><div class="q-opts">(a) It has an internal memory &nbsp; (b) It has interfacing circuits &nbsp; (c) It contains ALU, CU, and registers &nbsp; (d) It uses Harvard architecture</div></div>
+  <div class="mcq-card"><div class="q-num">ii</div><div class="q-text">The correct sequence of operations in a microprocessor is -</div><div class="q-opts">(a) Opcode fetch, memory read, memory write, I/O read, I/O write &nbsp; (b) Opcode fetch, memory write, memory read, I/O read, I/O write &nbsp; (c) I/O read, opcode fetch, memory read, memory write, I/O write &nbsp; (d) I/O read, opcode fetch, memory read, I/O write, memory read, I/O write</div></div>
+  <div class="mcq-card"><div class="q-num">iii</div><div class="q-text">Which of the following is NOT a microprocessor?</div><div class="q-opts">(a) 4004 &nbsp; (b) 8008 &nbsp; (c) 8085 &nbsp; (d) 8051</div></div>
+  <div class="mcq-card"><div class="q-num">iv</div><div class="q-text">Conditional instructions are independent of _____ flag.</div><div class="q-opts">(a) Z &nbsp; (b) AC &nbsp; (c) CY &nbsp; (d) P</div></div>
+  <div class="mcq-card"><div class="q-num">v</div><div class="q-text">8086 is a _____ pin IC.</div><div class="q-opts">(a) 14 &nbsp; (b) 28 &nbsp; (c) 32 &nbsp; (d) 40</div></div>
+  <div class="mcq-card"><div class="q-num">vi</div><div class="q-text">NMI pin stands for -</div><div class="q-opts">(a) Neo-Makeable Interrupt &nbsp; (b) Non-Makeable Interrupt &nbsp; (c) Neo-Makeable Instruction &nbsp; (d) Non-Makeable Instruction</div></div>
+  <div class="mcq-card"><div class="q-num">vii</div><div class="q-text">80286 consist of about _____ numbers of transistors.</div><div class="q-opts">(a) 134000 &nbsp; (b) 100000 &nbsp; (c) 10000 &nbsp; (d) 13400</div></div>
+  <div class="mcq-card"><div class="q-num">viii</div><div class="q-text">The pin that clears the control word register of 8255 when enabled is -</div><div class="q-opts">(a) CLEAR &nbsp; (b) SET &nbsp; (c) RESET &nbsp; (d) CLK</div></div>
+  <div class="mcq-card"><div class="q-num">ix</div><div class="q-text">Port C of 8255 can function independently as -</div><div class="q-opts">(a) input port &nbsp; (b) output port &nbsp; (c) either input or output ports &nbsp; (d) both input and output ports</div></div>
+  <div class="mcq-card"><div class="q-num">x</div><div class="q-text">The register that can be used as a scratch pad is -</div><div class="q-opts">(a) Accumulator &nbsp; (b) B register &nbsp; (c) Data register &nbsp; (d) Accumulator and B register</div></div>
+  <div class="mcq-card"><div class="q-num">xi</div><div class="q-text">8051 microcontroller consists of -</div><div class="q-opts">(a) 4 latches &nbsp; (b) 2 timer registers &nbsp; (c) 4 on-chip I/O ports &nbsp; (d) all of the mentioned</div></div>
+  <div class="mcq-card"><div class="q-num">xii</div><div class="q-text">In 8051 microcontroller the registers that are not accessible by the user are -</div><div class="q-opts">(a) Accumulator and B register &nbsp; (b) IP and IE &nbsp; (c) Instruction registers &nbsp; (d) TMP1 and TMP2</div></div>
+  <div class="mcq-card"><div class="q-num">xiii</div><div class="q-text">In 8051 microcontroller ALP the instruction, ADD A, #100 performs -</div><div class="q-opts">(a) 100(decimal) is added to contents of address register &nbsp; (b) 100(hexadecimal) is added to the accumulator &nbsp; (c) 100(decimal) is added to contents of an accumulator &nbsp; (d) 100(hexadecimal) is added to contents of address register</div></div>
+  <div class="mcq-card"><div class="q-num">xiv</div><div class="q-text">8051 microcontroller has _____ Special Function Registers.</div><div class="q-opts">(a) 8 &nbsp; (b) 11 &nbsp; (c) 16 &nbsp; (d) 21</div></div>
+  <div class="mcq-card"><div class="q-num">xv</div><div class="q-text">8051 microcontroller can access upto _____ KB of program memory &amp; _____ KB of external data memory.</div><div class="q-opts">(a) 64 &amp; 64 &nbsp; (b) 64 &amp; 32 &nbsp; (c) 32 &amp; 64 &nbsp; (d) 32 &amp; 32</div></div>
+
+  <div class="group-title">📋 Group B — Answer any Five (05)</div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q2</span><span class="q-marks">8</span></div>
+    <div class="q-text">a) Draw a neat diagram of internal architecture of 8086 microprocessor.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q3</span><span class="q-marks">3+5</span></div>
+    <div class="q-text">a) What is prefetch queue?<br>b) Explain memory segmentation for 8086 microprocessor.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q4</span><span class="q-marks">4+4</span></div>
+    <div class="q-text">a) Explain the function of following pins for 8086 microprocessors — ALE, RST, INTR, HLDA.<br>b) Draw and structure of flag register for 8086 microprocessors.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q5</span><span class="q-marks">4+3+1</span></div>
+    <div class="q-text">a) Give one example for Implicit Addressing, Register Addressing, Immediate Addressing, and Memory Addressing.<br>b) Write comment for each line of the following assembly language program:<br>
+    MOV [300h], 05h<br>
+    MOV AH, 0h<br>
+    MOV AL, [300h]<br>
+    MOV DS, AX<br>
+    HLT<br>
+    c) What will be the value of DS register at the end of the program?</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q6</span><span class="q-marks">8</span></div>
+    <div class="q-text">a) Write an ALP for 8086 microprocessor to add any two 16-bit numbers.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q7</span><span class="q-marks">8</span></div>
+    <div class="q-text">a) Draw the block diagram and describe interfacing of 8254 with 8086.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q8</span><span class="q-marks">4+4</span></div>
+    <div class="q-text">a) Write four prominent differences between microprocessors and microcontrollers.<br>b) Draw internal architecture of 8051 microcontrollers.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q9</span><span class="q-marks">4+4</span></div>
+    <div class="q-text">a) Draw and explain the PSW register of 8051 microcontroller.<br>b) Explain programming model of 8051 microcontroller.</div>
+  </div>
+
 </body>
 </html>

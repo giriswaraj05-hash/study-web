@@ -11,31 +11,118 @@
     .year-header { background:#162032; border:1.5px solid #f5a623; border-radius:16px; padding:18px; margin-bottom:20px; text-align:center; }
     .year-header .y-sub { font-size:12px; color:#5a7a9a; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
     .year-header .y-title { font-size:26px; font-weight:900; color:#f5a623; }
-    .pdf-btn { display:flex; align-items:center; gap:14px; background:#162032; border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px; margin-bottom:16px; text-decoration:none; animation:glow 2s ease-in-out infinite; }
+    .meta-row { display:flex; justify-content:center; gap:16px; font-size:11px; color:#5a7a9a; margin-top:8px; }
+    .pdf-btn { display:flex; align-items:center; gap:14px; background:#162032; border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px; margin-bottom:20px; text-decoration:none; animation:glow 2s ease-in-out infinite; }
     @keyframes glow { 0%,100%{box-shadow:0 0 6px #1e88e5;} 50%{box-shadow:0 0 22px #38bdf8,0 0 38px #1e88e5;} }
     .pdf-icon { width:48px; height:48px; background:#1e3a5f; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
     .pdf-info .p-title { font-size:15px; font-weight:700; color:#e0e0e0; margin-bottom:3px; }
     .pdf-info .p-sub { font-size:12px; color:#5a7a9a; }
+
+    .group-title { font-size:16px; color:#f5a623; font-weight:800; margin:24px 0 12px; padding-bottom:6px; border-bottom:1.5px solid #2a3a50; }
+    .group-note { font-size:11.5px; color:#8a9bb0; margin-bottom:14px; line-height:1.5; background:#162032; border-left:3px solid #5a7a9a; padding:10px 12px; border-radius:0 10px 10px 0; }
+
     .q-card { background:#162032; border-left:3px solid #f5a623; border-radius:0 12px 12px 0; padding:14px 14px; margin-bottom:10px; }
-    .q-num { color:#f5a623; font-weight:800; font-size:12px; margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; }
+    .q-num { color:#f5a623; font-weight:800; font-size:12px; margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; display:flex; justify-content:space-between; align-items:center; }
+    .q-marks { background:#1e3a5f; color:#9ecbff; font-size:10px; padding:2px 8px; border-radius:8px; font-weight:700; }
     .q-text { font-size:13px; color:#c8d4e0; line-height:1.6; }
+    .q-opts { font-size:12px; color:#8a9bb0; margin-top:6px; line-height:1.6; padding-left:2px; }
+
+    .mcq-card { background:#162032; border-left:3px solid #38bdf8; border-radius:0 12px 12px 0; padding:12px 14px; margin-bottom:9px; }
+    .mcq-card .q-num { color:#38bdf8; }
+
     .sec-title { font-size:14px; color:#8a9bb0; margin-bottom:12px; font-weight:600; }
   </style>
 </head>
 <body>
   <a class="back-btn" href="micro_pyq.html">← BACK</a>
+
   <div class="year-header">
-    <div class="y-sub">Microprocessor • Question Paper</div>
-    <div class="y-title">2026</div>
+    <div class="y-sub">Microprocessor &amp; Microcontroller • Question Paper</div>
+    <div class="y-title">January 2026</div>
+    <div class="meta-row">
+      <span>⏱ 2.5 Hours</span>
+      <span>📝 Full Marks: 60</span>
+    </div>
   </div>
-  <a href="#" class="pdf-btn" onclick="alert('PDF টি শীঘ্রই যোগ করা হবে!'); return false;">
+
+  <a href="https://drive.google.com/file/d/1NRUsXBosvocoSKkcr8A5YkLXWeFfFpzo/view?usp=drivesdk" class="pdf-btn" target="_blank" rel="noopener noreferrer">
     <div class="pdf-icon">📄</div>
     <div class="pdf-info">
-      <div class="p-title">2026 Question Paper PDF</div>
+      <div class="p-title">January 2026 Question Paper PDF</div>
       <div class="p-sub">Tap to open PDF</div>
     </div>
   </a>
-  <div class="sec-title">📋 Questions</div>
-  <div class="q-card"><div class="q-num">Notice</div><div class="q-text">2026 question paper will be updated after the examination. Check back soon!</div></div>
+
+  <div class="group-title">📋 Group A — Q1 (2×10=20)</div>
+  <div class="group-note">Choose the correct answer from the given alternatives and explain your answer (any ten). 1 mark for right answer + 1 mark for correct explanation. Answer any Five (05) Questions from Group B.</div>
+
+  <div class="mcq-card"><div class="q-num">i</div><div class="q-text">The instruction MOV AX, [BX] is an example of which addressing mode?</div><div class="q-opts">(a) Immediate addressing mode &nbsp; (b) Register addressing mode &nbsp; (c) Direct addressing mode &nbsp; (d) Register indirect addressing mode</div></div>
+  <div class="mcq-card"><div class="q-num">ii</div><div class="q-text">If the Code Segment (CS) register contains 2000H and the Instruction Pointer (IP) contains 1000H, what is the 20-bit physical address?</div><div class="q-opts">(a) 21000H &nbsp; (b) 20000H &nbsp; (c) 30000H &nbsp; (d) 12000H</div></div>
+  <div class="mcq-card"><div class="q-num">iii</div><div class="q-text">Directional flag is used with -</div><div class="q-opts">(a) String instructions &nbsp; (b) Stack instructions &nbsp; (c) Arithmetic instructions &nbsp; (d) Branch instructions</div></div>
+  <div class="mcq-card"><div class="q-num">iv</div><div class="q-text">Which mode of operation is typically chosen for a large, complex system with multiple processors and coprocessors?</div><div class="q-opts">(a) Minimum mode &nbsp; (b) Maximum mode &nbsp; (c) Multiplexed mode &nbsp; (d) Buffered mode</div></div>
+  <div class="mcq-card"><div class="q-num">v</div><div class="q-text">Which signal is used for synchronization between the 8086 microprocessor and slower peripheral devices?</div><div class="q-opts">(a) HOLD &nbsp; (b) READY &nbsp; (c) ALE &nbsp; (d) LOCK</div></div>
+  <div class="mcq-card"><div class="q-num">vi</div><div class="q-text">Which locations of 128 bytes on-chip additional RAM are generally reserved for Special Function Registers?</div><div class="q-opts">(a) 80H to FFH &nbsp; (b) 70H to FFH &nbsp; (c) 90H to FFH &nbsp; (d) 60H to FFH</div></div>
+  <div class="mcq-card"><div class="q-num">vii</div><div class="q-text">Which register is used to select the operating mode for the timers in the 8051?</div><div class="q-opts">(a) TCON &nbsp; (b) TMOD &nbsp; (c) SCON &nbsp; (d) PCON</div></div>
+  <div class="mcq-card"><div class="q-num">viii</div><div class="q-text">What is the total number of I/O pins in 8051 microcontroller?</div><div class="q-opts">(a) 8 &nbsp; (b) 16 &nbsp; (c) 24 &nbsp; (d) 32</div></div>
+  <div class="mcq-card"><div class="q-num">ix</div><div class="q-text">After reset, SP register is initialized to address _____.</div><div class="q-opts">(a) 05H &nbsp; (b) 06H &nbsp; (c) 07H &nbsp; (d) 08H</div></div>
+  <div class="mcq-card"><div class="q-num">x</div><div class="q-text">The result of MOV AL, 65 is to store -</div><div class="q-opts">(a) 0100 0010 in AL &nbsp; (b) 42H in AL &nbsp; (c) 40H in AL &nbsp; (d) 0100 0001 in AL</div></div>
+  <div class="mcq-card"><div class="q-num">xi</div><div class="q-text">In multiplication operation in 8051 microcontroller, MSB of the result will be available in _____ register and LSB available in _____ register.</div><div class="q-opts">(a) A &amp; B &nbsp; (b) B &amp; A &nbsp; (c) A &amp; SP &nbsp; (d) SP &amp; A</div></div>
+  <div class="mcq-card"><div class="q-num">xii</div><div class="q-text">In which mode all Ports of 8255 function as simple I/O ports?</div><div class="q-opts">(a) BSR mode &nbsp; (b) mode 0 &nbsp; (c) mode 1 &nbsp; (d) mode 2</div></div>
+  <div class="mcq-card"><div class="q-num">xiii</div><div class="q-text">The 8257 DMA controller transfers data directly to/from memory without CPU interference, which of the following signals allows it to take control of the system bus?</div><div class="q-opts">(a) HRQ (Hold Request) &nbsp; (b) HLDA (Hold Acknowledge) &nbsp; (c) DACK (DMA Acknowledge) &nbsp; (d) CLK (Clock)</div></div>
+  <div class="mcq-card"><div class="q-num">xiv</div><div class="q-text">Which of the following interrupt is having least priority in 8051 MC?</div><div class="q-opts">(a) INT0 &nbsp; (b) INT1 &nbsp; (c) TF0 &nbsp; (d) TI/RI</div></div>
+  <div class="mcq-card"><div class="q-num">xv</div><div class="q-text">Microcontroller 8051 access external RAM when -</div><div class="q-opts">(a) EA pin is connected to +5V &nbsp; (b) EA pin is connected to ground &nbsp; (c) EA pin is connected to ground &nbsp; (d) none of these</div></div>
+
+  <div class="group-title">📋 Group B — Answer any Five (05) — (8×5)</div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q2</span><span class="q-marks">6+2</span></div>
+    <div class="q-text">(i) Discuss Flag Register Format in 8086 and explain significance of each flag.<br>(ii) Explain the function of following pins of 8086 — (a) NMI &nbsp; (b) HLDA.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q3</span><span class="q-marks">4+4</span></div>
+    <div class="q-text">(i) What is memory segmentation? Write down its advantages.<br>(ii) Draw the timing diagrams for memory write operation in minimum mode.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q4</span><span class="q-marks">8</span></div>
+    <div class="q-text">List various addressing modes supported in 8086 microprocessor programming and give one example to each.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q5</span><span class="q-marks">2+6</span></div>
+    <div class="q-text">What do you mean by maskable and non maskable interrupts? Explain the Interrupt Vector Table of 8086 microprocessor.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q6</span><span class="q-marks">8</span></div>
+    <div class="q-text">Draw the internal architecture of 8259 PIC and explain its blocks.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q7</span><span class="q-marks">4+4</span></div>
+    <div class="q-text">Draw the block diagram of 8255 PPI? Write the control word for the following modes setting in mode 0: Port A — input, Port B — output, Port C<sub>U</sub> — input, Port C<sub>L</sub> — output.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q8</span><span class="q-marks">4+4</span></div>
+    <div class="q-text">(i) Differentiate microprocessor and microcontroller.<br>(ii) Draw the internal architecture of 8051 microcontroller.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q9</span><span class="q-marks">4+4</span></div>
+    <div class="q-text">(i) What are the significance of DPTR and EA pin in 8051 microcontroller?<br>(ii) Draw and explain the internal RAM structure.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q10</span><span class="q-marks">2+6</span></div>
+    <div class="q-text">What do you mean by addressing modes? List and explain different addressing modes of 8051 microcontroller with at least one example of each.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q11</span><span class="q-marks">2+3+3</span></div>
+    <div class="q-text">(i) Mention the alternative function of P3.2 and P3.5.<br>(ii) Explain the following SFRs — (a) TMOD &nbsp; (b) IE.</div>
+  </div>
+
 </body>
 </html>

@@ -11,36 +11,123 @@
     .year-header { background:#162032; border:1.5px solid #f5a623; border-radius:16px; padding:18px; margin-bottom:20px; text-align:center; }
     .year-header .y-sub { font-size:12px; color:#5a7a9a; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
     .year-header .y-title { font-size:26px; font-weight:900; color:#f5a623; }
-    .pdf-btn { display:flex; align-items:center; gap:14px; background:#162032; border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px; margin-bottom:16px; text-decoration:none; animation:glow 2s ease-in-out infinite; }
+    .meta-row { display:flex; justify-content:center; gap:16px; font-size:11px; color:#5a7a9a; margin-top:8px; }
+    .pdf-btn { display:flex; align-items:center; gap:14px; background:#162032; border:1.5px solid #2a3a50; border-radius:14px; padding:16px 18px; margin-bottom:20px; text-decoration:none; animation:glow 2s ease-in-out infinite; }
     @keyframes glow { 0%,100%{box-shadow:0 0 6px #1e88e5;} 50%{box-shadow:0 0 22px #38bdf8,0 0 38px #1e88e5;} }
     .pdf-icon { width:48px; height:48px; background:#1e3a5f; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
     .pdf-info .p-title { font-size:15px; font-weight:700; color:#e0e0e0; margin-bottom:3px; }
     .pdf-info .p-sub { font-size:12px; color:#5a7a9a; }
+
+    .group-title { font-size:16px; color:#f5a623; font-weight:800; margin:24px 0 12px; padding-bottom:6px; border-bottom:1.5px solid #2a3a50; }
+    .group-note { font-size:11.5px; color:#8a9bb0; margin-bottom:14px; line-height:1.5; background:#162032; border-left:3px solid #5a7a9a; padding:10px 12px; border-radius:0 10px 10px 0; }
+
     .q-card { background:#162032; border-left:3px solid #f5a623; border-radius:0 12px 12px 0; padding:14px 14px; margin-bottom:10px; }
-    .q-num { color:#f5a623; font-weight:800; font-size:12px; margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; }
+    .q-num { color:#f5a623; font-weight:800; font-size:12px; margin-bottom:5px; text-transform:uppercase; letter-spacing:0.5px; display:flex; justify-content:space-between; align-items:center; }
+    .q-marks { background:#1e3a5f; color:#9ecbff; font-size:10px; padding:2px 8px; border-radius:8px; font-weight:700; }
     .q-text { font-size:13px; color:#c8d4e0; line-height:1.6; }
+    .q-opts { font-size:12px; color:#8a9bb0; margin-top:6px; line-height:1.6; padding-left:2px; }
+
+    .mcq-card { background:#162032; border-left:3px solid #38bdf8; border-radius:0 12px 12px 0; padding:12px 14px; margin-bottom:9px; }
+    .mcq-card .q-num { color:#38bdf8; }
+
     .sec-title { font-size:14px; color:#8a9bb0; margin-bottom:12px; font-weight:600; }
   </style>
 </head>
 <body>
   <a class="back-btn" href="micro_pyq.html">← BACK</a>
+
   <div class="year-header">
-    <div class="y-sub">Microprocessor • Question Paper</div>
-    <div class="y-title">2023</div>
+    <div class="y-sub">Microprocessor &amp; Microcontroller • Question Paper</div>
+    <div class="y-title">March 2023</div>
+    <div class="meta-row">
+      <span>⏱ 2.5 Hours</span>
+      <span>📝 Full Marks: 60</span>
+    </div>
   </div>
-  <a href="#" class="pdf-btn" onclick="alert('PDF টি শীঘ্রই যোগ করা হবে!'); return false;">
+
+  <a href="https://drive.google.com/file/d/1tkqpVuy5wjuqa2ohLF6ODY0xK9iCXVmf/view?usp=drivesdk" class="pdf-btn" target="_blank" rel="noopener noreferrer">
     <div class="pdf-icon">📄</div>
     <div class="pdf-info">
-      <div class="p-title">2023 Question Paper PDF</div>
+      <div class="p-title">March 2023 Question Paper PDF</div>
       <div class="p-sub">Tap to open PDF</div>
     </div>
   </a>
-  <div class="sec-title">📋 Questions</div>
-  <div class="q-card"><div class="q-num">Q1</div><div class="q-text">Explain the register organization of 8085 microprocessor.</div></div>
-<div class="q-card"><div class="q-num">Q2</div><div class="q-text">What is ISR? Explain TRAP and RST hardware interrupts.</div></div>
-<div class="q-card"><div class="q-num">Q3</div><div class="q-text">Write an 8085 assembly program to multiply two 8-bit numbers.</div></div>
-<div class="q-card"><div class="q-num">Q4</div><div class="q-text">Describe the PUSH and POP stack operations with examples.</div></div>
-<div class="q-card"><div class="q-num">Q5</div><div class="q-text">Explain memory segmentation in 8086 with all segment registers.</div></div>
-<div class="q-card"><div class="q-num">Q6</div><div class="q-text">What is ADC interfacing? Draw a circuit and explain the process.</div></div>
+
+  <div class="group-title">📋 Group A — Q1 (Compulsory, 1×20)</div>
+  <div class="group-note">Choose the correct answer from the given alternatives (any twenty). Answer to be made in separate loose script, max 30 minutes.</div>
+
+  <div class="mcq-card"><div class="q-num">i</div><div class="q-text">The Intel 8086 microprocessor is a _____ processor.</div><div class="q-opts">(a) 8 bit &nbsp; (b) 16 bit &nbsp; (c) 32 bit &nbsp; (d) 4 bit</div></div>
+  <div class="mcq-card"><div class="q-num">ii</div><div class="q-text">In 8086 microprocessor, the address bus is _____ bit wide.</div><div class="q-opts">(a) 12 bit &nbsp; (b) 10 bit &nbsp; (c) 16 bit &nbsp; (d) 20 bit</div></div>
+  <div class="mcq-card"><div class="q-num">iii</div><div class="q-text">The IF is called as _____.</div><div class="q-opts">(a) initial flag &nbsp; (b) indicate flag &nbsp; (c) interrupt flag &nbsp; (d) inter flag</div></div>
+  <div class="mcq-card"><div class="q-num">iv</div><div class="q-text">The BIU contains FIFO register of size _____ bytes.</div><div class="q-opts">(a) 8 &nbsp; (b) 6 &nbsp; (c) 4 &nbsp; (d) 12</div></div>
+  <div class="mcq-card"><div class="q-num">v</div><div class="q-text">The 1 MB byte of memory can be divided into _____ segment.</div><div class="q-opts">(a) 1 Kbyte &nbsp; (b) 64 Kbyte &nbsp; (c) 33 Kbyte &nbsp; (d) 34 Kbyte</div></div>
+  <div class="mcq-card"><div class="q-num">vi</div><div class="q-text">The 8086 fetches instruction one after another from _____ of memory.</div><div class="q-opts">(a) code segment &nbsp; (b) IP &nbsp; (c) ES &nbsp; (d) SS</div></div>
+  <div class="mcq-card"><div class="q-num">vii</div><div class="q-text">The result of MOV AL, 65 is to store -</div><div class="q-opts">(a) store 0100 0010 in AL &nbsp; (b) store 42H in AL &nbsp; (c) store 40H in AL &nbsp; (d) store 0100 0001 in AL</div></div>
+  <div class="mcq-card"><div class="q-num">viii</div><div class="q-text">Which microprocessor has multiplexed data and address lines?</div><div class="q-opts">(a) 8086 &nbsp; (b) 80286 &nbsp; (c) 80386 &nbsp; (d) Pentium</div></div>
+  <div class="mcq-card"><div class="q-num">ix</div><div class="q-text">Which method bypasses the CPU for certain types of data transfer?</div><div class="q-opts">(a) Software interrupts &nbsp; (b) Interrupt-driven I/O &nbsp; (c) Polled I/O &nbsp; (d) Direct Memory Access (DMA)</div></div>
+  <div class="mcq-card"><div class="q-num">x</div><div class="q-text">What is DEN?</div><div class="q-opts">(a) direct enable &nbsp; (b) data entered &nbsp; (c) data enable &nbsp; (d) data encoding</div></div>
+  <div class="mcq-card"><div class="q-num">xi</div><div class="q-text">If MN/MX is low, the 8086 operates in _____ mode.</div><div class="q-opts">(a) Minimum &nbsp; (b) Maximum &nbsp; (c) both a and b &nbsp; (d) medium</div></div>
+  <div class="mcq-card"><div class="q-num">xii</div><div class="q-text">The instruction that loads effective address formed by destination operand into the specified source register is -</div><div class="q-opts">(a) LEA &nbsp; (b) LDS &nbsp; (c) LES &nbsp; (d) LAHF</div></div>
+  <div class="mcq-card"><div class="q-num">xiii</div><div class="q-text">The instruction that supports addition when carry exists is -</div><div class="q-opts">(a) ADD &nbsp; (b) ADC &nbsp; (c) ADD &amp; ADC &nbsp; (d) None of the mentioned</div></div>
+  <div class="mcq-card"><div class="q-num">xiv</div><div class="q-text">What is the bit size of the 8051 microcontroller?</div><div class="q-opts">(a) 8-bit &nbsp; (b) 4-bit &nbsp; (c) 16-bit &nbsp; (d) 32-bit</div></div>
+  <div class="mcq-card"><div class="q-num">xv</div><div class="q-text">How many interrupts are there in microcontroller (8051)?</div><div class="q-opts">(a) 3 &nbsp; (b) 6 &nbsp; (c) 4 &nbsp; (d) 5</div></div>
+  <div class="mcq-card"><div class="q-num">xvi</div><div class="q-text">Which instruction should be adopted for moving an accumulator to the register from the below mentioned mnemonics?</div><div class="q-opts">(a) MOV A, Rn &nbsp; (b) MOV A, @Ri &nbsp; (c) MOV Rn, A &nbsp; (d) MOV direct, A</div></div>
+  <div class="mcq-card"><div class="q-num">xvii</div><div class="q-text">How many bytes of bit addressable memory are present in 8051-based microcontrollers?</div><div class="q-opts">(a) 8 bytes &nbsp; (b) 32 bytes &nbsp; (c) 16 bytes &nbsp; (d) 128 bytes</div></div>
+  <div class="mcq-card"><div class="q-num">xviii</div><div class="q-text">On power up, the 8051 uses which RAM locations for register R0–R7?</div><div class="q-opts">(a) 00-2F &nbsp; (b) 00-07 &nbsp; (c) 00-7F &nbsp; (d) 00-0F</div></div>
+  <div class="mcq-card"><div class="q-num">xix</div><div class="q-text">When 8051 wakes up then 0x00 is loaded to which register?</div><div class="q-opts">(a) PSW &nbsp; (b) SP &nbsp; (c) PC &nbsp; (d) None of the mentioned</div></div>
+  <div class="mcq-card"><div class="q-num">xx</div><div class="q-text">Which of the following should a microcontroller at-least consist of?</div><div class="q-opts">(a) CPU, ROM, I/O ports, and timers &nbsp; (b) RAM, ROM, I/O ports, and timers &nbsp; (c) CPU, RAM, I/O ports, and timers &nbsp; (d) CPU, RAM, ROM, I/O ports, and timers</div></div>
+  <div class="mcq-card"><div class="q-num">xxi</div><div class="q-text">Which of the following file extension is loaded in a microcontroller for executing any instruction?</div><div class="q-opts">(a) .c &nbsp; (b) .txt &nbsp; (c) .hex &nbsp; (d) .doc</div></div>
+  <div class="mcq-card"><div class="q-num">xxii</div><div class="q-text">When the microcontroller executes some arithmetic operations, then the flag bits of which of the following register are affected?</div><div class="q-opts">(a) DPTR &nbsp; (b) PSW &nbsp; (c) PC &nbsp; (d) SP</div></div>
+  <div class="mcq-card"><div class="q-num">xxiii</div><div class="q-text">What is the meaning of the instruction MOV A, 05H?</div><div class="q-opts">(a) data 05H is stored in the accumulator &nbsp; (b) fifth bit of accumulator is set to one &nbsp; (c) address 05H is stored in the accumulator &nbsp; (d) none of the mentioned</div></div>
+  <div class="mcq-card"><div class="q-num">xxiv</div><div class="q-text">What is the frequency of the clock that is being used as the clock source for the timer?</div><div class="q-opts">(a) some externally applied frequency f &nbsp; (b) controller's crystal frequency f &nbsp; (c) controller's crystal frequency/12 &nbsp; (d) externally applied frequency/12</div></div>
+  <div class="mcq-card"><div class="q-num">xxv</div><div class="q-text">TF1, TR1, TF0, TR0 bits are of which register?</div><div class="q-opts">(a) TMOD &nbsp; (b) SCON &nbsp; (c) TCON &nbsp; (d) SMOD</div></div>
+
+  <div class="group-title">📋 Group B — Answer any Five (05)</div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q2</span><span class="q-marks">2+6</span></div>
+    <div class="q-text">a) What is pipelining?<br>b) Explain briefly the internal hardware architecture of 8086 microprocessor with neat diagram.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q3</span><span class="q-marks">6+2</span></div>
+    <div class="q-text">a) Explain the various addressing modes of 8086 microprocessor with examples.<br>b) How to calculate physical address in 8086 microprocessor?</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q4</span><span class="q-marks">6+2</span></div>
+    <div class="q-text">a) Explain the Minimum Mode configuration of 8086 with a suitable diagram.<br>b) Write the function of Bus High Enable pin.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q5</span><span class="q-marks">6+2</span></div>
+    <div class="q-text">a) Explain different types of instructions with example.<br>b) What is the difference between MUL and IMUL instructions?</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q6</span><span class="q-marks">3+5</span></div>
+    <div class="q-text">a) Explain the operating modes of 8255.<br>b) Sketch and explain the interface of PPI 8255 to the 8086 microprocessor in minimum mode.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q7</span><span class="q-marks">5+3</span></div>
+    <div class="q-text">a) Explain different addressing modes of 8051 with examples.<br>b) Write differences between Microcontroller and Microprocessor.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q8</span><span class="q-marks">6+2</span></div>
+    <div class="q-text">a) Explain the architecture of 8051 microcontroller with a diagram.<br>b) Compare MOVC and MOVX instructions.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q9</span><span class="q-marks">5+3</span></div>
+    <div class="q-text">a) Describe the format of PSW and TMOD register.<br>b) Explain the internal memory organization in 8051.</div>
+  </div>
+
+  <div class="q-card">
+    <div class="q-num"><span>Q10</span><span class="q-marks">6+2</span></div>
+    <div class="q-text">a) Write a program to add five 8-bit numbers in the internal RAM and store the results.<br>b) Write the instructions to RUN a Timer and to STOP a Timer operation.</div>
+  </div>
+
 </body>
 </html>
